@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hniu.mapper.AddCurriculumMapper" >
+  <resultMap id="BaseResultMap" type="com.hniu.entity.AddCurriculum" >
+    <id column="add_id" property="addId" jdbcType="INTEGER" />
+    <result column="tution_id" property="tutionId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="course_grade" property="courseGrade" jdbcType="DOUBLE" />
+    <result column="is_qualified" property="isQualified" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    add_id, tution_id, user_id, course_grade, is_qualified
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.AddCurriculumExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_add_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_add_curriculum
+    where add_id = #{addId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_add_curriculum
+    where add_id = #{addId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hniu.entity.AddCurriculumExample" >
+    delete from tbl_add_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hniu.entity.AddCurriculum" >
+    insert into tbl_add_curriculum (add_id, tution_id, user_id, 
+      course_grade, is_qualified)
+    values (#{addId,jdbcType=INTEGER}, #{tutionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{courseGrade,jdbcType=DOUBLE}, #{isQualified,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hniu.entity.AddCurriculum" >
+    insert into tbl_add_curriculum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        add_id,
+      </if>
+      <if test="tutionId != null" >
+        tution_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="courseGrade != null" >
+        course_grade,
+      </if>
+      <if test="isQualified != null" >
+        is_qualified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        #{addId,jdbcType=INTEGER},
+      </if>
+      <if test="tutionId != null" >
+        #{tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="courseGrade != null" >
+        #{courseGrade,jdbcType=DOUBLE},
+      </if>
+      <if test="isQualified != null" >
+        #{isQualified,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hniu.entity.AddCurriculumExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_add_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_add_curriculum
+    <set >
+      <if test="record.addId != null" >
+        add_id = #{record.addId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tutionId != null" >
+        tution_id = #{record.tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseGrade != null" >
+        course_grade = #{record.courseGrade,jdbcType=DOUBLE},
+      </if>
+      <if test="record.isQualified != null" >
+        is_qualified = #{record.isQualified,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_add_curriculum
+    set add_id = #{record.addId,jdbcType=INTEGER},
+      tution_id = #{record.tutionId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      course_grade = #{record.courseGrade,jdbcType=DOUBLE},
+      is_qualified = #{record.isQualified,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.AddCurriculum" >
+    update tbl_add_curriculum
+    <set >
+      <if test="tutionId != null" >
+        tution_id = #{tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="courseGrade != null" >
+        course_grade = #{courseGrade,jdbcType=DOUBLE},
+      </if>
+      <if test="isQualified != null" >
+        is_qualified = #{isQualified,jdbcType=BIT},
+      </if>
+    </set>
+    where add_id = #{addId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hniu.entity.AddCurriculum" >
+    update tbl_add_curriculum
+    set tution_id = #{tutionId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      course_grade = #{courseGrade,jdbcType=DOUBLE},
+      is_qualified = #{isQualified,jdbcType=BIT}
+    where add_id = #{addId,jdbcType=INTEGER}
+  </update>
+</mapper>

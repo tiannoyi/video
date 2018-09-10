@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hniu.mapper.TutionMapper" >
+  <resultMap id="BaseResultMap" type="com.hniu.entity.Tution" >
+    <id column="tution_id" property="tutionId" jdbcType="INTEGER" />
+    <result column="curriculum_id" property="curriculumId" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="schedules" property="schedules" jdbcType="VARCHAR" />
+    <result column="population" property="population" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tution_id, curriculum_id, start_time, endtime, schedules, population, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.TutionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_tution
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_tution
+    where tution_id = #{tutionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_tution
+    where tution_id = #{tutionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hniu.entity.TutionExample" >
+    delete from tbl_tution
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hniu.entity.Tution" >
+    insert into tbl_tution (tution_id, curriculum_id, start_time, 
+      endtime, schedules, population, 
+      status)
+    values (#{tutionId,jdbcType=INTEGER}, #{curriculumId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{schedules,jdbcType=VARCHAR}, #{population,jdbcType=INTEGER}, 
+      #{status,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hniu.entity.Tution" >
+    insert into tbl_tution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tutionId != null" >
+        tution_id,
+      </if>
+      <if test="curriculumId != null" >
+        curriculum_id,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="schedules != null" >
+        schedules,
+      </if>
+      <if test="population != null" >
+        population,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tutionId != null" >
+        #{tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="curriculumId != null" >
+        #{curriculumId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="schedules != null" >
+        #{schedules,jdbcType=VARCHAR},
+      </if>
+      <if test="population != null" >
+        #{population,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hniu.entity.TutionExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_tution
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_tution
+    <set >
+      <if test="record.tutionId != null" >
+        tution_id = #{record.tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.curriculumId != null" >
+        curriculum_id = #{record.curriculumId,jdbcType=INTEGER},
+      </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endtime != null" >
+        endtime = #{record.endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.schedules != null" >
+        schedules = #{record.schedules,jdbcType=VARCHAR},
+      </if>
+      <if test="record.population != null" >
+        population = #{record.population,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_tution
+    set tution_id = #{record.tutionId,jdbcType=INTEGER},
+      curriculum_id = #{record.curriculumId,jdbcType=INTEGER},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      endtime = #{record.endtime,jdbcType=TIMESTAMP},
+      schedules = #{record.schedules,jdbcType=VARCHAR},
+      population = #{record.population,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.Tution" >
+    update tbl_tution
+    <set >
+      <if test="curriculumId != null" >
+        curriculum_id = #{curriculumId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="schedules != null" >
+        schedules = #{schedules,jdbcType=VARCHAR},
+      </if>
+      <if test="population != null" >
+        population = #{population,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where tution_id = #{tutionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hniu.entity.Tution" >
+    update tbl_tution
+    set curriculum_id = #{curriculumId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      schedules = #{schedules,jdbcType=VARCHAR},
+      population = #{population,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT}
+    where tution_id = #{tutionId,jdbcType=INTEGER}
+  </update>
+</mapper>

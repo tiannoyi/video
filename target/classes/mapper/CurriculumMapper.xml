@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hniu.mapper.CurriculumMapper" >
+  <resultMap id="BaseResultMap" type="com.hniu.entity.Curriculum" >
+    <id column="curriculum_id" property="curriculumId" jdbcType="INTEGER" />
+    <result column="university_id" property="universityId" jdbcType="INTEGER" />
+    <result column="ct_id" property="ctId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="propaedeutics" property="propaedeutics" jdbcType="VARCHAR" />
+    <result column="meferences" property="meferences" jdbcType="VARCHAR" />
+    <result column="require" property="require" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+    <result column="is_Mainpic" property="isMainpic" jdbcType="BIT" />
+    <result column="main_teacher" property="mainTeacher" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hniu.entity.CurriculumWithBLOBs" extends="BaseResultMap" >
+    <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
+    <result column="scoring" property="scoring" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    curriculum_id, university_id, ct_id, name, message, propaedeutics, meferences, require, 
+    picture, time, score, video, is_Mainpic, main_teacher
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduce, scoring
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hniu.entity.CurriculumExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.CurriculumExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_curriculum
+    where curriculum_id = #{curriculumId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_curriculum
+    where curriculum_id = #{curriculumId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hniu.entity.CurriculumExample" >
+    delete from tbl_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
+    insert into tbl_curriculum (curriculum_id, university_id, ct_id, 
+      name, message, propaedeutics, 
+      meferences, require, picture, 
+      time, score, video, 
+      is_Mainpic, main_teacher, introduce, 
+      scoring)
+    values (#{curriculumId,jdbcType=INTEGER}, #{universityId,jdbcType=INTEGER}, #{ctId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{propaedeutics,jdbcType=VARCHAR}, 
+      #{meferences,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{time,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{video,jdbcType=VARCHAR}, 
+      #{isMainpic,jdbcType=BIT}, #{mainTeacher,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR}, 
+      #{scoring,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
+    insert into tbl_curriculum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="curriculumId != null" >
+        curriculum_id,
+      </if>
+      <if test="universityId != null" >
+        university_id,
+      </if>
+      <if test="ctId != null" >
+        ct_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="propaedeutics != null" >
+        propaedeutics,
+      </if>
+      <if test="meferences != null" >
+        meferences,
+      </if>
+      <if test="require != null" >
+        require,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="video != null" >
+        video,
+      </if>
+      <if test="isMainpic != null" >
+        is_Mainpic,
+      </if>
+      <if test="mainTeacher != null" >
+        main_teacher,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="scoring != null" >
+        scoring,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="curriculumId != null" >
+        #{curriculumId,jdbcType=INTEGER},
+      </if>
+      <if test="universityId != null" >
+        #{universityId,jdbcType=INTEGER},
+      </if>
+      <if test="ctId != null" >
+        #{ctId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="propaedeutics != null" >
+        #{propaedeutics,jdbcType=VARCHAR},
+      </if>
+      <if test="meferences != null" >
+        #{meferences,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null" >
+        #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="video != null" >
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="isMainpic != null" >
+        #{isMainpic,jdbcType=BIT},
+      </if>
+      <if test="mainTeacher != null" >
+        #{mainTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scoring != null" >
+        #{scoring,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hniu.entity.CurriculumExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_curriculum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_curriculum
+    <set >
+      <if test="record.curriculumId != null" >
+        curriculum_id = #{record.curriculumId,jdbcType=INTEGER},
+      </if>
+      <if test="record.universityId != null" >
+        university_id = #{record.universityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ctId != null" >
+        ct_id = #{record.ctId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.propaedeutics != null" >
+        propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.meferences != null" >
+        meferences = #{record.meferences,jdbcType=VARCHAR},
+      </if>
+      <if test="record.require != null" >
+        require = #{record.require,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picture != null" >
+        picture = #{record.picture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=INTEGER},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=DOUBLE},
+      </if>
+      <if test="record.video != null" >
+        video = #{record.video,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isMainpic != null" >
+        is_Mainpic = #{record.isMainpic,jdbcType=BIT},
+      </if>
+      <if test="record.mainTeacher != null" >
+        main_teacher = #{record.mainTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduce != null" >
+        introduce = #{record.introduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.scoring != null" >
+        scoring = #{record.scoring,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tbl_curriculum
+    set curriculum_id = #{record.curriculumId,jdbcType=INTEGER},
+      university_id = #{record.universityId,jdbcType=INTEGER},
+      ct_id = #{record.ctId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR},
+      propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
+      meferences = #{record.meferences,jdbcType=VARCHAR},
+      require = #{record.require,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=DOUBLE},
+      video = #{record.video,jdbcType=VARCHAR},
+      is_Mainpic = #{record.isMainpic,jdbcType=BIT},
+      main_teacher = #{record.mainTeacher,jdbcType=VARCHAR},
+      introduce = #{record.introduce,jdbcType=LONGVARCHAR},
+      scoring = #{record.scoring,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_curriculum
+    set curriculum_id = #{record.curriculumId,jdbcType=INTEGER},
+      university_id = #{record.universityId,jdbcType=INTEGER},
+      ct_id = #{record.ctId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR},
+      propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
+      meferences = #{record.meferences,jdbcType=VARCHAR},
+      require = #{record.require,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=DOUBLE},
+      video = #{record.video,jdbcType=VARCHAR},
+      is_Mainpic = #{record.isMainpic,jdbcType=BIT},
+      main_teacher = #{record.mainTeacher,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
+    update tbl_curriculum
+    <set >
+      <if test="universityId != null" >
+        university_id = #{universityId,jdbcType=INTEGER},
+      </if>
+      <if test="ctId != null" >
+        ct_id = #{ctId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="propaedeutics != null" >
+        propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
+      </if>
+      <if test="meferences != null" >
+        meferences = #{meferences,jdbcType=VARCHAR},
+      </if>
+      <if test="require != null" >
+        require = #{require,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="video != null" >
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="isMainpic != null" >
+        is_Mainpic = #{isMainpic,jdbcType=BIT},
+      </if>
+      <if test="mainTeacher != null" >
+        main_teacher = #{mainTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scoring != null" >
+        scoring = #{scoring,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where curriculum_id = #{curriculumId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
+    update tbl_curriculum
+    set university_id = #{universityId,jdbcType=INTEGER},
+      ct_id = #{ctId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
+      meferences = #{meferences,jdbcType=VARCHAR},
+      require = #{require,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      time = #{time,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      video = #{video,jdbcType=VARCHAR},
+      is_Mainpic = #{isMainpic,jdbcType=BIT},
+      main_teacher = #{mainTeacher,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=LONGVARCHAR},
+      scoring = #{scoring,jdbcType=LONGVARCHAR}
+    where curriculum_id = #{curriculumId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hniu.entity.Curriculum" >
+    update tbl_curriculum
+    set university_id = #{universityId,jdbcType=INTEGER},
+      ct_id = #{ctId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
+      meferences = #{meferences,jdbcType=VARCHAR},
+      require = #{require,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      time = #{time,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      video = #{video,jdbcType=VARCHAR},
+      is_Mainpic = #{isMainpic,jdbcType=BIT},
+      main_teacher = #{mainTeacher,jdbcType=VARCHAR}
+    where curriculum_id = #{curriculumId,jdbcType=INTEGER}
+  </update>
+</mapper>

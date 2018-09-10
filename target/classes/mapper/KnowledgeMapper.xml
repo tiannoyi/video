@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hniu.mapper.KnowledgeMapper" >
+  <resultMap id="BaseResultMap" type="com.hniu.entity.Knowledge" >
+    <id column="knowledge_id" property="knowledgeId" jdbcType="INTEGER" />
+    <result column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="Summary_name" property="summaryName" jdbcType="VARCHAR" />
+    <result column="Summary_Num" property="summaryNum" jdbcType="VARCHAR" />
+    <result column="redact_teacher" property="redactTeacher" jdbcType="VARCHAR" />
+    <result column="redact_time" property="redactTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    knowledge_id, chapter_id, Summary_name, Summary_Num, redact_teacher, redact_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.KnowledgeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_knowledge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_knowledge
+    where knowledge_id = #{knowledgeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_knowledge
+    where knowledge_id = #{knowledgeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hniu.entity.KnowledgeExample" >
+    delete from tbl_knowledge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hniu.entity.Knowledge" >
+    insert into tbl_knowledge (knowledge_id, chapter_id, Summary_name, 
+      Summary_Num, redact_teacher, redact_time
+      )
+    values (#{knowledgeId,jdbcType=INTEGER}, #{chapterId,jdbcType=INTEGER}, #{summaryName,jdbcType=VARCHAR}, 
+      #{summaryNum,jdbcType=VARCHAR}, #{redactTeacher,jdbcType=VARCHAR}, #{redactTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hniu.entity.Knowledge" >
+    insert into tbl_knowledge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="knowledgeId != null" >
+        knowledge_id,
+      </if>
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+      <if test="summaryName != null" >
+        Summary_name,
+      </if>
+      <if test="summaryNum != null" >
+        Summary_Num,
+      </if>
+      <if test="redactTeacher != null" >
+        redact_teacher,
+      </if>
+      <if test="redactTime != null" >
+        redact_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="knowledgeId != null" >
+        #{knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="summaryName != null" >
+        #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryNum != null" >
+        #{summaryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="redactTeacher != null" >
+        #{redactTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="redactTime != null" >
+        #{redactTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hniu.entity.KnowledgeExample" resultType="java.lang.Integer" >
+    select count(*) from tbl_knowledge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tbl_knowledge
+    <set >
+      <if test="record.knowledgeId != null" >
+        knowledge_id = #{record.knowledgeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chapterId != null" >
+        chapter_id = #{record.chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.summaryName != null" >
+        Summary_name = #{record.summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.summaryNum != null" >
+        Summary_Num = #{record.summaryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redactTeacher != null" >
+        redact_teacher = #{record.redactTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redactTime != null" >
+        redact_time = #{record.redactTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tbl_knowledge
+    set knowledge_id = #{record.knowledgeId,jdbcType=INTEGER},
+      chapter_id = #{record.chapterId,jdbcType=INTEGER},
+      Summary_name = #{record.summaryName,jdbcType=VARCHAR},
+      Summary_Num = #{record.summaryNum,jdbcType=VARCHAR},
+      redact_teacher = #{record.redactTeacher,jdbcType=VARCHAR},
+      redact_time = #{record.redactTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.Knowledge" >
+    update tbl_knowledge
+    <set >
+      <if test="chapterId != null" >
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="summaryName != null" >
+        Summary_name = #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryNum != null" >
+        Summary_Num = #{summaryNum,jdbcType=VARCHAR},
+      </if>
+      <if test="redactTeacher != null" >
+        redact_teacher = #{redactTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="redactTime != null" >
+        redact_time = #{redactTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where knowledge_id = #{knowledgeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hniu.entity.Knowledge" >
+    update tbl_knowledge
+    set chapter_id = #{chapterId,jdbcType=INTEGER},
+      Summary_name = #{summaryName,jdbcType=VARCHAR},
+      Summary_Num = #{summaryNum,jdbcType=VARCHAR},
+      redact_teacher = #{redactTeacher,jdbcType=VARCHAR},
+      redact_time = #{redactTime,jdbcType=TIMESTAMP}
+    where knowledge_id = #{knowledgeId,jdbcType=INTEGER}
+  </update>
+</mapper>

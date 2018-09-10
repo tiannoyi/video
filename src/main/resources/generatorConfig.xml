@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- mysql的jar文件路径 -->
+    <classPathEntry location="C:\Users\C\Downloads\mysql-connector-java-5.0.8.jar" />
+    <context id="Mysql" targetRuntime="MyBatis3Simple">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库相关配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://39.108.71.48:3306/video?useSSL=false"
+                        userId="root" password="311"/>
+
+        <!-- 配置pojo目录 -->
+        <javaModelGenerator targetPackage="com.hniu.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 配置xml映射目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 配置dao目录 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hniu.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- tableName是数据库中的表名，domainObjectName是生成的JAVA模型名，后面的参数不用改，要生成更多的表就在下面继续加table标签 -->
+        <table tableName="tbl_add_curriculum" domainObjectName="AddCurriculum"></table>
+        <table tableName="tbl_announcement" domainObjectName="Announcement"></table>
+        <table tableName="tbl_article" domainObjectName="Article"></table>
+        <table tableName="tbl_chapter" domainObjectName="Chapter"></table>
+        <table tableName="tbl_comment" domainObjectName="Comment"></table>
+        <table tableName="tbl_course_type" domainObjectName="CourseType"></table>
+        <table tableName="tbl_curriculum" domainObjectName="Curriculum"></table>
+        <table tableName="tbl_knowledge" domainObjectName="Knowledge"></table>
+        <table tableName="tbl_performance" domainObjectName="Pergormance"></table>
+        <table tableName="tbl_task" domainObjectName="Task"></table>
+        <table tableName="tbl_teacher" domainObjectName="Teacher"></table>
+        <table tableName="tbl_system" domainObjectName="System"></table>
+        <table tableName="tbl_tution" domainObjectName="Tution"></table>
+        <table tableName="tbl_university" domainObjectName="University"></table>
+        <table tableName="tbl_user" domainObjectName="User"></table>
+        <table tableName="tbl_video" domainObjectName="Video"></table>
+
+
+    </context>
+</generatorConfiguration>
