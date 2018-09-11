@@ -80,7 +80,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    curriculum_id, university_id, ct_id, name, message, propaedeutics, meferences, require, 
+    curriculum_id, university_id, ct_id, name, message, propaedeutics, meferences, `require`,
     picture, time, score, video, is_Mainpic, main_teacher
   </sql>
   <sql id="Blob_Column_List" >
@@ -137,13 +137,13 @@
   <insert id="insert" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
     insert into tbl_curriculum (curriculum_id, university_id, ct_id, 
       name, message, propaedeutics, 
-      meferences, require, picture, 
+      meferences, `require`, picture,
       time, score, video, 
       is_Mainpic, main_teacher, introduce, 
       scoring)
     values (#{curriculumId,jdbcType=INTEGER}, #{universityId,jdbcType=INTEGER}, #{ctId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{propaedeutics,jdbcType=VARCHAR}, 
-      #{meferences,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{meferences,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR},
       #{time,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{video,jdbcType=VARCHAR}, 
       #{isMainpic,jdbcType=BIT}, #{mainTeacher,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR}, 
       #{scoring,jdbcType=LONGVARCHAR})
@@ -173,7 +173,7 @@
         meferences,
       </if>
       <if test="require != null" >
-        require,
+        `require`,
       </if>
       <if test="picture != null" >
         picture,
@@ -282,7 +282,7 @@
         meferences = #{record.meferences,jdbcType=VARCHAR},
       </if>
       <if test="record.require != null" >
-        require = #{record.require,jdbcType=VARCHAR},
+        `require` = #{record.require,jdbcType=VARCHAR},
       </if>
       <if test="record.picture != null" >
         picture = #{record.picture,jdbcType=VARCHAR},
@@ -322,7 +322,7 @@
       message = #{record.message,jdbcType=VARCHAR},
       propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
       meferences = #{record.meferences,jdbcType=VARCHAR},
-      require = #{record.require,jdbcType=VARCHAR},
+      `require` = #{record.require,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=INTEGER},
       score = #{record.score,jdbcType=DOUBLE},
@@ -344,7 +344,7 @@
       message = #{record.message,jdbcType=VARCHAR},
       propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
       meferences = #{record.meferences,jdbcType=VARCHAR},
-      require = #{record.require,jdbcType=VARCHAR},
+      `require` = #{record.require,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=INTEGER},
       score = #{record.score,jdbcType=DOUBLE},
@@ -377,7 +377,7 @@
         meferences = #{meferences,jdbcType=VARCHAR},
       </if>
       <if test="require != null" >
-        require = #{require,jdbcType=VARCHAR},
+        `require` = #{require,jdbcType=VARCHAR},
       </if>
       <if test="picture != null" >
         picture = #{picture,jdbcType=VARCHAR},
@@ -414,7 +414,7 @@
       message = #{message,jdbcType=VARCHAR},
       propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
       meferences = #{meferences,jdbcType=VARCHAR},
-      require = #{require,jdbcType=VARCHAR},
+      `require` = #{require,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       time = #{time,jdbcType=INTEGER},
       score = #{score,jdbcType=DOUBLE},
@@ -433,7 +433,7 @@
       message = #{message,jdbcType=VARCHAR},
       propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
       meferences = #{meferences,jdbcType=VARCHAR},
-      require = #{require,jdbcType=VARCHAR},
+      `require` = #{require,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       time = #{time,jdbcType=INTEGER},
       score = #{score,jdbcType=DOUBLE},
