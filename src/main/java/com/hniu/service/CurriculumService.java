@@ -2,6 +2,7 @@ package com.hniu.service;
 
 import com.hniu.entity.Curriculum;
 import com.hniu.entity.CurriculumWithBLOBs;
+import com.hniu.util.Page;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface CurriculumService {
 
     //分页查询课程信息
-    List<CurriculumWithBLOBs> selectCurriculumList(int currentPage,int pageSize);
+    Page<CurriculumWithBLOBs> selectCurriculumList(int currentPage, int pageSize);
 
     //查询课程信息
     CurriculumWithBLOBs selectCurriculum(int curriculum_id);

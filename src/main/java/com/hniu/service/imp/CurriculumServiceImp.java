@@ -18,7 +18,7 @@ public class CurriculumServiceImp implements CurriculumService {
     CurriculumMapper curriculumMapper;
 
     @Override
-    public List<CurriculumWithBLOBs> selectCurriculumList(int currentPage, int pageSize) {
+    public Page<CurriculumWithBLOBs> selectCurriculumList(int currentPage, int pageSize) {
         PageHelper.startPage(currentPage,pageSize);
         CurriculumExample example = new CurriculumExample();
         example.setOrderByClause("curriculum_id desc");
@@ -26,7 +26,7 @@ public class CurriculumServiceImp implements CurriculumService {
         int countNums = curriculumMapper.count();
         Page<CurriculumWithBLOBs> pageData = new Page<>(currentPage,pageSize,countNums);
         pageData.setList(allCurriculum);
-        return pageData.getList();
+        return pageData;
     }
 
     @Override

@@ -25,11 +25,9 @@ public class CurriculumController extends Base{
         if (currentPage==null||pageSize==null){
             return packaging(StateCode.FAIL,"请输入页数和总数",null);
         }
-        List<CurriculumWithBLOBs> list = curriculumService.selectCurriculumList(currentPage,pageSize);
-        if(list.size()!=0){
-            Page page = new Page<>();
-            page.setList(list);
-            return packaging(StateCode.SUCCESS,"课程信息查询成功",page);
+        Page<CurriculumWithBLOBs> list = curriculumService.selectCurriculumList(currentPage,pageSize);
+        if(list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
         }
