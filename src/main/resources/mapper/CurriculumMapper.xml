@@ -442,4 +442,7 @@
       main_teacher = #{mainTeacher,jdbcType=VARCHAR}
     where curriculum_id = #{curriculumId,jdbcType=INTEGER}
   </update>
+  <select id="count" resultType="java.lang.Integer">
+      select count(curriculum_id) from tbl_curriculum
+  </select>
 </mapper>

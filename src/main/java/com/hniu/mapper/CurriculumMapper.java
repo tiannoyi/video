@@ -34,4 +34,6 @@ public interface CurriculumMapper {
     int updateByPrimaryKeyWithBLOBs(CurriculumWithBLOBs record);
 
     int updateByPrimaryKey(Curriculum record);
+    //统计总数
+    int count();
 }
