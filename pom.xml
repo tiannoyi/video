@@ -75,10 +75,15 @@
             <scope>test</scope>
         </dependency>
         <!-- 分页插件 -->
+        <!--      <dependency>
+                  <groupId>com.github.pagehelper</groupId>
+                  <artifactId>pagehelper</artifactId>
+                  <version>4.1.6</version>
+              </dependency>-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>4.1.6</version>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <!-- tomcat插件 -->
         <dependency>

@@ -2,10 +2,13 @@ package com.hniu.mapper;
 
 import com.hniu.entity.Chapter;
 import com.hniu.entity.ChapterExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface ChapterMapper {
+    List<Chapter> listChapter();
+
     int countByExample(ChapterExample example);
 
     int deleteByExample(ChapterExample example);

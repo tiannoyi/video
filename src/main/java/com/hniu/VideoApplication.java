@@ -21,7 +21,7 @@ public class VideoApplication extends  SpringBootServletInitializer{
     }
 
     //配置分页插件pageHelper
-    @Bean
+/*    @Bean
     public PageHelper pageHelper(){
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
@@ -31,7 +31,7 @@ public class VideoApplication extends  SpringBootServletInitializer{
         properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
         pageHelper.setProperties(properties);
         return pageHelper;
-    }
+    }*/
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         // 设置启动类,用于独立tomcat运行的入口
         return builder.sources(VideoApplication.class);

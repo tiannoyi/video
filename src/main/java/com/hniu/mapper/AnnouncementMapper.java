@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface AnnouncementMapper {
+
+    List<Announcement> listAnnouncement();
+
     int countByExample(AnnouncementExample example);
 
     int deleteByExample(AnnouncementExample example);

@@ -70,6 +70,9 @@
   <sql id="Base_Column_List" >
     chapter_id, chapter_name, chapter_num, redact_teacher, redact_time, curriculum_id
   </sql>
+  <select id="listChapter" resultMap="BaseResultMap">
+    select * from tbl_chapter;
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.ChapterExample" >
     select
     <if test="distinct" >
