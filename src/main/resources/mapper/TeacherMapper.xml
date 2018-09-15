@@ -69,6 +69,10 @@
   <sql id="Base_Column_List" >
     teacher_id, name, title, intro, picture
   </sql>
+  <select id="listTeacher" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from tbl_teacher
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.TeacherExample" >
     select
     <if test="distinct" >
