@@ -1,14 +1,16 @@
 package com.hniu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Tution {
     private Integer tutionId;
 
     private Integer curriculumId;
-
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date startTime;
-
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date endtime;
 
     private String schedules;
