@@ -6,6 +6,7 @@ import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 //系统设置
 @RestController
@@ -35,5 +36,28 @@ public class SystemController extends Base{
         }else{
             return packaging(StateCode.FAIL,"修改系统数据失败",null);
         }
+    }
+
+    //修改系统logo
+    @RequestMapping("updateLogo")
+    public State<Object> updateSystemLogo(MultipartFile logo){
+            int i = systemService.updateSystemLogo(logo);
+            if(i != 0) {
+                return packaging(StateCode.SUCCESS, "系统logo修改成功", null);
+            }else {
+                return packaging(StateCode.FAIL,"系统logo修改失败",null);
+            }
+    }
+
+    //修改封面图片
+    @RequestMapping("updateCover")
+    public State<Object> updateCover(MultipartFile cover){
+        int i = systemService.updateSystemCover(cover);
+        if(i != 0){
+            return packaging(StateCode.SUCCESS,"封面图片修改成功",null);
+        }else{
+            return packaging(StateCode.FAIL,"封面图片修改失败",null);
+        }
+
     }
 }

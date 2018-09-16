@@ -4,13 +4,31 @@ import com.hniu.entity.System;
 import com.hniu.entity.SystemExample;
 import com.hniu.mapper.SystemMapper;
 import com.hniu.service.SystemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-@Service
+import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+
+@Service()
 public class SystemServiceImp implements SystemService {
-    @Autowired
+    @Resource
     SystemMapper systemMapper;
+
+    @Value("${web.logoPath}")
+    private String adSystemLogoPath;
+
+    @Value("${web.coverPath}")
+    private String adSystemCoverPath;
+
+    @Value("${web.videoPath}")
+    private String coverPath;
+
+    @Value("${web.videoPath}")
+    private String logoPath;
+
 
 
     //查询系统信息
@@ -26,6 +44,8 @@ public class SystemServiceImp implements SystemService {
     @Override
     public int updateSystem(int system_id,System system) {
         system.setSustemId(system_id);
+        system.setSystemLogo(null);
+        system.setCover(null);
         int i = systemMapper.updateByPrimaryKeySelective(system);
         if(i != 0){
             return 1;
@@ -33,4 +53,56 @@ public class SystemServiceImp implements SystemService {
             return 0;
         }
     }
+
+    //修改系统logo
+    @Override
+    public int updateSystemLogo(MultipartFile logo) {
+        if(logo!=null&&logo.getSize()>0){
+            String fileName = java.lang.System.currentTimeMillis()+"_"+logo.getOriginalFilename();
+            File file = new File(adSystemLogoPath+fileName);
+            File fileFolder = new File(adSystemLogoPath);
+            if(!fileFolder.exists()){
+                fileFolder.mkdirs();
+            }
+            try{
+                logo.transferTo(file);
+                String logo1 = logoPath+fileName;
+                System s = new System();
+                s.setSustemId(1);
+                s.setSystemLogo(logo1);
+                return systemMapper.updateByPrimaryKeySelective(s);
+            }catch (IOException e){
+                e.printStackTrace();
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    //修改封面图片
+    @Override
+    public int updateSystemCover(MultipartFile cover) {
+        if(cover != null&&cover.getSize()>0){
+            String fileName = java.lang.System.currentTimeMillis()+"_"+cover.getOriginalFilename();
+            File file = new File(adSystemCoverPath+fileName);
+            File fileFolder = new File(adSystemCoverPath);
+            if(!fileFolder.exists()){
+                fileFolder.mkdirs();
+            }
+            try{
+                cover.transferTo(file);
+                String cover1 = coverPath+fileName;
+                System s = new System();
+                s.setSustemId(1);
+                s.setCover(cover1);
+                return systemMapper.updateByPrimaryKeySelective(s);
+            }catch (IOException e){
+                e.printStackTrace();
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+
 }
