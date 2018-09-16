@@ -45,3 +45,6 @@ pagehelper:
   params: count=countSql
 
 
+logging:
+  level:
+     com.hniu.mapper: debug
