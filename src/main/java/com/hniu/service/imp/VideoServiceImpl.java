@@ -51,4 +51,19 @@ public class VideoServiceImpl implements VideoService {
             return false;
         }
     }
+
+    @Override
+    public Boolean updateVideo(VideoDto videoDto) {
+        return null;
+    }
+
+    @Override
+    public int deleteVideo(int videoId) {
+        return videoMapper.deleteByPrimaryKey(videoId);
+    }
+
+    @Override
+    public Video queryVideo(int videoId) {
+        return videoMapper.selectByPrimaryKey(videoId);
+    }
 }
