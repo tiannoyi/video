@@ -2,11 +2,13 @@ package com.hniu.service;
 
 import com.hniu.entity.Tution;
 import com.hniu.util.Page;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@Mapper
 public interface TutionService {
     //分页查询开课
     Page<Tution> selectTutionList(Integer currentPage, Integer pageSize);
@@ -22,6 +24,5 @@ public interface TutionService {
 
     //删除开课
     int deleteTution(Integer tution_id);
-
 
 }

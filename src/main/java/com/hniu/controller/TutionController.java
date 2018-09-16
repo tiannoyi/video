@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/tution")
 public class TutionController extends Base{
@@ -78,6 +79,4 @@ public class TutionController extends Base{
             return packaging(StateCode.FAIL,"开课信息删除成功",null);
         }
     }
-
-
 }
