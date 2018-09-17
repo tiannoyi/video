@@ -39,11 +39,8 @@ public class CurriculumController extends Base{
     @GetMapping(value = "/{curriculum_id}")
     public State<Object> selectCurriculum(@PathVariable("curriculum_id") int curriculum_id){
         CurriculumWithBLOBs curriculum = curriculumService.selectCurriculum(curriculum_id);
-        if(StringUtils.isEmpty(curriculum)){
-            return packaging(StateCode.FAIL,"课程信息查询失败",null);
-        }else {
             return packaging(StateCode.SUCCESS,"课程信息查询成功",curriculum);
-        }
+
     }
 
     //添加课程信息
