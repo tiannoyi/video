@@ -51,4 +51,38 @@ public class VideoServiceImpl implements VideoService {
             return false;
         }
     }
+
+    @Override
+    public Boolean updateVideo(VideoDto videoDto) {
+        Video video = new Video();
+        BeanUtils.copyProperties(videoDto, video);
+        if (videoDto.getFile() != null && videoDto.getFile().getSize() > 0) {
+            String fileName = System.currentTimeMillis() + "_" + videoDto.getFile().getOriginalFilename();
+            File file = new File(adVideoSavePath + fileName);
+            File fileFolder = new File(adVideoSavePath);
+            if (!fileFolder.exists()) {
+                fileFolder.mkdirs();
+            }
+            try {
+                videoDto.getFile().transferTo(file);
+                video.setVideoAddress(videoPath+fileName);
+                videoMapper.updateByPrimaryKeySelective(video);
+                return true;
+            } catch (IllegalStateException | IOException e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int deleteVideo(int videoId) {
+        return videoMapper.deleteByPrimaryKey(videoId);
+    }
+
+    @Override
+    public Video queryVideo(int videoId) {
+        return videoMapper.selectByPrimaryKey(videoId);
+    }
 }
