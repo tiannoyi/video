@@ -79,7 +79,7 @@ public class TeacherController extends Base {
      * @param teacher
      * @return
      */
-    @PostMapping(value = "/update")
+    @PostMapping(value = "")
     public State<Object> updateCurriculum(TeacherDto teacher){
         int i = teacherService.updateTeacher(teacher);
         if(i != 0){

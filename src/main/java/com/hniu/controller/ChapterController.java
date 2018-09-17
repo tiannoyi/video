@@ -1,21 +1,20 @@
 package com.hniu.controller;
 
-import com.github.pagehelper.PageInfo;
+import com.hniu.constant.StateCode;
 import com.hniu.entity.Chapter;
 import com.hniu.service.ChapterService;
+import com.hniu.util.State;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author 陈威
  */
 @RestController
 @RequestMapping(value = "/chapter")
-public class ChapterController {
+public class ChapterController extends Base{
 
     @Resource
     private ChapterService chapterService;
@@ -25,19 +24,14 @@ public class ChapterController {
      * @param chapter Chapter
      * @return map
      */
-    @PostMapping(value="/insert")
-    public Map<String,Object> insertChapter(Chapter chapter){
+    @PostMapping(value="")
+    public State<Object> insertChapter(Chapter chapter){
         int i = chapterService.insertChapter(chapter);
-        Map<String,Object> map = new HashMap(2);
-        if(i>0){
-            map.put("code","1");
-            map.put("msg","添加成功");
-            return map;
+        if(i!=0){
+            return packaging(StateCode.FAIL,"章节信息添加成功",null);
         }
         else{
-            map.put("code","0");
-            map.put("msg","添加失败");
-            return map;
+            return packaging(StateCode.FAIL,"章节添加失败",null);
         }
     }
     /**
@@ -45,19 +39,14 @@ public class ChapterController {
      * @param chapter Chapter
      * @return map
      */
-    @PutMapping(value="/update")
-    public Map<String,Object> updateChapter(Chapter chapter){
+    @PutMapping(value="")
+    public State<Object> updateChapter(Chapter chapter){
         int i = chapterService.updateChapter(chapter);
-        Map<String,Object> map = new HashMap(2);
-        if(i>0){
-            map.put("code","1");
-            map.put("msg","修改成功");
-            return map;
+        if(i!=0){
+            return packaging(StateCode.FAIL,"章节修改成功",null);
         }
         else{
-            map.put("code","0");
-            map.put("msg","修改失败");
-            return map;
+            return packaging(StateCode.FAIL,"章节修改失败",null);
         }
     }
 
@@ -67,24 +56,28 @@ public class ChapterController {
      * @return map
      */
     @DeleteMapping(value = "/{chapterId}")
-    public Map<String,Object> deleteChapterByChapterId(@PathVariable("chapterId") Integer chapterId){
+    public State<Object> deleteChapterByChapterId(@PathVariable("chapterId") Integer chapterId){
         int i = chapterService.deleteChapter(chapterId);
-        Map<String,Object> map = new HashMap(2);
-        if(i>0){
-            map.put("code","1");
-            map.put("msg","删除成功");
-            return map;
+        if(i!=0){
+            return packaging(StateCode.FAIL,"章节删除成功",null);
         }
         else{
-            map.put("code","0");
-            map.put("msg","删除失败");
-            return map;
+            return packaging(StateCode.FAIL,"章节删除失败",null);
         }
     }
-    @RequestMapping(value = "/list")
-    public PageInfo<Chapter> listChapter(){
-        List<Chapter> list = chapterService.listChapter();
-        PageInfo<Chapter> pageInfo = new PageInfo<>(list);
-        return pageInfo;
+    /**
+     * 根据章节id查看章节
+     * @param chapterId
+     * @return
+     */
+    @GetMapping(value = "/{chapterId}")
+    public State<Object> queryArticle(@PathVariable("chapterId") Integer chapterId){
+        Chapter chapter = chapterService.queryChapter(chapterId);
+        if(StringUtils.isEmpty(chapter)){
+            return packaging(StateCode.FAIL,"章节查看失败",null);
+        }else{
+            return packaging(StateCode.SUCCESS,"章节查看成功",chapter);
+
+        }
     }
 }
