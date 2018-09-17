@@ -107,7 +107,7 @@
   </select>
   <select id="listAnnouncement" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/>
-    from * tbl_announcement
+    from  tbl_announcement
   </select>
 
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >

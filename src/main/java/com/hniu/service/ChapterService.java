@@ -36,4 +36,6 @@ public interface ChapterService {
      * @return list
      */
     List<Chapter> listChapter();
+
+    Chapter queryChapter(Integer chapterId);
 }

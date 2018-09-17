@@ -35,4 +35,9 @@ public class ChapterServiceImpl implements ChapterService {
     public List<Chapter> listChapter() {
         return chapterMapper.listChapter();
     }
+
+    @Override
+    public Chapter queryChapter(Integer chapterId) {
+        return chapterMapper.selectByPrimaryKey(chapterId);
+    }
 }

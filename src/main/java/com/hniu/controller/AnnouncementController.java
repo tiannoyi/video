@@ -92,8 +92,8 @@ public class AnnouncementController extends Base{
      * @param announcementId
      * @return
      */
-    @DeleteMapping(value = "/{AnnouncementId}")
-    public State<Object> DeleteCurriculum(@PathVariable("AnnouncementId") int announcementId){
+    @DeleteMapping(value = "/{announcementId}")
+    public State<Object> DeleteCurriculum(@PathVariable("announcementId") int announcementId){
         int i = announcementService.deletennouncement(announcementId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"公告删除成功",null);
