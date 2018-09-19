@@ -30,7 +30,7 @@ public class TeacherController extends Base {
      * @return
      */
     @GetMapping(value = "/page")
-    public State<Object> selectCurriculumList(Integer pageNum,Integer pageSize){
+    public State<Object> selectTeacherList(Integer pageNum,Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
         List<Teacher> teachers = teacherService.listTeacher();
@@ -49,7 +49,7 @@ public class TeacherController extends Base {
      * @return
      */
     @GetMapping(value = "/{teacherId}")
-    public State<Object> selectCurriculum(@PathVariable("teacherId") int teacherId){
+    public State<Object> selectTeacher(@PathVariable("teacherId") int teacherId){
         Teacher teacher = teacherService.selectTeacher(teacherId);
         if(StringUtils.isEmpty(teacher)){
             return packaging(StateCode.FAIL,"教师信息查询失败",null);
@@ -63,8 +63,8 @@ public class TeacherController extends Base {
      * @param teacherDto
      * @return base
      */
-    @PostMapping()
-    public State<Object> inputCurriculum(TeacherDto teacherDto){
+    @PostMapping(value = "")
+    public State<Object> insertTeacher(TeacherDto teacherDto){
         int i = teacherService.insertTeacher(teacherDto);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"教师添加成功",null);
@@ -79,8 +79,8 @@ public class TeacherController extends Base {
      * @param teacher
      * @return
      */
-    @PostMapping(value = "")
-    public State<Object> updateCurriculum(TeacherDto teacher){
+    @PostMapping(value = "/update")
+    public State<Object> updateTeacher(TeacherDto teacher){
         int i = teacherService.updateTeacher(teacher);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"教师修改成功",null);
@@ -95,7 +95,7 @@ public class TeacherController extends Base {
      * @return
      */
     @DeleteMapping(value = "/{teacherId}")
-    public State<Object> DeleteCurriculum(@PathVariable("teacherId") int teacherId){
+    public State<Object> deleteTeacher(@PathVariable("teacherId") int teacherId){
         int i = teacherService.deleteTeacher(teacherId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"教师删除成功",null);

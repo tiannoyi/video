@@ -26,7 +26,7 @@ public class TaskController extends Base{
      * @return
      */
     @GetMapping(value = "/{taskId}")
-    public State<Object> selectCurriculum(@PathVariable("taskId") int taskId){
+    public State<Object> selectTask(@PathVariable("taskId") int taskId){
         Task Task = taskService.queryTask(taskId);
         if(StringUtils.isEmpty(Task)){
             return packaging(StateCode.FAIL,"作业信息查询失败",null);
@@ -41,7 +41,7 @@ public class TaskController extends Base{
      * @return base
      */
     @PostMapping()
-    public State<Object> inputCurriculum(Task task){
+    public State<Object> inputTask(Task task){
         int i = taskService.insertTask(task);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"作业添加成功",null);
@@ -57,7 +57,7 @@ public class TaskController extends Base{
      * @return
      */
     @PutMapping(value = "")
-    public State<Object> updateCurriculum(Task task){
+    public State<Object> updateTask(Task task){
         int i = taskService.updateTask(task);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"作业修改成功",null);
@@ -72,7 +72,7 @@ public class TaskController extends Base{
      * @return
      */
     @DeleteMapping(value = "/{taskId}")
-    public State<Object> DeleteCurriculum(@PathVariable("taskId") int taskId){
+    public State<Object> deleteTask(@PathVariable("taskId") int taskId){
         int i = taskService.deleteTask(taskId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"作业删除成功",null);
