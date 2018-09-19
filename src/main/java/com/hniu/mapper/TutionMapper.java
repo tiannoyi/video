@@ -27,4 +27,6 @@ public interface TutionMapper {
     int updateByPrimaryKeySelective(Tution record);
 
     int updateByPrimaryKey(Tution record);
+
+    int count();
 }

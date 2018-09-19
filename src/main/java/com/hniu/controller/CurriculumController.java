@@ -8,6 +8,7 @@ import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,11 +26,9 @@ public class CurriculumController extends Base{
         if (currentPage==null||pageSize==null){
             return packaging(StateCode.FAIL,"请输入页数和总数",null);
         }
-        List<CurriculumWithBLOBs> list = curriculumService.selectCurriculumList(currentPage,pageSize);
-        if(list.size()!=0){
-            Page page = new Page<>();
-            page.setList(list);
-            return packaging(StateCode.SUCCESS,"课程信息查询成功",page);
+        Page<CurriculumWithBLOBs> list = curriculumService.selectCurriculumList(currentPage,pageSize);
+        if(list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
         }
@@ -40,16 +39,15 @@ public class CurriculumController extends Base{
     @GetMapping(value = "/{curriculum_id}")
     public State<Object> selectCurriculum(@PathVariable("curriculum_id") int curriculum_id){
         CurriculumWithBLOBs curriculum = curriculumService.selectCurriculum(curriculum_id);
-        if(StringUtils.isEmpty(curriculum)){
-            return packaging(StateCode.FAIL,"课程信息查询失败",null);
-        }else {
             return packaging(StateCode.SUCCESS,"课程信息查询成功",curriculum);
-        }
+
     }
 
     //添加课程信息
     @PostMapping()
     public State<Object> inputCurriculum(CurriculumWithBLOBs curriculum){
+        curriculum.setPicture(null);
+        curriculum.setVideo(null);
         int i = curriculumService.inputCurriculum(curriculum);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"课程添加成功",null);
@@ -62,6 +60,8 @@ public class CurriculumController extends Base{
     //修改课程信息
     @PutMapping(value = "/{curriculum_id}")
     public State<Object> updateCurriculum(@PathVariable("curriculum_id") int curriculum_id,CurriculumWithBLOBs curriculum){
+        curriculum.setVideo(null);
+        curriculum.setPicture(null);
         int i = curriculumService.updateCurriculum(curriculum_id,curriculum);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"课程修改成功",null);
@@ -78,6 +78,28 @@ public class CurriculumController extends Base{
             return packaging(StateCode.SUCCESS,"课程删除成功",null);
         }else{
             return packaging(StateCode.FAIL,"课程删除失败",null);
+        }
+    }
+
+    //修改课程封面图片
+    @RequestMapping("/curriculumPicture")
+    public State<Object> updateCurriculumPicture(Integer curriculumId, MultipartFile curriculumPicture){
+        int i = curriculumService.updateCurriculumPicture(curriculumId, curriculumPicture);
+        if(i != 0){
+            return packaging(StateCode.SUCCESS,"课程封面修改成功",null);
+        }else{
+            return packaging(StateCode.FAIL,"课程封面修改失败",null);
+        }
+    }
+
+    //修改系统封面图片
+    @RequestMapping("/curriculumVideoPicture")
+    public State<Object> updateCurriculumVideoPicture(Integer curriculumId,MultipartFile curriculumVideoPicture){
+        int i = curriculumService.updateCurriculumVideoPicture(curriculumId, curriculumVideoPicture);
+        if(i != 0){
+            return packaging(StateCode.SUCCESS,"视频封面修改成功",null);
+        }else{
+            return packaging(StateCode.FAIL,"视频封面修改失败",null);
         }
     }
 
