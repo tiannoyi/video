@@ -28,7 +28,7 @@ public class AnnouncementController extends Base{
      * @return
      */
     @GetMapping(value = "/page")
-    public State<Object> selectCurriculumList(Integer pageNum, Integer pageSize){
+    public State<Object> selectAnnouncementList(Integer pageNum, Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
         List<Announcement> announcements = announcementService.listAnnouncement();
@@ -47,7 +47,7 @@ public class AnnouncementController extends Base{
      * @return
      */
     @GetMapping(value = "/{announcementId}")
-    public State<Object> selectCurriculum(@PathVariable("announcementId") int announcementId){
+    public State<Object> selectAnnouncement(@PathVariable("announcementId") int announcementId){
         Announcement announcement = announcementService.queryAnnouncement(announcementId);
         if(StringUtils.isEmpty(announcement)){
             return packaging(StateCode.FAIL,"公告信息查询失败",null);
@@ -62,7 +62,7 @@ public class AnnouncementController extends Base{
      * @return base
      */
     @PostMapping()
-    public State<Object> inputCurriculum(Announcement announcement){
+    public State<Object> inputAnnouncement(Announcement announcement){
         int i = announcementService.insertAnnouncement(announcement);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"公告添加成功",announcement);
@@ -78,7 +78,7 @@ public class AnnouncementController extends Base{
      * @return
      */
     @PutMapping(value = "")
-    public State<Object> updateCurriculum(Announcement announcement){
+    public State<Object> updateAnnouncement(Announcement announcement){
         int i = announcementService.updateAnnouncement(announcement);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"公告修改成功",null);
@@ -93,7 +93,7 @@ public class AnnouncementController extends Base{
      * @return
      */
     @DeleteMapping(value = "/{announcementId}")
-    public State<Object> DeleteCurriculum(@PathVariable("announcementId") int announcementId){
+    public State<Object> deleteAnnouncement(@PathVariable("announcementId") int announcementId){
         int i = announcementService.deletennouncement(announcementId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"公告删除成功",null);

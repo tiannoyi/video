@@ -25,7 +25,7 @@ public class VideoController extends Base {
      * @return
      */
     @GetMapping(value = "/{videoId}")
-    public State<Object> selectCurriculum(@PathVariable("videoId") int videoId){
+    public State<Object> selectVideo(@PathVariable("videoId") int videoId){
         Video video = videoService.queryVideo(videoId);
         if(StringUtils.isEmpty(video)){
             return packaging(StateCode.FAIL,"视频信息查询失败",null);
@@ -40,7 +40,7 @@ public class VideoController extends Base {
      * @return base
      */
     @PostMapping()
-    public State<Object> inputCurriculum(VideoDto videoDto){
+    public State<Object> inputVideo(VideoDto videoDto){
         Boolean aBoolean = videoService.insertVideo(videoDto);
         if(aBoolean){
             return packaging(StateCode.SUCCESS,"视频添加成功",null);
@@ -56,7 +56,7 @@ public class VideoController extends Base {
      * @return
      */
     @PostMapping(value = "/update")
-    public State<Object> updateCurriculum(VideoDto video){
+    public State<Object> updateVideo(VideoDto video){
         Boolean aBoolean = videoService.updateVideo(video);
         if(aBoolean){
             return packaging(StateCode.SUCCESS,"视频修改成功",null);
@@ -71,7 +71,7 @@ public class VideoController extends Base {
      * @return
      */
     @DeleteMapping(value = "/{videoId}")
-    public State<Object> DeleteCurriculum(@PathVariable("videoId") int videoId){
+    public State<Object> deleteVideo(@PathVariable("videoId") int videoId){
         int i = videoService.deleteVideo(videoId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"视频删除成功",null);

@@ -71,7 +71,7 @@ public class ArticleController extends Base{
      * @return
      */
     @DeleteMapping(value = "/{articleId}")
-    public State<Object> DeleteArticle(@PathVariable("articleId") int articleId){
+    public State<Object> deleteArticle(@PathVariable("articleId") int articleId){
         int i = articleService.deleteArticle(articleId);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"文章删除成功",null);

@@ -71,7 +71,7 @@ public class ChapterController extends Base{
      * @return
      */
     @GetMapping(value = "/{chapterId}")
-    public State<Object> queryArticle(@PathVariable("chapterId") Integer chapterId){
+    public State<Object> queryChapter(@PathVariable("chapterId") Integer chapterId){
         Chapter chapter = chapterService.queryChapter(chapterId);
         if(StringUtils.isEmpty(chapter)){
             return packaging(StateCode.FAIL,"章节查看失败",null);
