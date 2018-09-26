@@ -8,6 +8,8 @@ import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: 熊俊
  * @Date: 2018/9/19 19:51
@@ -72,6 +74,27 @@ public class KnowledgeController extends Base {
             return packaging(StateCode.SUCCESS,"知识目录删除成功",null);
         }else{
             return packaging(StateCode.FAIL,"知识目录删除失败",null);
+        }
+    }
+
+    //根据章节id查询知识目录
+    @GetMapping("/chapterId")
+    public State<Object> byChapterId(Integer chapterId,Integer currentPage,Integer pageSize){
+        List<Knowledge> list = knowledgeService.byChapterId(chapterId);
+        if(list.size()>0){
+            return packaging(StateCode.SUCCESS,"知识目录查询成功",list);
+        }else {
+            return packaging(StateCode.FAIL,"知识目录查询失败",null);
+        }
+    }
+    //根据小结名称模糊查询知识目录
+    @GetMapping("/summaryName")
+    public State<Object> bySummaryName(String summaryName,Integer currentPage,Integer pageSize){
+        Page<Knowledge> list = knowledgeService.bySummaryName(summaryName, currentPage, pageSize);
+        if(list.getList().size()>0){
+            return packaging(StateCode.SUCCESS,"知识目录查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"知识目录查询失败",null);
         }
     }
 

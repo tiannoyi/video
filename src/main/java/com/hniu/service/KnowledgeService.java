@@ -3,6 +3,8 @@ package com.hniu.service;
 import com.hniu.entity.Knowledge;
 import com.hniu.util.Page;
 
+import java.util.List;
+
 /**
  * @Author: 熊俊
  * @Date: 2018/9/19 19:52
@@ -24,4 +26,10 @@ public interface KnowledgeService {
 
     //删除知识目录
     int deleteKnowledge(Integer knowledge_Id);
+
+    //根据章节id查询知识目录
+    List<Knowledge> byChapterId(Integer chapterId);
+
+    //根据小结名称模糊查询知识目录
+    Page<Knowledge> bySummaryName(String summaryName,Integer currentPage,Integer pageSize);
 }

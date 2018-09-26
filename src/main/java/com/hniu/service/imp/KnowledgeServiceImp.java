@@ -73,4 +73,25 @@ public class KnowledgeServiceImp implements KnowledgeService {
         }
 
     }
+
+    @Override
+    public List<Knowledge> byChapterId(Integer chapterId) {
+        KnowledgeExample example = new KnowledgeExample();
+        example.createCriteria().andChapterIdEqualTo(chapterId);
+        List<Knowledge> list = knowledgeMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public Page<Knowledge> bySummaryName(String summaryName, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        KnowledgeExample example = new KnowledgeExample();
+        summaryName = "%" + summaryName + "%";
+        example.createCriteria().andSummaryNameLike(summaryName);
+        int countNums = knowledgeMapper.countByExample(example);
+        List<Knowledge> allKnowLege = knowledgeMapper.selectByExample(example);
+        Page<Knowledge>  pageData  = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allKnowLege);
+        return pageData;
+    }
 }
