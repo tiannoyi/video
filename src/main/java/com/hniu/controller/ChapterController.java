@@ -3,11 +3,13 @@ package com.hniu.controller;
 import com.hniu.constant.StateCode;
 import com.hniu.entity.Chapter;
 import com.hniu.service.ChapterService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 陈威
@@ -80,4 +82,41 @@ public class ChapterController extends Base{
 
         }
     }
+
+    //根据课程id查询章节信息
+    @GetMapping("/curriculum_id/{curriculum_id}")
+    public State<Object> selectCurriculum_id(@PathVariable("curriculum_id")Integer curriculum_id){
+        List<Chapter> list = chapterService.selectClassId(curriculum_id);
+        if(list.size()>0){
+            return packaging(StateCode.SUCCESS,"章节查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"章节查询失败",null);
+        }
+    }
+
+    //查询所有章节信息
+    @GetMapping("chapterPage")
+    public State<Object> selectChapter(Integer currentPage, Integer pageSize){
+        if (currentPage==null||pageSize==null){
+            return packaging(StateCode.FAIL,"请输入页数和总数",null);
+        }
+        Page<Chapter> list = chapterService.listChapter(currentPage, pageSize);
+        if(list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"章节信息查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"章节信息查询失败",null);
+        }
+    }
+
+    //根据章节名模糊查询
+    @GetMapping("/chapterName")
+    public State<Object> selectChapterName(String chapterName,Integer currentPage, Integer pageSize){
+        Page<Chapter> list = chapterService.selectChapterName(chapterName,currentPage,pageSize);
+        if (list.getList().size()>0){
+            return packaging(StateCode.SUCCESS,"章节信息查询成功",list);
+        }else {
+            return packaging(StateCode.FAIL,"章节信息查询失败",null);
+        }
+    }
+
 }

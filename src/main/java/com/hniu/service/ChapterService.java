@@ -1,6 +1,7 @@
 package com.hniu.service;
 
 import com.hniu.entity.Chapter;
+import com.hniu.util.Page;
 
 import java.util.List;
 
@@ -35,7 +36,14 @@ public interface ChapterService {
      * 查询所有章节信息
      * @return list
      */
-    List<Chapter> listChapter();
+    Page<Chapter> listChapter(Integer currentPage, Integer pageSize);
 
     Chapter queryChapter(Integer chapterId);
+
+    //根据课程id查询章节信息
+    List<Chapter> selectClassId(Integer curriculum_id);
+
+    //根据章节名模糊查询
+    Page<Chapter> selectChapterName(String chapterName,Integer currentPage, Integer pageSize);
+
 }
