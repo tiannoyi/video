@@ -128,4 +128,41 @@ public class CurriculumServiceImp implements CurriculumService {
         }
         return 0;
     }
+
+    @Override
+    public Page<CurriculumWithBLOBs> bySchoolId(Integer university_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        CurriculumExample example = new CurriculumExample();
+        example.createCriteria().andUniversityIdEqualTo(university_id);
+        int countNums = curriculumMapper.countByExample(example);
+        List<CurriculumWithBLOBs> allCurr = curriculumMapper.selectByExampleWithBLOBs(example);
+        Page<CurriculumWithBLOBs> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allCurr);
+        return pageData;
+    }
+
+    @Override
+    public Page<CurriculumWithBLOBs> byCtId(Integer ct_id, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        CurriculumExample example = new CurriculumExample();
+        example.createCriteria().andCtIdEqualTo(ct_id);
+        int countNums = curriculumMapper.countByExample(example);
+        List<CurriculumWithBLOBs> allCurr = curriculumMapper.selectByExampleWithBLOBs(example);
+        Page<CurriculumWithBLOBs> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allCurr);
+        return pageData;
+    }
+
+    @Override
+    public Page<CurriculumWithBLOBs> byName(String name, int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        CurriculumExample example = new CurriculumExample();
+        name = "%" + name+"%";
+        example.createCriteria().andNameLike(name);
+        int countNums = curriculumMapper.countByExample(example);
+        List<CurriculumWithBLOBs> allCurr = curriculumMapper.selectByExampleWithBLOBs(example);
+        Page<CurriculumWithBLOBs> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allCurr);
+        return pageData;
+    }
 }

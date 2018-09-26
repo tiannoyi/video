@@ -32,4 +32,13 @@ public interface CurriculumService {
     //修改视屏封面
     int updateCurriculumVideoPicture(Integer curriculumId,MultipartFile videoPicture);
 
+    //根据学校id查询课程信息
+    Page<CurriculumWithBLOBs> bySchoolId(Integer university_id,int currentPage, int pageSize);
+
+    //根据类别id查询课程信息
+    Page<CurriculumWithBLOBs> byCtId(Integer ct_id,int currentPage, int pageSize);
+
+    //根据课程名查询课程信息
+    Page<CurriculumWithBLOBs> byName(String name,int currentPage, int pageSize);
+
 }

@@ -66,7 +66,7 @@ public class ChapterServiceImpl implements ChapterService {
         chapterName = "%"+chapterName+"%";
         example.createCriteria().andChapterNameLike(chapterName);
         int countNums = chapterMapper.countByExample(example);
-       List<Chapter> allChapter = chapterMapper.selectByExample(example);
+        List<Chapter> allChapter = chapterMapper.selectByExample(example);
         Page<Chapter> pageData = new Page<>(currentPage,pageSize,countNums);
         pageData.setList(allChapter);
         return pageData;
