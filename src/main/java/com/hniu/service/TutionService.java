@@ -25,4 +25,8 @@ public interface TutionService {
     //删除开课
     int deleteTution(Integer tution_id);
 
+    //根据课程id查询开课
+    Page<Tution> byCurriculumId(Integer curriculum_id,Integer currentPage, Integer pageSize);
+
+
 }

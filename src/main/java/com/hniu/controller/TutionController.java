@@ -79,4 +79,19 @@ public class TutionController extends Base{
             return packaging(StateCode.FAIL,"开课信息删除成功",null);
         }
     }
+
+    //根据课程id查询开课信息
+    @GetMapping("/curriculum_id")
+    public State<Object> byCurriculumId(Integer curriculum_id,Integer currentPage, Integer pageSize){
+        if(curriculum_id == null ||currentPage==null||pageSize==null){
+            return packaging(StateCode.FAIL,"请输入页数、总数、课程id",null);
+        }
+        Page<Tution> list = tutionService.byCurriculumId(curriculum_id, currentPage, pageSize);
+        if (list.getList().size()>0){
+            return packaging(StateCode.SUCCESS,"开课信息查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"开课信息查询失败",null);
+        }
+    }
+
 }

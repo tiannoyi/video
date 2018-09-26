@@ -87,4 +87,16 @@ public class TutionServiceImp implements TutionService {
             return 0;
         }
     }
+
+    @Override
+    public Page<Tution> byCurriculumId(Integer curriculum_id, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        TutionExample example = new TutionExample();
+        example.createCriteria().andCurriculumIdEqualTo(curriculum_id);
+        List<Tution> allTution = tutionMapper.selectByExample(example);
+        int countNums = tutionMapper.countByExample(example);
+        Page<Tution> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allTution);
+        return pageData;
+    }
 }
