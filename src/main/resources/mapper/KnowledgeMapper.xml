@@ -225,4 +225,7 @@
       redact_time = #{redactTime,jdbcType=TIMESTAMP}
     where knowledge_id = #{knowledgeId,jdbcType=INTEGER}
   </update>
+  <select id="count" resultType="java.lang.Integer">
+    select count(knowledge_id) from tbl_knowledge
+  </select>
 </mapper>

@@ -27,4 +27,6 @@ public interface KnowledgeMapper {
     int updateByPrimaryKeySelective(Knowledge record);
 
     int updateByPrimaryKey(Knowledge record);
+    //查询总数
+    int count();
 }

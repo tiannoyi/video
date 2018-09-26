@@ -1,5 +1,7 @@
 package com.hniu.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Knowledge {
@@ -12,7 +14,7 @@ public class Knowledge {
     private String summaryNum;
 
     private String redactTeacher;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date redactTime;
 
     public Integer getKnowledgeId() {
