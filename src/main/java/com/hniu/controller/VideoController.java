@@ -4,10 +4,12 @@ import com.hniu.constant.StateCode;
 import com.hniu.dto.VideoDto;
 import com.hniu.entity.Video;
 import com.hniu.service.VideoService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 陈威
@@ -79,4 +81,27 @@ public class VideoController extends Base {
             return packaging(StateCode.FAIL,"视频删除失败",null);
         }
     }
+
+    //根据知识目录id查询视频信息
+    @GetMapping("knowledgeId")
+    public  State<Object> byKnowledgeId(Integer knowledge_id){
+        List<Video> list = videoService.byKnowledgeId(knowledge_id);
+        if(list.size()>0){
+            return packaging(StateCode.SUCCESS,"视频查询成功",list);
+        }else {
+            return packaging(StateCode.FAIL,"视频查询失败",null);
+        }
+    }
+
+    //根据视频名称模糊查询视频信息
+    @GetMapping("VideoName")
+   public State<Object> byName(String name,Integer currentPage, Integer pageSize){
+       Page<Video> list = videoService.byName(name, currentPage, pageSize);
+       if(list.getList().size()>=0){
+           return packaging(StateCode.SUCCESS,"视频信息查询成功",list);
+       }else{
+           return packaging(StateCode.FAIL,"视频信息查询失败",null);
+       }
+   }
+
 }
