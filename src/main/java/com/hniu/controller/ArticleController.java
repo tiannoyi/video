@@ -4,11 +4,13 @@ import com.hniu.constant.StateCode;
 import com.hniu.dto.ArticleDto;
 import com.hniu.entity.Article;
 import com.hniu.service.ArticleService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 陈威
@@ -80,5 +82,25 @@ public class ArticleController extends Base{
         }
     }
 
+    //根据知识目录id查询文章信息
+    @GetMapping("/knowledgeId")
+    public State<Object> byKnowledgeId(Integer knowledge_id){
+        List<Article> list = articleService.byKnowledgeId(knowledge_id);
+        if(list.size()>=0){
+            return packaging(StateCode.SUCCESS,"文章查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"文章查询失败",null);
+        }
+    }
 
+    //根据文章名称模糊查询文章信息
+    @GetMapping("articleName")
+    public State<Object> byName(String name,Integer currentPage, Integer pageSize){
+        Page<Article> list = articleService.byName(name, currentPage, pageSize);
+        if(list.getList().size()>=0){
+            return packaging(StateCode.SUCCESS,"文章查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"文章查询失败",null);
+        }
+    }
 }
