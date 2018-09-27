@@ -30,12 +30,9 @@ public class AnnouncementController extends Base{
      */
     @GetMapping(value = "/page")
     public State<Object> selectAnnouncementList(Integer pageNum, Integer pageSize){
-
-        PageHelper.startPage(pageNum,pageSize);
-        List<Announcement> announcements = announcementService.listAnnouncement();
-        PageInfo<Announcement> pageInfo = new PageInfo<>(announcements);
-        if(announcements.size()!=0){
-            return packaging(StateCode.SUCCESS,"公告信息查询成功",pageInfo);
+        Page<Announcement> list = announcementService.listAnnouncement(pageNum,pageSize);
+        if(list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"公告信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"公告信息查询失败",null);
         }

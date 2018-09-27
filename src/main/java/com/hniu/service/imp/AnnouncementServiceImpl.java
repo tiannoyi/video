@@ -41,8 +41,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     }
 
     @Override
-    public List<Announcement> listAnnouncement() {
-        return announcementMapper.listAnnouncement();
+    public Page<Announcement> listAnnouncement(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        AnnouncementExample example = new AnnouncementExample();
+        example.setOrderByClause("announcement_id desc");
+        List<Announcement> allAnnouncement = announcementMapper.selectByExampleWithBLOBs(example);
+        int countNums =announcementMapper.countByExample(example);
+        Page<Announcement> pageData =  new Page<>(pageNum,pageSize,countNums);
+        pageData.setList(allAnnouncement);
+        return pageData;
     }
 
     @Override

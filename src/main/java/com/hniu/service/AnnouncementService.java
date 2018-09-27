@@ -18,7 +18,7 @@ public interface AnnouncementService {
 
     Announcement queryAnnouncement(int announcementId);
 
-    List<Announcement> listAnnouncement();
+    Page<Announcement> listAnnouncement(Integer pageNum, Integer pageSize);
 
     //根据开课id查询公告信息
     List<Announcement> byTutionId(Integer tution_id);
