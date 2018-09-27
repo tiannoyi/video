@@ -107,6 +107,12 @@ public class CurriculumServiceImp implements CurriculumService {
 
     @Override
     public int updateCurriculumVideoPicture(Integer curriculumId, MultipartFile videoPicture) {
+
+        //http://www.tiannoyi.com/video/1537347081721_banner.2aff974.mp4
+        //Curriculum c = curriculumMapper.selectByPrimaryKey(curriculumId);
+        //String s = c.getVideo();
+        //String s1 =
+
         if(videoPicture != null && videoPicture.getSize()>0){
             String fileName = System.currentTimeMillis()+"_"+videoPicture.getOriginalFilename();
             File file = new File(adCurriculumVideoPicturePath+fileName);

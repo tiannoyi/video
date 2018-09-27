@@ -23,6 +23,11 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  # 上传文件大小限制
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
 mybatis:
   # 指定sql映射文件位置
   mapper-locations: classpath:mapper/*.xml
@@ -32,3 +37,14 @@ server:
 thymeleaf:
            cache: false
 
+# mybatis分页插件的使用
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+logging:
+  level:
+     com.hniu.mapper: debug

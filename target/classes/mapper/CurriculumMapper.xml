@@ -80,7 +80,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    curriculum_id, university_id, ct_id, name, message, propaedeutics, meferences, require, 
+    curriculum_id, university_id, ct_id, name, message, propaedeutics, meferences, `require`,
     picture, time, score, video, is_Mainpic, main_teacher
   </sql>
   <sql id="Blob_Column_List" >
@@ -137,13 +137,13 @@
   <insert id="insert" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
     insert into tbl_curriculum (curriculum_id, university_id, ct_id, 
       name, message, propaedeutics, 
-      meferences, require, picture, 
+      meferences, `require`, picture,
       time, score, video, 
       is_Mainpic, main_teacher, introduce, 
       scoring)
     values (#{curriculumId,jdbcType=INTEGER}, #{universityId,jdbcType=INTEGER}, #{ctId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{propaedeutics,jdbcType=VARCHAR}, 
-      #{meferences,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{meferences,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR},
       #{time,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{video,jdbcType=VARCHAR}, 
       #{isMainpic,jdbcType=BIT}, #{mainTeacher,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR}, 
       #{scoring,jdbcType=LONGVARCHAR})
@@ -173,7 +173,7 @@
         meferences,
       </if>
       <if test="require != null" >
-        require,
+        `require`,
       </if>
       <if test="picture != null" >
         picture,
@@ -282,7 +282,7 @@
         meferences = #{record.meferences,jdbcType=VARCHAR},
       </if>
       <if test="record.require != null" >
-        require = #{record.require,jdbcType=VARCHAR},
+        `require` = #{record.require,jdbcType=VARCHAR},
       </if>
       <if test="record.picture != null" >
         picture = #{record.picture,jdbcType=VARCHAR},
@@ -322,7 +322,7 @@
       message = #{record.message,jdbcType=VARCHAR},
       propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
       meferences = #{record.meferences,jdbcType=VARCHAR},
-      require = #{record.require,jdbcType=VARCHAR},
+      `require` = #{record.require,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=INTEGER},
       score = #{record.score,jdbcType=DOUBLE},
@@ -344,7 +344,7 @@
       message = #{record.message,jdbcType=VARCHAR},
       propaedeutics = #{record.propaedeutics,jdbcType=VARCHAR},
       meferences = #{record.meferences,jdbcType=VARCHAR},
-      require = #{record.require,jdbcType=VARCHAR},
+      `require` = #{record.require,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=INTEGER},
       score = #{record.score,jdbcType=DOUBLE},
@@ -377,7 +377,7 @@
         meferences = #{meferences,jdbcType=VARCHAR},
       </if>
       <if test="require != null" >
-        require = #{require,jdbcType=VARCHAR},
+        `require` = #{require,jdbcType=VARCHAR},
       </if>
       <if test="picture != null" >
         picture = #{picture,jdbcType=VARCHAR},
@@ -414,7 +414,7 @@
       message = #{message,jdbcType=VARCHAR},
       propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
       meferences = #{meferences,jdbcType=VARCHAR},
-      require = #{require,jdbcType=VARCHAR},
+      `require` = #{require,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       time = #{time,jdbcType=INTEGER},
       score = #{score,jdbcType=DOUBLE},
@@ -433,7 +433,7 @@
       message = #{message,jdbcType=VARCHAR},
       propaedeutics = #{propaedeutics,jdbcType=VARCHAR},
       meferences = #{meferences,jdbcType=VARCHAR},
-      require = #{require,jdbcType=VARCHAR},
+      `require` = #{require,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       time = #{time,jdbcType=INTEGER},
       score = #{score,jdbcType=DOUBLE},
@@ -442,4 +442,55 @@
       main_teacher = #{mainTeacher,jdbcType=VARCHAR}
     where curriculum_id = #{curriculumId,jdbcType=INTEGER}
   </update>
+  <select id="count" resultType="java.lang.Integer">
+      select count(curriculum_id) from tbl_curriculum
+  </select>
+
+
+
+  <!-- 当前学习人数统计  DZY-->
+  <select id="getCurrentStudyNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      SELECT count(*) from tbl_curriculum tc
+        join tbl_tution tt on tc.curriculum_id = tt.curriculum_id
+        join tbl_add_curriculum tac on tt.tution_id = tac.tution_id  WHERE tc.curriculum_id=#{id}
+  </select>
+
+
+  <!-- 课程评价记录数  DZY -->
+  <select id="getCurriculumEvaluation" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+     select count(*) from tbl_comment a
+       JOIN tbl_curriculum b on a.curriculum_id=b.curriculum_id WHERE a.curriculum_id=#{id}
+  </select>
+
+
+  <!-- 2.课程名称，学校名称，教师名，课程介绍、课程寄语、预备知识、。。。
+     评分标准，已参与人数（开课表中该课程ID对应的参与人数之和）等。  DZY -->
+  <select id="getCouresDetails" parameterType="java.lang.Integer" resultType="com.hniu.entity.CouresDetails">
+    SELECT a.`name`,a.introduce,a.message,a.propaedeutics,a.scoring,a.main_teacher,
+       b.school_name,c.population
+		 FROM tbl_curriculum AS a
+		 INNER JOIN tbl_university as b ON a.university_id=b.university_id
+		 INNER JOIN tbl_tution AS c ON a.curriculum_id=c.curriculum_id where a.curriculum_id=#{id}
+	   order by a.curriculum_id
+  </select>
+
+
+  <!--  DZY -->
+  <select id="JoinTheCourseByid" parameterType="java.lang.Integer" resultType="com.hniu.entity.CouresDetails">
+    select a.curriculum_id,a.tution_id,c.user_id,b.score,b.require from tbl_tution a
+	  JOIN tbl_user  c
+	  JOIN tbl_curriculum b ON a.curriculum_id=b.curriculum_id
+	  JOIN tbl_add_curriculum  d ON d.user_id=c.user_id WHERE a.curriculum_id=#{id}
+  </select>
+
+  <select id="getNavigationDetails" parameterType="java.lang.Integer" resultType="com.hniu.entity.NavigationDetails">
+      SELECT b.content,d.`name`,d.title,d.intro,d.picture,d.teacher_id,e.chapter_name,e.chapter_num,e.redact_teacher,e.redact_time,f.Summary_name,f.Summary_Num
+       FROM tbl_curriculum AS a
+	    INNER JOIN tbl_comment AS b ON a.curriculum_id=b.curriculum_id
+	    INNER JOIN tbl_give AS c ON a.curriculum_id=c.curriculum_id
+	    INNER JOIN tbl_teacher AS d ON c.teacher_id=d.teacher_id
+	    inner JOIN tbl_chapter AS e ON a.curriculum_id=e.curriculum_id
+	    INNER JOIN tbl_knowledge AS f ON f.chapter_id=e.chapter_id
+	    WHERE a.curriculum_id=#{id}
+  </select>
 </mapper>

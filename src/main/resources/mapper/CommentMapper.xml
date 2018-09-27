@@ -225,4 +225,21 @@
       asterisk_num = #{asteriskNum,jdbcType=INTEGER}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
+
+
+  <!-- 列出课程名称，评价内容，评价时间，及评价标星 -->
+  <select id="getCommentInformation" parameterType="java.lang.Integer" resultType="com.hniu.entity.Comment_Extends">
+     SELECT  a.content,a.ctime,a.asterisk_num,
+        b.`name`
+		FROM tbl_comment AS a
+		inner JOIN tbl_curriculum AS b ON a.curriculum_id=b.curriculum_id WHERE comment_id=#{id}
+	    order by a.comment_id
+  </select>
+
+  <!--2.显示课程总的评价数和课程得分-->
+  <select id="getEvaluateNum" parameterType="java.lang.Integer" resultType="com.hniu.entity.Comment_Extends">
+        SELECT COUNT(b.curriculum_id)  commentNum,a.score
+        FROM tbl_curriculum a LEFT JOIN tbl_comment b ON a.curriculum_id = b.curriculum_id WHERE a.curriculum_id=#{id}
+  </select>
+
 </mapper>

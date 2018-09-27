@@ -161,4 +161,10 @@
     set school_name = #{schoolName,jdbcType=VARCHAR}
     where university_id = #{universityId,jdbcType=INTEGER}
   </update>
+
+  <!--模糊查询 -->
+  <select id="getFuzzyquery" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM tbl_university WHERE (school_name) LIKE '%${name}%'
+  </select>
+
 </mapper>

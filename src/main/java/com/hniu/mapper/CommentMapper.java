@@ -3,6 +3,8 @@ package com.hniu.mapper;
 import com.hniu.entity.Comment;
 import com.hniu.entity.CommentExample;
 import java.util.List;
+
+import com.hniu.util.State;
 import org.apache.ibatis.annotations.Param;
 
 public interface CommentMapper {
@@ -27,4 +29,9 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    State<Object> getCommentInformation(@Param("id") Integer id);
+
+    State<Object> getEvaluateNum(Integer id);
+
 }

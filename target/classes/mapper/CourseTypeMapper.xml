@@ -161,4 +161,9 @@
     set ct_name = #{ctName,jdbcType=VARCHAR}
     where ct_id = #{ctId,jdbcType=INTEGER}
   </update>
+
+  <!--模糊查询 -->
+  <select id="getFuzzyqueryCoures" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM tbl_course_type WHERE (ct_name) LIKE '%${name}%'
+  </select>
 </mapper>

@@ -9,7 +9,7 @@ public class AddCurriculum {
 
     private Double courseGrade;
 
-    private Boolean isQualified;
+    private String isQualified;
 
     public Integer getAddId() {
         return addId;
@@ -43,11 +43,11 @@ public class AddCurriculum {
         this.courseGrade = courseGrade;
     }
 
-    public Boolean getIsQualified() {
+    public String getIsQualified() {
         return isQualified;
     }
 
-    public void setIsQualified(Boolean isQualified) {
+    public void setIsQualified(String isQualified) {
         this.isQualified = isQualified;
     }
 }

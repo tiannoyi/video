@@ -27,4 +27,6 @@ public interface UniversityMapper {
     int updateByPrimaryKeySelective(University record);
 
     int updateByPrimaryKey(University record);
+
+    List<University> getFuzzyquery(@Param("name") String name);
 }

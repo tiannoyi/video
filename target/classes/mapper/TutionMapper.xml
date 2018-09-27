@@ -240,4 +240,9 @@
       status = #{status,jdbcType=BIT}
     where tution_id = #{tutionId,jdbcType=INTEGER}
   </update>
+
+  <select id="count" resultType="java.lang.Integer">
+    select count(tution_id) from tbl_tution
+  </select>
+
 </mapper>
