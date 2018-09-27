@@ -1,12 +1,16 @@
 package com.hniu.service.imp;
 
+import com.github.pagehelper.PageHelper;
 import com.hniu.entity.Task;
+import com.hniu.entity.TaskExample;
 import com.hniu.mapper.TaskMapper;
 import com.hniu.service.TaskService;
+import com.hniu.util.Page;
 import org.springframework.stereotype.Service;
 import sun.awt.SunHints;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 陈威
@@ -35,5 +39,25 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task queryTask(int taskId) {
         return taskMapper.selectByPrimaryKey(taskId);
+    }
+
+    @Override
+    public List<Task> byKnowledgeId(Integer knowledge_id) {
+        TaskExample example = new TaskExample();
+        example.createCriteria().andKnowledgeIdEqualTo(knowledge_id);
+        return taskMapper.selectByExample(example);
+    }
+
+    @Override
+    public Page<Task> byStems(String stems, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        TaskExample example = new TaskExample();
+        stems = "%" + stems+"%";
+        example.createCriteria().andStemsLike(stems);
+        int countNums = taskMapper.countByExample(example);
+        List<Task> allTask = taskMapper.selectByExample(example);
+        Page<Task> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allTask);
+        return pageData;
     }
 }

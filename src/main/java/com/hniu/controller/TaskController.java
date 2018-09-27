@@ -3,11 +3,13 @@ package com.hniu.controller;
 import com.hniu.constant.StateCode;
 import com.hniu.entity.Task;
 import com.hniu.service.TaskService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 陈威
@@ -80,4 +82,27 @@ public class TaskController extends Base{
             return packaging(StateCode.FAIL,"作业删除失败",null);
         }
     }
+    //根据知识目录id查询作业信息
+    @GetMapping("/knowledgeId")
+    public State<Object> byKnowledgeId(Integer knowledge_id){
+        List<Task> list = taskService.byKnowledgeId(knowledge_id);
+        if(list.size()>=0){
+            return packaging(StateCode.SUCCESS,"作业查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"作业查询失败",null);
+        }
+    }
+
+    //根据题干进行模糊查询
+    @GetMapping("/stems")
+    public State<Object> byStems(String stems,Integer currentPage, Integer pageSize){
+        Page<Task> list = taskService.byStems(stems, currentPage, pageSize);
+        if(list.getList().size()>=0){
+            return packaging(StateCode.SUCCESS,"作业查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"作业查询失败",null);
+        }
+    }
+
+
 }
