@@ -1,7 +1,10 @@
 package com.hniu.service.imp;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hniu.dto.TeacherDto;
 import com.hniu.entity.Teacher;
+import com.hniu.entity.TeacherExample;
 import com.hniu.mapper.TeacherMapper;
 import com.hniu.service.TeacherService;
 import org.springframework.beans.BeanUtils;
@@ -93,5 +96,18 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<Teacher> listTeacher() {
         return teacherMapper.listTeacher();
+    }
+
+    @Override
+    public com.hniu.util.Page<Teacher> byName(String name, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        TeacherExample example = new TeacherExample();
+        name = "%" + name + "%";
+        example.createCriteria().andNameLike(name);
+        int countNums = teacherMapper.countByExample(example);
+        List<Teacher> allTeacher = teacherMapper.selectByExample(example);
+        com.hniu.util.Page<Teacher> pageData = new com.hniu.util.Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allTeacher);
+        return pageData;
     }
 }

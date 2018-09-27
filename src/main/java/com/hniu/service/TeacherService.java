@@ -2,6 +2,7 @@ package com.hniu.service;
 
 import com.hniu.dto.TeacherDto;
 import com.hniu.entity.Teacher;
+import com.hniu.util.Page;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface TeacherService {
     Teacher selectTeacher(int teacherId);
 
     List<Teacher> listTeacher();
+
+    //根据教师姓名进行模糊查询
+    Page<Teacher> byName(String name, Integer currentPage, Integer pageSize);
+
 }

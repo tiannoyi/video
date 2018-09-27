@@ -6,6 +6,7 @@ import com.hniu.constant.StateCode;
 import com.hniu.dto.TeacherDto;
 import com.hniu.entity.Teacher;
 import com.hniu.service.TeacherService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -101,6 +102,17 @@ public class TeacherController extends Base {
             return packaging(StateCode.SUCCESS,"教师删除成功",null);
         }else{
             return packaging(StateCode.FAIL,"教师删除失败",null);
+        }
+    }
+
+    //根据教师姓名进行模糊查询
+    @GetMapping("/name")
+    public State<Object> byName(String name, Integer currentPage, Integer pageSize){
+        Page<Teacher> list = teacherService.byName(name, currentPage, pageSize);
+        if(list.getList().size()>=0){
+            return packaging(StateCode.SUCCESS,"教师查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"教师查询失败",null);
         }
     }
 
