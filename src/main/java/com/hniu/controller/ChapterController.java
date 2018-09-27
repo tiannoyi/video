@@ -112,7 +112,7 @@ public class ChapterController extends Base{
     @GetMapping("/chapterName")
     public State<Object> selectChapterName(String chapterName,Integer currentPage, Integer pageSize){
         Page<Chapter> list = chapterService.selectChapterName(chapterName,currentPage,pageSize);
-        if (list.getList().size()>0){
+        if (list.getList().size()>=0){
             return packaging(StateCode.SUCCESS,"章节信息查询成功",list);
         }else {
             return packaging(StateCode.FAIL,"章节信息查询失败",null);

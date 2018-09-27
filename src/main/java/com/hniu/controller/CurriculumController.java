@@ -111,7 +111,7 @@ public class CurriculumController extends Base{
             return packaging(StateCode.FAIL,"请输入页数、总数、课程名",null);
         }
         Page<CurriculumWithBLOBs> list =curriculumService.bySchoolId(university_id, currentPage, pageSize);
-        if(list.getList().size()>0){
+        if(list.getList().size()>=0){
             return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
@@ -125,7 +125,7 @@ public class CurriculumController extends Base{
             return packaging(StateCode.FAIL,"请输入页数、总数、类别id",null);
         }
         Page<CurriculumWithBLOBs> list =curriculumService.byCtId(ct_id, currentPage, pageSize);
-        if(list.getList().size()>0){
+        if(list.getList().size()>=0){
             return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
@@ -140,7 +140,7 @@ public class CurriculumController extends Base{
             return packaging(StateCode.FAIL,"请输入页数、总数、课程名",null);
         }
         Page<CurriculumWithBLOBs> list =curriculumService.byName(name, currentPage, pageSize);
-        if(list.getList().size()>0){
+        if(list.getList().size()>=0){
             return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);

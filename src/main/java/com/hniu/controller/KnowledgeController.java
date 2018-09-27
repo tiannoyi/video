@@ -81,7 +81,7 @@ public class KnowledgeController extends Base {
     @GetMapping("/chapterId")
     public State<Object> byChapterId(Integer chapterId,Integer currentPage,Integer pageSize){
         List<Knowledge> list = knowledgeService.byChapterId(chapterId);
-        if(list.size()>0){
+        if(list.size()>=0){
             return packaging(StateCode.SUCCESS,"知识目录查询成功",list);
         }else {
             return packaging(StateCode.FAIL,"知识目录查询失败",null);
@@ -91,7 +91,7 @@ public class KnowledgeController extends Base {
     @GetMapping("/summaryName")
     public State<Object> bySummaryName(String summaryName,Integer currentPage,Integer pageSize){
         Page<Knowledge> list = knowledgeService.bySummaryName(summaryName, currentPage, pageSize);
-        if(list.getList().size()>0){
+        if(list.getList().size()>=0){
             return packaging(StateCode.SUCCESS,"知识目录查询成功",list);
         }else{
             return packaging(StateCode.FAIL,"知识目录查询失败",null);
