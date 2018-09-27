@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.hniu.constant.StateCode;
 import com.hniu.entity.Announcement;
 import com.hniu.service.AnnouncementService;
+import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -101,4 +102,30 @@ public class AnnouncementController extends Base{
             return packaging(StateCode.FAIL,"公告删除失败",null);
         }
     }
+
+    //根据开课id查询公告信息
+    @GetMapping("/tutionId")
+    public State<Object> byTutionId(Integer tution_id){
+        List<Announcement> list = announcementService.byTutionId(tution_id);
+        if(list.size()>=0){
+            return packaging(StateCode.SUCCESS,"公告信息查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"公告信息查询失败",null);
+        }
+    }
+
+    //根据公告标题进行模糊查询
+    @GetMapping("/title")
+    public State<Object> byTitle(String title,Integer currentPage, Integer pageSize){
+        Page<Announcement> list = announcementService.byTitle(title, currentPage, pageSize);
+        if(list.getList().size()>=0){
+            return packaging(StateCode.SUCCESS,"公告信息查询成功",list);
+        }else {
+            return packaging(StateCode.FAIL,"公告信息查询失败",null);
+        }
+    }
+
+
+
+
 }
