@@ -10,6 +10,7 @@ import com.hniu.service.TeacherService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -60,6 +61,22 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public int updateTeacher(TeacherDto teacherDto) {
+        String endString = null;
+        Teacher t = teacherMapper.selectByPrimaryKey(teacherDto.getTeacherId());
+        if(!StringUtils.isEmpty(t)) {
+            String s = t.getPicture();
+            if(s.contains(".gif")){
+                endString = ".gif";
+            }else if(s.contains(".png")){
+                endString = ".png";
+            }else if(s.contains(".jpg")){
+                endString = ".jpg";
+            }
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adVideoSavePath+s1+endString);
+            boolean b = file.delete();
+            System.out.println(b);
+        }
         Teacher teacher = new Teacher();
         BeanUtils.copyProperties(teacherDto,teacher);
         if(teacherDto.getFile()!=null&&teacherDto.getFile().getSize()>0){

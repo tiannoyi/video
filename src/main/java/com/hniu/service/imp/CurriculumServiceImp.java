@@ -10,6 +10,7 @@ import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -83,6 +84,16 @@ public class CurriculumServiceImp implements CurriculumService {
 
     @Override
     public int updateCurriculumPicture(Integer curriculumId, MultipartFile curriculumPicture) {
+        String endString = null;
+        Curriculum c = curriculumMapper.selectByPrimaryKey(curriculumId);
+        if(!StringUtils.isEmpty(c)) {
+            String s = c.getPicture();
+            endString = getString(endString, s);
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adCurriculumPicturePath+s1+endString);
+            boolean b = file.delete();
+            System.out.println(b);
+        }
         if(curriculumPicture != null && curriculumPicture.getSize()>0){
             String fileName = System.currentTimeMillis()+"_"+curriculumPicture.getOriginalFilename();
             File file = new File(adCurriculumPicturePath+fileName);
@@ -105,14 +116,31 @@ public class CurriculumServiceImp implements CurriculumService {
         return 0;
     }
 
+
+    private String getString(String endString, String s) {
+        if(s.contains(".gif")){
+            endString = ".gif";
+        }else if(s.contains(".png")){
+            endString = ".png";
+        }else if(s.contains(".jpg")){
+            endString = ".jpg";
+        }
+        return endString;
+    }
+
+
     @Override
     public int updateCurriculumVideoPicture(Integer curriculumId, MultipartFile videoPicture) {
 
-        //http://www.tiannoyi.com/video/1537347081721_banner.2aff974.mp4
-        //Curriculum c = curriculumMapper.selectByPrimaryKey(curriculumId);
-        //String s = c.getVideo();
-        //String s1 =
-
+        String endString = null;
+        Curriculum c = curriculumMapper.selectByPrimaryKey(curriculumId);
+        if(!StringUtils.isEmpty(c)) {
+            String s = c.getVideo();
+            endString = getString(endString, s);
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adCurriculumVideoPicturePath+s1+endString);
+            file.delete();
+        }
         if(videoPicture != null && videoPicture.getSize()>0){
             String fileName = System.currentTimeMillis()+"_"+videoPicture.getOriginalFilename();
             File file = new File(adCurriculumVideoPicturePath+fileName);

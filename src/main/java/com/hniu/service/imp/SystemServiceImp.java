@@ -6,6 +6,7 @@ import com.hniu.mapper.SystemMapper;
 import com.hniu.service.SystemService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -54,9 +55,31 @@ public class SystemServiceImp implements SystemService {
         }
     }
 
+
+    private String getString(String endString, String s) {
+        if(s.contains(".gif")){
+            endString = ".gif";
+        }else if(s.contains(".png")){
+            endString = ".png";
+        }else if(s.contains(".jpg")){
+            endString = ".jpg";
+        }
+        return endString;
+    }
+
     //修改系统logo
     @Override
     public int updateSystemLogo(MultipartFile logo) {
+
+        String endString = null;
+        System system = systemMapper.selectByPrimaryKey(1);
+        if(!StringUtils.isEmpty(system)) {
+            String s = system.getSystemLogo();
+            endString = getString(endString, s);
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adSystemLogoPath+s1+endString);
+            file.delete();
+        }
         if(logo!=null&&logo.getSize()>0){
             String fileName = java.lang.System.currentTimeMillis()+"_"+logo.getOriginalFilename();
             File file = new File(adSystemLogoPath+fileName);
@@ -82,6 +105,15 @@ public class SystemServiceImp implements SystemService {
     //修改封面图片
     @Override
     public int updateSystemCover(MultipartFile cover) {
+        String endString = null;
+        System system = systemMapper.selectByPrimaryKey(1);
+        if(!StringUtils.isEmpty(system)) {
+            String s = system.getCover();
+            endString = getString(endString, s);
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adSystemCoverPath+s1+endString);
+            file.delete();
+        }
         if(cover != null&&cover.getSize()>0){
             String fileName = java.lang.System.currentTimeMillis()+"_"+cover.getOriginalFilename();
             File file = new File(adSystemCoverPath+fileName);

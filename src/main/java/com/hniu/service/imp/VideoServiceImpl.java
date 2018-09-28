@@ -10,6 +10,7 @@ import com.hniu.util.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -58,6 +59,26 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public Boolean updateVideo(VideoDto videoDto) {
+        String endString = null;
+        Video v = videoMapper.selectByPrimaryKey(videoDto.getVideoId());
+        if(!StringUtils.isEmpty(v)) {
+            String s = v.getVideoAddress();
+            if(s.contains(".mp4")){
+                endString = ".mp4";
+            }else if(s.contains(".avi")){
+                endString = ".avi";
+            }else if(s.contains(".wmv")){
+                endString = ".wmv";
+            }else if(s.contains(".rmvb")){
+                endString = ".rmvb";
+            }else if(s.contains(".flv")){
+                endString = ".flv";
+            }
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adVideoSavePath+s1+endString);
+            boolean b = file.delete();
+            System.out.println(b);
+        }
         Video video = new Video();
         BeanUtils.copyProperties(videoDto, video);
         if (videoDto.getFile() != null && videoDto.getFile().getSize() > 0) {
