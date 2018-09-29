@@ -112,7 +112,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<Teacher> listTeacher() {
-        return teacherMapper.listTeacher();
+        TeacherExample example = new TeacherExample();
+        example.setOrderByClause("teacher_id desc");
+        return teacherMapper.selectByExample(example);
     }
 
     @Override

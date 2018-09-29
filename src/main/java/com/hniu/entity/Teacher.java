@@ -3,6 +3,10 @@ package com.hniu.entity;
 public class Teacher {
     private Integer teacherId;
 
+    private String account;
+
+    private String password;
+
     private String name;
 
     private String title;
@@ -17,6 +21,22 @@ public class Teacher {
 
     public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account == null ? null : account.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public String getName() {
