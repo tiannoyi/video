@@ -3,6 +3,8 @@
 <mapper namespace="com.hniu.mapper.TeacherMapper" >
   <resultMap id="BaseResultMap" type="com.hniu.entity.Teacher" >
     <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="intro" property="intro" jdbcType="VARCHAR" />
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    teacher_id, name, title, intro, picture
+    teacher_id, account, password, name, title, intro, picture
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.TeacherExample" >
     select
@@ -84,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from tbl_teacher
     where teacher_id = #{teacherId,jdbcType=INTEGER}
@@ -100,16 +102,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hniu.entity.Teacher" >
-    insert into tbl_teacher (teacher_id, name, title, 
-      intro, picture)
-    values (#{teacherId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
-      #{intro,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR})
+    insert into tbl_teacher (teacher_id, account, password,
+      name, title, intro,
+      picture)
+    values (#{teacherId,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR},
+      #{picture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.Teacher" >
     insert into tbl_teacher
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="teacherId != null" >
         teacher_id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
       <if test="name != null" >
         name,
@@ -127,6 +137,12 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="teacherId != null" >
         #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -154,6 +170,12 @@
       <if test="record.teacherId != null" >
         teacher_id = #{record.teacherId,jdbcType=INTEGER},
       </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -174,10 +196,12 @@
   <update id="updateByExample" parameterType="map" >
     update tbl_teacher
     set teacher_id = #{record.teacherId,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=VARCHAR},
-      intro = #{record.intro,jdbcType=VARCHAR},
-      picture = #{record.picture,jdbcType=VARCHAR}
+    account = #{record.account,jdbcType=VARCHAR},
+    password = #{record.password,jdbcType=VARCHAR},
+    name = #{record.name,jdbcType=VARCHAR},
+    title = #{record.title,jdbcType=VARCHAR},
+    intro = #{record.intro,jdbcType=VARCHAR},
+    picture = #{record.picture,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -185,6 +209,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.Teacher" >
     update tbl_teacher
     <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -202,7 +232,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hniu.entity.Teacher" >
     update tbl_teacher
-    set name = #{name,jdbcType=VARCHAR},
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR}

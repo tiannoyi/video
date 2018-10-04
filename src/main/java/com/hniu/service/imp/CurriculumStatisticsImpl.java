@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.RequestToViewNameTranslator;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -14,10 +15,12 @@ import com.hniu.constant.StateCode;
 import com.hniu.controller.Base;
 import com.hniu.entity.AddCurriculum;
 import com.hniu.entity.Comment;
+import com.hniu.entity.Comment_Extends;
 import com.hniu.entity.CouresDetails;
 import com.hniu.entity.CourseType;
 import com.hniu.entity.CourseTypeExample;
-import com.hniu.entity.CourseTypeExample.Criteria;
+
+import com.hniu.entity.Curriclum_Extends;
 import com.hniu.entity.NavigationDetails;
 import com.hniu.entity.Tution;
 import com.hniu.entity.Video;
@@ -157,7 +160,7 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 	/*显示列出课程名称，评价内容，评价时间，及评价标星*/
 	@Override
 	public State<Object> getCommentInformation(Integer id) {
-		State<Object> commentInformation = CommentMapper.getCommentInformation(id);
+		Comment_Extends commentInformation = CommentMapper.getCommentInformation(id);
 		if (commentInformation != null) {
 			return base.packaging(StateCode.SUCCESS,ChangliangUtil.QUERYSUCCESS, commentInformation);
 		}else {
@@ -169,7 +172,7 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 	/*2.显示课程总的评价数和课程得分*/
 	@Override
 	public State<Object> getEvaluateNum(Integer id) {
-		State<Object> evaluateNum = CommentMapper.getEvaluateNum(id);
+		 Curriclum_Extends evaluateNum = CommentMapper.getEvaluateNum(id);
 		if (evaluateNum != null) {
 			return base.packaging(StateCode.SUCCESS,ChangliangUtil.QUERYSUCCESS, evaluateNum);
 		}else {
@@ -191,7 +194,7 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 	
 	/*1.针对课程发表评价，点赞，标星（5颗星）*/
 	@Override
-	public State<Object> insertComment(Comment comment) {
+	public State<Object> insertComment(@RequestBody Comment comment) {
 		comment.setCtime(new Date());
 		int insert = commentMapper.insert(comment);
 		if (insert == 1) {
@@ -205,15 +208,19 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 	/*单击立即加入，用户可以学习课程*/
 	@Override
 	public State<Object> JoinTheCourseByid(Integer id) {
+		System.out.println("课程的id是"+id);
 		//根据课程di查询需要加入课程的信息
 		CouresDetails couresDetails = curriculumMapper.JoinTheCourseByid(id);
+		if (couresDetails.getTution_id() == null ||  couresDetails.getUser_id() == null || couresDetails.getScore() == null||
+				couresDetails.getRequire()  == null) {
+			 return base.packaging(StateCode.FAIL,"加入课程失败", null);
+		}
 		//创建一个需要添加课程的对象 将根据课程id查询出来的信息添加到开课表中
 		AddCurriculum addCurriculum=new AddCurriculum();
 		addCurriculum.setTutionId(couresDetails.getTution_id());
 		addCurriculum.setUserId(couresDetails.getUser_id());
 		addCurriculum.setCourseGrade(couresDetails.getScore());
 		addCurriculum.setIsQualified(couresDetails.getRequire());
-
 		int i=addCurriculumMapper.insert(addCurriculum);
 		if (i == 1) {
 			return base.packaging(StateCode.SUCCESS,"加入课程成功", i);
@@ -233,12 +240,11 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 		List<Object> list=new ArrayList<>();
 		CourseTypeExample example=new CourseTypeExample();	
 		List<CourseType> listExample = courseTypeMapper.selectByExample(example);
+		PageInfo info=new PageInfo<>(listExample);
 		if (listExample != null && listExample.size() > 0) {
-			PageInfo info=new PageInfo<>(listExample);
-			list.add(info.getTotal());
-			return base.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYSUCCESS, list);
+			return base.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYSUCCESS, info);
 		}else { 
-			return base.packaging(StateCode.FAIL, ChangliangUtil.QUERYFAIL, list);
+			return base.packaging(StateCode.FAIL, ChangliangUtil.QUERYFAIL, info);
 		}
 	}
 

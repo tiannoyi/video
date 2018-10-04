@@ -7,7 +7,7 @@ import com.hniu.util.State;
 
 @Repository
 public interface CurriculumStatisticsService {
-         
+
 	State<Object> getCurriculumStudyNum(Integer id);
 
 	//拿到当前学习人数有统计
@@ -16,7 +16,7 @@ public interface CurriculumStatisticsService {
 	//拿到课程评价记录条数
 	State<Object> getCurriculumEvaluation(Integer id);
 
-	
+
 	/*
 	 * 课程统计接口
 	 */
@@ -27,16 +27,16 @@ public interface CurriculumStatisticsService {
 	State<Object> updatecurriculum(CourseType courseType);
 
 	State<Object> deletecurriculum(Integer id);
-	
-	
-	
+
+
+
 	/*
 	 * 2.课程名称，学校名称，教师名，课程介绍、课程寄语、预备知识、。。。
 	 * 评分标准，已参与人数（开课表中该课程ID对应的参与人数之和）等。
 	 */
 	State<Object> getCouresDetails(Integer id);
 
-  	/*显示列出课程名称，评价内容，评价时间，及评价标星*/
+	/*显示列出课程名称，评价内容，评价时间，及评价标星*/
 	State<Object> getCommentInformation(Integer id);
 
 	/*2.显示课程总的评价数和课程得分*/

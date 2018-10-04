@@ -19,7 +19,7 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	public Base base;
+	public Base base=new Base();
 	
 	public StateCode StateCode;
 	

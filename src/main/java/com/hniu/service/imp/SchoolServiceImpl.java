@@ -82,15 +82,13 @@ public class SchoolServiceImpl implements SchoolService{
 	@Override
 	public State<Object> getSchoolAll(Integer page, Integer rows) {
 		PageHelper.startPage(page, rows);
-		List<Object> list=new ArrayList<>();
 		UniversityExample UniversityExample=new UniversityExample();
 		List<University> listUniversity = universityMapper.selectByExample(UniversityExample);
+		PageInfo info=new PageInfo<>(listUniversity);
 		if (listUniversity != null && listUniversity.size() > 0) {
-			PageInfo info=new PageInfo<>(listUniversity);
-			list.add(info.getTotal());
-			return base.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYSUCCESS, list);
+			return base.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYSUCCESS, info);
 		}else {
-		    return base.packaging(StateCode.FAIL, ChangliangUtil.DELETEFAIL, listUniversity);
+		    return base.packaging(StateCode.FAIL, ChangliangUtil.DELETEFAIL, info);
 		}
 	}
 

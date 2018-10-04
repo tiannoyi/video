@@ -29,7 +29,7 @@ public class CurriculumStatisticsController {
 	@Autowired
 	private CurriculumStatisticsService curriculumStatisticsService;
 	
-	public Base base;
+	public Base base=new Base();
 	
 	public StateCode StateCode;
 	

@@ -450,16 +450,16 @@
 
   <!-- 当前学习人数统计  DZY-->
   <select id="getCurrentStudyNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-      SELECT count(*) from tbl_curriculum tc
-        join tbl_tution tt on tc.curriculum_id = tt.curriculum_id
-        join tbl_add_curriculum tac on tt.tution_id = tac.tution_id  WHERE tc.curriculum_id=#{id}
+       SELECT count(*) from tbl_curriculum tc
+       left join tbl_tution tt on tc.curriculum_id = tt.curriculum_id
+       left join tbl_add_curriculum tac on tt.tution_id = tac.tution_id  WHERE tc.curriculum_id=#{id}
   </select>
 
 
   <!-- 课程评价记录数  DZY -->
   <select id="getCurriculumEvaluation" parameterType="java.lang.Integer" resultType="java.lang.Integer">
      select count(*) from tbl_comment a
-       JOIN tbl_curriculum b on a.curriculum_id=b.curriculum_id WHERE a.curriculum_id=#{id}
+       left JOIN tbl_curriculum b on a.curriculum_id=b.curriculum_id WHERE a.curriculum_id=#{id}
   </select>
 
 
@@ -469,28 +469,28 @@
     SELECT a.`name`,a.introduce,a.message,a.propaedeutics,a.scoring,a.main_teacher,
        b.school_name,c.population
 		 FROM tbl_curriculum AS a
-		 INNER JOIN tbl_university as b ON a.university_id=b.university_id
-		 INNER JOIN tbl_tution AS c ON a.curriculum_id=c.curriculum_id where a.curriculum_id=#{id}
+		 left JOIN tbl_university as b ON a.university_id=b.university_id
+		 left JOIN tbl_tution AS c ON a.curriculum_id=c.curriculum_id where a.curriculum_id=#{id}
 	   order by a.curriculum_id
   </select>
 
 
-  <!--  DZY -->
+  <!--  DZY单击立即加入，用户可以学习课程*/ -->
   <select id="JoinTheCourseByid" parameterType="java.lang.Integer" resultType="com.hniu.entity.CouresDetails">
-    select a.curriculum_id,a.tution_id,c.user_id,b.score,b.require from tbl_tution a
-	  JOIN tbl_user  c
-	  JOIN tbl_curriculum b ON a.curriculum_id=b.curriculum_id
-	  JOIN tbl_add_curriculum  d ON d.user_id=c.user_id WHERE a.curriculum_id=#{id}
+    select a.tution_id,c.user_id,b.score,b.require from tbl_tution a
+	  inner JOIN tbl_user  c
+	  inner JOIN tbl_curriculum b ON a.curriculum_id=b.curriculum_id
+	  inner JOIN tbl_add_curriculum  d ON d.user_id=c.user_id WHERE a.curriculum_id=#{id} group by b.curriculum_id
   </select>
 
   <select id="getNavigationDetails" parameterType="java.lang.Integer" resultType="com.hniu.entity.NavigationDetails">
-      SELECT b.content,d.`name`,d.title,d.intro,d.picture,d.teacher_id,e.chapter_name,e.chapter_num,e.redact_teacher,e.redact_time,f.Summary_name,f.Summary_Num
+     SELECT   b.content,d.`name`,d.title,d.intro,d.picture,d.teacher_id,e.chapter_name,e.chapter_num,e.redact_teacher,e.redact_time,f.Summary_name,f.Summary_Num
        FROM tbl_curriculum AS a
 	    INNER JOIN tbl_comment AS b ON a.curriculum_id=b.curriculum_id
 	    INNER JOIN tbl_give AS c ON a.curriculum_id=c.curriculum_id
 	    INNER JOIN tbl_teacher AS d ON c.teacher_id=d.teacher_id
 	    inner JOIN tbl_chapter AS e ON a.curriculum_id=e.curriculum_id
 	    INNER JOIN tbl_knowledge AS f ON f.chapter_id=e.chapter_id
-	    WHERE a.curriculum_id=#{id}
+	    WHERE a.curriculum_id=#{id} group by a.curriculum_id
   </select>
 </mapper>

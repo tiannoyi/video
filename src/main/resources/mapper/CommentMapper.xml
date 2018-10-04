@@ -237,7 +237,7 @@
   </select>
 
   <!--2.显示课程总的评价数和课程得分-->
-  <select id="getEvaluateNum" parameterType="java.lang.Integer" resultType="com.hniu.entity.Comment_Extends">
+  <select id="getEvaluateNum" parameterType="java.lang.Integer" resultType="com.hniu.entity.Curriclum_Extends">
         SELECT COUNT(b.curriculum_id)  commentNum,a.score
         FROM tbl_curriculum a LEFT JOIN tbl_comment b ON a.curriculum_id = b.curriculum_id WHERE a.curriculum_id=#{id}
   </select>

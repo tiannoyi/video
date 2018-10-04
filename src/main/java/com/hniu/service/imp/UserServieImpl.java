@@ -1,10 +1,10 @@
 package com.hniu.service.imp;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.codec.multipart.SynchronossPartHttpMessageReader;
+
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -77,16 +77,14 @@ public class UserServieImpl implements UserService{
 	public State<Object> getUserAll(Integer page,Integer rows) {
 		//设置分页信息
 		PageHelper.startPage(page, rows);
-		List<Object> list=new ArrayList<>();
 		UserExample userExample=new UserExample();
 		Criteria createCriteria = userExample.createCriteria();
 		List<User> selectByExample = userMapper.selectByExample(userExample);
+		PageInfo info=new PageInfo(selectByExample);
 		if (selectByExample != null && selectByExample.size() > 0) {
-			PageInfo info=new PageInfo(selectByExample);
-			list.add(info.getTotal());
-			return base.packaging(StateCode.SUCCESS, ChangliangUtil.DELETESUCCESS,list);
+			return base.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYSUCCESS,info);
 		}else {
-			return base.packaging(StateCode.FAIL, ChangliangUtil.DELETEFAIL,selectByExample);
+			return base.packaging(StateCode.FAIL, ChangliangUtil.QUERYFAIL,info);
 		}
 	}
 
