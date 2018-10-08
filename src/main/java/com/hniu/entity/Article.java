@@ -7,11 +7,11 @@ public class Article {
 
     private String articleName;
 
-    private String articleAddress;
-
     private Integer knowledgeId;
 
     private Date addTime;
+
+    private String articleContent;
 
     public Integer getArticleId() {
         return articleId;
@@ -29,14 +29,6 @@ public class Article {
         this.articleName = articleName == null ? null : articleName.trim();
     }
 
-    public String getArticleAddress() {
-        return articleAddress;
-    }
-
-    public void setArticleAddress(String articleAddress) {
-        this.articleAddress = articleAddress == null ? null : articleAddress.trim();
-    }
-
     public Integer getKnowledgeId() {
         return knowledgeId;
     }
@@ -51,5 +43,13 @@ public class Article {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public String getArticleContent() {
+        return articleContent;
+    }
+
+    public void setArticleContent(String articleContent) {
+        this.articleContent = articleContent == null ? null : articleContent.trim();
     }
 }

@@ -4,9 +4,11 @@
   <resultMap id="BaseResultMap" type="com.hniu.entity.Article" >
     <id column="article_id" property="articleId" jdbcType="INTEGER" />
     <result column="article_name" property="articleName" jdbcType="VARCHAR" />
-    <result column="article_address" property="articleAddress" jdbcType="VARCHAR" />
     <result column="knowledge_id" property="knowledgeId" jdbcType="INTEGER" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hniu.entity.Article" extends="BaseResultMap" >
+    <result column="article_content" property="articleContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,8 +69,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    article_id, article_name, article_address, knowledge_id, add_time
+    article_id, article_name, knowledge_id, add_time
   </sql>
+  <sql id="Blob_Column_List" >
+    article_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hniu.entity.ArticleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.ArticleExample" >
     select
     <if test="distinct" >
@@ -83,9 +104,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from tbl_article
     where article_id = #{articleId,jdbcType=INTEGER}
   </select>
@@ -100,10 +123,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hniu.entity.Article" >
-    insert into tbl_article (article_id, article_name, article_address, 
-      knowledge_id, add_time)
-    values (#{articleId,jdbcType=INTEGER}, #{articleName,jdbcType=VARCHAR}, #{articleAddress,jdbcType=VARCHAR}, 
-      #{knowledgeId,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP})
+    insert into tbl_article (article_id, article_name, knowledge_id, 
+      add_time, article_content)
+    values (#{articleId,jdbcType=INTEGER}, #{articleName,jdbcType=VARCHAR}, #{knowledgeId,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{articleContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.Article" >
     insert into tbl_article
@@ -114,14 +137,14 @@
       <if test="articleName != null" >
         article_name,
       </if>
-      <if test="articleAddress != null" >
-        article_address,
-      </if>
       <if test="knowledgeId != null" >
         knowledge_id,
       </if>
       <if test="addTime != null" >
         add_time,
+      </if>
+      <if test="articleContent != null" >
+        article_content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +154,14 @@
       <if test="articleName != null" >
         #{articleName,jdbcType=VARCHAR},
       </if>
-      <if test="articleAddress != null" >
-        #{articleAddress,jdbcType=VARCHAR},
-      </if>
       <if test="knowledgeId != null" >
         #{knowledgeId,jdbcType=INTEGER},
       </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleContent != null" >
+        #{articleContent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -157,16 +180,27 @@
       <if test="record.articleName != null" >
         article_name = #{record.articleName,jdbcType=VARCHAR},
       </if>
-      <if test="record.articleAddress != null" >
-        article_address = #{record.articleAddress,jdbcType=VARCHAR},
-      </if>
       <if test="record.knowledgeId != null" >
         knowledge_id = #{record.knowledgeId,jdbcType=INTEGER},
       </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.articleContent != null" >
+        article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tbl_article
+    set article_id = #{record.articleId,jdbcType=INTEGER},
+      article_name = #{record.articleName,jdbcType=VARCHAR},
+      knowledge_id = #{record.knowledgeId,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      article_content = #{record.articleContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,7 +209,6 @@
     update tbl_article
     set article_id = #{record.articleId,jdbcType=INTEGER},
       article_name = #{record.articleName,jdbcType=VARCHAR},
-      article_address = #{record.articleAddress,jdbcType=VARCHAR},
       knowledge_id = #{record.knowledgeId,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -188,22 +221,29 @@
       <if test="articleName != null" >
         article_name = #{articleName,jdbcType=VARCHAR},
       </if>
-      <if test="articleAddress != null" >
-        article_address = #{articleAddress,jdbcType=VARCHAR},
-      </if>
       <if test="knowledgeId != null" >
         knowledge_id = #{knowledgeId,jdbcType=INTEGER},
       </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="articleContent != null" >
+        article_content = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hniu.entity.Article" >
+    update tbl_article
+    set article_name = #{articleName,jdbcType=VARCHAR},
+      knowledge_id = #{knowledgeId,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      article_content = #{articleContent,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hniu.entity.Article" >
     update tbl_article
     set article_name = #{articleName,jdbcType=VARCHAR},
-      article_address = #{articleAddress,jdbcType=VARCHAR},
       knowledge_id = #{knowledgeId,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP}
     where article_id = #{articleId,jdbcType=INTEGER}

@@ -31,55 +31,23 @@ public class ArticleServiceImpl implements ArticleService {
     @Value("${web.videoPath}")
     private String videoPath;
     @Override
-    public int insertArticle(ArticleDto articleDto) {
-        Article article = new Article();
-        BeanUtils.copyProperties(articleDto,article);
-        if(articleDto.getFile()!=null&&articleDto.getFile().getSize()>0){
-            String fileName = System.currentTimeMillis()+"_"+articleDto.getFile().getOriginalFilename();
-            File file = new File(adVideoSavePath+fileName);
-            File fileFolder = new File(adVideoSavePath);
-            if(!fileFolder.exists()){
-                fileFolder.mkdirs();
-            }
-            try {
-                articleDto.getFile().transferTo(file);
-                article.setArticleAddress(videoPath+fileName);
-                return articleMapper.insertSelective(article);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return 0;
-            }
-        }
-        else{
-            return 0;
-        }
-
+    public int insertArticle(Article article) {
+     int i = articleMapper.insert(article);
+     if (i != 0){
+            return 1;
+        }else{
+         return 0;
+     }
     }
 
     @Override
-    public int updateArticle(ArticleDto articleDto) {
-        Article article = new Article();
-        BeanUtils.copyProperties(articleDto,article);
-        if(articleDto.getFile()!=null&&articleDto.getFile().getSize()>0){
-            String fileName = System.currentTimeMillis()+"_"+articleDto.getFile().getOriginalFilename();
-            File file = new File(adVideoSavePath+fileName);
-            File fileFolder = new File(adVideoSavePath);
-            if(!fileFolder.exists()){
-                fileFolder.mkdirs();
-            }
-            try {
-                articleDto.getFile().transferTo(file);
-                article.setArticleAddress(videoPath+fileName);
-                return articleMapper.updateByPrimaryKey(article);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return 0;
-            }
-        }
-        else{
+    public int updateArticle(Article article) {
+        int i = articleMapper.updateByPrimaryKeySelective(article);
+        if(i != 0){
+            return 1;
+        }else{
             return 0;
         }
-
     }
 
     @Override
@@ -96,7 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> byKnowledgeId(Integer knowledge_id) {
         ArticleExample example = new ArticleExample();
         example.createCriteria().andKnowledgeIdEqualTo(knowledge_id);
-        return articleMapper.selectByExample(example);
+        return articleMapper.selectByExampleWithBLOBs(example);
     }
 
     @Override
@@ -106,7 +74,7 @@ public class ArticleServiceImpl implements ArticleService {
         name = "%" + name +"%";
         example.createCriteria().andArticleNameLike(name);
         int countNums = articleMapper.countByExample(example);
-        List<Article> allArticle = articleMapper.selectByExample(example);
+        List<Article> allArticle = articleMapper.selectByExampleWithBLOBs(example);
         Page<Article> pageData =  new Page<>(currentPage,pageSize,countNums);
         pageData.setList(allArticle);
         return pageData;

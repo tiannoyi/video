@@ -38,12 +38,12 @@ public class ArticleController extends Base{
 
     /**
      * 添加文章
-     * @param articleDto
+     * @param article
      * @return base
      */
     @PostMapping()
-    public State<Object> inputArticle(ArticleDto articleDto){
-        int i = articleService.insertArticle(articleDto);
+    public State<Object> inputArticle(Article article){
+        int i = articleService.insertArticle(article);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"文章添加成功",null);
         }else{
@@ -54,12 +54,12 @@ public class ArticleController extends Base{
 
     /**
      *修改文章信息
-     * @param articleDto
+     * @param article
      * @return
      */
     @PostMapping(value = "/update")
-    public State<Object> updateArticle(ArticleDto articleDto){
-        int i = articleService.updateArticle(articleDto);
+    public State<Object> updateArticle(Article article){
+        int i = articleService.updateArticle(article);
         if(i != 0){
             return packaging(StateCode.SUCCESS,"文章修改成功",null);
         }else{

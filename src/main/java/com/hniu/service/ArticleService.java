@@ -11,9 +11,9 @@ import java.util.List;
  * @author 陈威
  */
 public interface ArticleService {
-    int insertArticle(ArticleDto articleDto);
+    int insertArticle(Article article);
 
-    int updateArticle(ArticleDto articleDto);
+    int updateArticle(Article article);
 
     int deleteArticle(int articleId);
 
