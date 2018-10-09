@@ -232,8 +232,8 @@
      SELECT  a.content,a.ctime,a.asterisk_num,
         b.`name`
 		FROM tbl_comment AS a
-		inner JOIN tbl_curriculum AS b ON a.curriculum_id=b.curriculum_id WHERE comment_id=#{id}
-	    order by a.comment_id
+		inner JOIN tbl_curriculum AS b ON a.curriculum_id=b.curriculum_id WHERE b.curriculum_id=#{id}
+	    order by b.curriculum_id
   </select>
 
   <!--2.显示课程总的评价数和课程得分-->
