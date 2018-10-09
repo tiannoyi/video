@@ -1,5 +1,7 @@
 package com.hniu.service.imp;
 
+import com.github.pagehelper.PageHelper;
+import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.hniu.mapper.CommentMapper;
 import com.hniu.service.CommentService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
+
+import java.util.List;
 
 /*
  * 查询评论controller
@@ -38,7 +42,27 @@ public class CommentServiceImpl implements CommentService{
 			return base.packaging(StateCode.FAIL, ChangliangUtil.QUERYFAIL, id);
 		}
 	}
-	
-	
+
+	@Override
+	public int deleteComment(Integer comment_id) {
+		int i = commentmapper.deleteByPrimaryKey(comment_id);
+		if(i!=0){
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public Page<Comment> commentPage(Integer currentPage, Integer pageSize) {
+		PageHelper.startPage(currentPage,pageSize);
+		CommentExample example = new CommentExample();
+		example.setOrderByClause("comment_id desc");
+		List<Comment> allComment = commentmapper.selectByExample(example);
+		int countNums = commentmapper.countByExample(example);
+		Page<Comment> pageData = new Page<>(currentPage,pageSize,countNums);
+		pageData.setList(allComment);
+		return pageData;
+	}
+
 
 }
