@@ -8,7 +8,7 @@
     <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
     <result column="schedules" property="schedules" jdbcType="VARCHAR" />
     <result column="population" property="population" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -107,7 +107,7 @@
       status)
     values (#{tutionId,jdbcType=INTEGER}, #{curriculumId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endtime,jdbcType=TIMESTAMP}, #{schedules,jdbcType=VARCHAR}, #{population,jdbcType=INTEGER}, 
-      #{status,jdbcType=BIT})
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.Tution" >
     insert into tbl_tution
@@ -154,7 +154,7 @@
         #{population,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=BIT},
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -186,7 +186,7 @@
         population = #{record.population,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=BIT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -201,7 +201,7 @@
       endtime = #{record.endtime,jdbcType=TIMESTAMP},
       schedules = #{record.schedules,jdbcType=VARCHAR},
       population = #{record.population,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=BIT}
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,7 +225,7 @@
         population = #{population,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=BIT},
+        status = #{status,jdbcType=INTEGER},
       </if>
     </set>
     where tution_id = #{tutionId,jdbcType=INTEGER}
@@ -237,9 +237,10 @@
       endtime = #{endtime,jdbcType=TIMESTAMP},
       schedules = #{schedules,jdbcType=VARCHAR},
       population = #{population,jdbcType=INTEGER},
-      status = #{status,jdbcType=BIT}
+      status = #{status,jdbcType=INTEGER}
     where tution_id = #{tutionId,jdbcType=INTEGER}
   </update>
+
 
   <select id="count" resultType="java.lang.Integer">
     select count(tution_id) from tbl_tution

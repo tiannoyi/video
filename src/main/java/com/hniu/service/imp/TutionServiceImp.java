@@ -51,6 +51,14 @@ public class TutionServiceImp implements TutionService {
         if(StringUtils.isEmpty(curriculum)){
             return 0;
         }
+        TutionExample example1 = new TutionExample();
+        example1.createCriteria().andCurriculumIdEqualTo(tution.getCurriculumId());
+         List<Tution> tutions = tutionMapper.selectByExample(example1);
+         for (int i = 0;i<tutions.size();i++){
+             if(tutions.get(i).getStatus()==1){
+                 return 0;
+             }
+         }
         int i = tutionMapper.insert(tution);
         int time = curriculum.getTime();
         CurriculumExample example = new CurriculumExample();

@@ -1,6 +1,5 @@
 package com.hniu.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -18,7 +17,7 @@ public class Tution {
 
     private Integer population;
 
-    private Boolean status;
+    private Integer status;
 
     public Integer getTutionId() {
         return tutionId;
@@ -68,11 +67,11 @@ public class Tution {
         this.population = population;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
