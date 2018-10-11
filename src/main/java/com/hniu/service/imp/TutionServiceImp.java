@@ -76,6 +76,12 @@ public class TutionServiceImp implements TutionService {
 
     @Override
     public int updateTution(Integer tution_id, Tution tution) {
+        if(tution.getCurriculumId()!=null){
+            CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(tution.getCurriculumId());
+            if(StringUtils.isEmpty(curriculum)){
+                return 0;
+            }
+        }
         tution.setTutionId(tution_id);
         int i = tutionMapper.updateByPrimaryKeySelective(tution);
         if(i !=0){
