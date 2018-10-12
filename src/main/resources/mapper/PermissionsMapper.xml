@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hniu.mapper.PermissionsMapper">
+    <resultMap id="BaseResultMap" type="com.hniu.entity.Permissions">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="permission_id" jdbcType="INTEGER" property="permissionId"/>
+        <result column="permission_name" jdbcType="VARCHAR" property="permissionName"/>
+        <result column="permission_str" jdbcType="VARCHAR" property="permissionStr"/>
+        <result column="permission_type" jdbcType="TINYINT" property="permissionType"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="order" jdbcType="TINYINT" property="order"/>
+        <result column="father_node" jdbcType="INTEGER" property="fatherNode"/>
+    </resultMap>
+
+    <resultMap id="PermissionsVo"
+               type="com.hniu.entity.vo.PermissionsVo">
+        <id column="permission_id" jdbcType="INTEGER" property="permissionId"/>
+        <result column="permission_name" jdbcType="VARCHAR" property="permissionName"/>
+        <result column="permission_str" jdbcType="VARCHAR" property="permissionStr"/>
+        <result column="permission_type" jdbcType="VARCHAR" property="permissionType"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="img" jdbcType="TINYINT" property="img"/>
+        <result column="order" jdbcType="TINYINT" property="order"/>
+        <result column="father_node" jdbcType="INTEGER"
+                property="fatherNode"/>
+        <association property="r" column="permission_id"
+                     select="com.hniu.mapper.PermissionsMapper.selectByFatherNode"></association>
+    </resultMap>
+
+    <select id="selectByFatherNode" resultMap="BaseResultMap"
+            parameterType="java.lang.Integer">
+		select permission_id, permission_name, permission_str,permission_type, path, img, `order`,
+		father_node
+		from tbl_permissions where father_node = #{father_node}
+	</select>
+
+    <!--用于数据库用的是一串字符串用来表示拥有的权限 这里只能用$直接拼上去-->
+    <select id="batchSelectByPrimaryKey" resultMap="BaseResultMap"
+            parameterType="java.lang.String">
+		select permission_id, permission_name, permission_str,permission_type, path, img, `order`,
+		father_node
+		from
+		tbl_permissions where permission_id in (${_parameter})  ORDER BY `order` asc
+	</select>
+
+</mapper>

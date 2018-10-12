@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hniu.mapper.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.hniu.entity.Admin">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+    </resultMap>
+
+    <resultMap id="AdminVo" type="com.hniu.entity.vo.AdminVo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="admin_name" jdbcType="VARCHAR" property="adminName"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <association property="role" javaType="com.hniu.entity.Roles">
+            <id column="role_id" jdbcType="INTEGER" property="roleId"/>
+            <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+            <result column="state" jdbcType="TINYINT" property="state"/>
+            <result column="permissions_str" jdbcType="VARCHAR" property="permissionsStr"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllVo" resultMap="AdminVo">
+        select admin_id,admin_name,phone,r.role_id,r.role_name,r.state from tbl_admins a inner join tbl_roles r ON a.role_id =  r.role_id
+    </select>
+
+    <select id="selectByPrimaryKeyVo" resultMap="AdminVo" parameterType="java.lang.Integer">
+        select admin_id,admin_name,phone,r.role_id,r.role_name,r.state from tbl_admins a inner join tbl_roles r ON a.role_id =  r.role_id where a.admin_id=#{adminId}
+    </select>
+</mapper>
