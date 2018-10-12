@@ -1,6 +1,6 @@
 package com.hniu.util;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 
 public class State<T> {
 

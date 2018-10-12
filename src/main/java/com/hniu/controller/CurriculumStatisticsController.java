@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.Comment;
 import com.hniu.service.CurriculumStatisticsService;
 /*

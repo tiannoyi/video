@@ -3,9 +3,8 @@ package com.hniu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.CourseType;
 import com.hniu.service.CurriculumStatisticsService;
 import com.hniu.util.State;

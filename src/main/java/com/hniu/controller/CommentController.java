@@ -5,7 +5,7 @@ import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.service.CommentService;
 import com.hniu.util.State;
 
@@ -51,9 +51,9 @@ public class CommentController extends Base{
 		}
 		Page<Comment> list = commentService.commentPage(currentPage, pageSize);
 		if(list.getList().size()>0){
-			return packaging(com.hniu.constant.StateCode.SUCCESS,"课程评论查询成功",list);
+			return packaging(com.hniu.constan.StateCode.SUCCESS,"课程评论查询成功",list);
 		}else{
-			return packaging(com.hniu.constant.StateCode.FAIL,"课程评论查询失败",null);
+			return packaging(com.hniu.constan.StateCode.FAIL,"课程评论查询失败",null);
 		}
 	}
 	

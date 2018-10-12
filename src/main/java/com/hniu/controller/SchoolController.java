@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.University;
 import com.hniu.service.SchoolService;
 import com.hniu.util.State;

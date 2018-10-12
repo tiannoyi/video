@@ -1,5 +1,6 @@
 package com.hniu.mapper;
 
+import com.hniu.dto.GiveDto;
 import com.hniu.entity.Give;
 import com.hniu.entity.GiveExample;
 import java.util.List;
@@ -27,4 +28,7 @@ public interface GiveMapper {
     int updateByPrimaryKeySelective(Give record);
 
     int updateByPrimaryKey(Give record);
+
+    //根据课程id查询教师信息和授课信息
+    List<GiveDto> giveAndTeacher(Integer curriculum_id);
 }

@@ -3,6 +3,8 @@ package com.hniu.entity;
 public class User {
     private Integer userId;
 
+    private Integer roleId;
+
     private String userName;
 
     private String wechat;
@@ -21,6 +23,14 @@ public class User {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getUserName() {
@@ -69,5 +79,20 @@ public class User {
 
     public void setQq(String qq) {
         this.qq = qq == null ? null : qq.trim();
+    }
+
+
+    public User(Integer roleId, String userName, String wechat, String password, String phone, String email, String qq) {
+        this.roleId = roleId;
+        this.userName = userName;
+        this.wechat = wechat;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.qq = qq;
+    }
+
+    public User(){
+
     }
 }

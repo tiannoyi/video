@@ -4,10 +4,6 @@ package com.hniu.controller;
  */
 
 
-import java.util.List;
-
-import javax.xml.stream.events.Namespace;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.User;
 import com.hniu.service.UserService;
 import com.hniu.util.State;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
 import com.hniu.entity.AddCurriculum;
 import com.hniu.entity.Comment;

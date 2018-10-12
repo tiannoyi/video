@@ -1,6 +1,6 @@
 package com.hniu.controller;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.CourseType;
 import com.hniu.service.CourseTypeService;
 import com.hniu.util.Page;

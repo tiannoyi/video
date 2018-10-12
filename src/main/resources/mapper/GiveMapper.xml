@@ -178,4 +178,22 @@
       curriculum_id = #{curriculumId,jdbcType=INTEGER}
     where give_id = #{giveId,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="giveAndTeacherMap" type="com.hniu.dto.GiveDto" extends="BaseResultMap">
+      <collection property="teacher" ofType="com.hniu.entity.Teacher">
+        <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+        <result column="account" property="account" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="picture" property="picture" jdbcType="VARCHAR" />
+      </collection>
+  </resultMap>
+  <select id="giveAndTeacher" parameterType="java.lang.Integer" resultMap="giveAndTeacherMap">
+        select *
+        FROM tbl_give a LEFT JOIN tbl_teacher b
+        ON a.teacher_id = b.teacher_id
+        WHERE a.curriculum_id = #{curriculum_id,jdbcType=INTEGER}
+  </select>
 </mapper>

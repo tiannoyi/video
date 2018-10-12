@@ -493,4 +493,22 @@
 	    INNER JOIN tbl_knowledge AS f ON f.chapter_id=e.chapter_id
 	    WHERE a.curriculum_id=#{id} group by a.curriculum_id
   </select>
+
+  <resultMap id="curriculumAndTutionMap" type="com.hniu.dto.CurriculumDto" extends="ResultMapWithBLOBs">
+    <association property="tution" javaType="com.hniu.entity.Tution">
+      <id column="tution_id" property="tutionId"/>
+      <result column="curriculum_id" property="curriculumId"/>
+      <result column="start_time" property="startTime"/>
+      <result column="endtime" property="endtime"/>
+      <result column="schedules" property="schedules"/>
+      <result column="population" property="population"/>
+      <result column="status" property="status"/>
+    </association>
+  </resultMap>
+  <select id="curriculumAndTution" resultMap="curriculumAndTutionMap">
+    SELECT * FROM (SELECT b.*,a.tution_id,a.endtime,a.population,a.schedules,a.start_time,a.`status`
+    FROM tbl_tution a LEFT JOIN tbl_curriculum b
+    ON a.curriculum_id = b.curriculum_id
+    ORDER BY a.tution_id DESC) c GROUP BY curriculum_id
+  </select>
 </mapper>

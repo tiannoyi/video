@@ -1,12 +1,10 @@
 package com.hniu.service;
 
-import com.hniu.entity.Curriculum;
+import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @Repository
 public interface CurriculumService {
@@ -40,5 +38,8 @@ public interface CurriculumService {
 
     //根据课程名查询课程信息
     Page<CurriculumWithBLOBs> byName(String name,int currentPage, int pageSize);
+
+    //分页查询课程和开课信息
+    Page<CurriculumDto> curriculumAndTutionPage(Integer currentPage, Integer pageSize);
 
 }

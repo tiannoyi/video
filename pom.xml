@@ -27,8 +27,25 @@
     <dependencies>
 
         <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
+            <artifactId>shiro-spring-boot-web-starter</artifactId>
             <version>1.4.0</version>
         </dependency>
 
@@ -41,6 +58,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,7 +112,6 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -110,9 +130,23 @@
                     <verbose>true</verbose>
                     <!-- 重复生成时会覆盖之前的文件-->
                     <overwrite>true</overwrite>
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
 
                 </configuration>
+
+
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                   <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>4.0.4</version>
+                    </dependency>
+                </dependencies>
 
             </plugin>
         </plugins>

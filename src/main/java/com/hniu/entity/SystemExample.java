@@ -513,6 +513,66 @@ public class SystemExample {
             addCriterion("appid not between", value1, value2, "appid");
             return (Criteria) this;
         }
+
+        public Criteria andPageLineIsNull() {
+            addCriterion("page_line is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineIsNotNull() {
+            addCriterion("page_line is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineEqualTo(Byte value) {
+            addCriterion("page_line =", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineNotEqualTo(Byte value) {
+            addCriterion("page_line <>", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineGreaterThan(Byte value) {
+            addCriterion("page_line >", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineGreaterThanOrEqualTo(Byte value) {
+            addCriterion("page_line >=", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineLessThan(Byte value) {
+            addCriterion("page_line <", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineLessThanOrEqualTo(Byte value) {
+            addCriterion("page_line <=", value, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineIn(List<Byte> values) {
+            addCriterion("page_line in", values, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineNotIn(List<Byte> values) {
+            addCriterion("page_line not in", values, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineBetween(Byte value1, Byte value2) {
+            addCriterion("page_line between", value1, value2, "pageLine");
+            return (Criteria) this;
+        }
+
+        public Criteria andPageLineNotBetween(Byte value1, Byte value2) {
+            addCriterion("page_line not between", value1, value2, "pageLine");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

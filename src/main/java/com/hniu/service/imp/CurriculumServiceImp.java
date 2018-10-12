@@ -1,13 +1,13 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.Curriculum;
 import com.hniu.entity.CurriculumExample;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.mapper.CurriculumMapper;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -199,4 +199,15 @@ public class CurriculumServiceImp implements CurriculumService {
         pageData.setList(allCurr);
         return pageData;
     }
+
+    @Override
+    public Page<CurriculumDto> curriculumAndTutionPage(Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        List<CurriculumDto> allCurriculumDto = curriculumMapper.curriculumAndTution();
+        int countNums = curriculumMapper.count();
+        Page<CurriculumDto> pageData = new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(allCurriculumDto);
+        return pageData;
+    }
+
 }

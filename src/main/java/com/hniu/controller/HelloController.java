@@ -17,33 +17,35 @@ public class HelloController {
     @Autowired
     HelloService helloService;
 
+/*
     @GetMapping("login")
     public String s1() {
         Subject subject = SecurityUtils.getSubject();
         subject.login(new UsernamePasswordToken("123","123"));
         return "login";
     }
+*/
 
-    @GetMapping("hello")
-    public String s2() {
-        return "hello";
-    }
-
-    @RequiresPermissions("per")
-    @GetMapping("hello2")
-    public String s4() {
-        return "hello2";
-    }
-
-    @GetMapping("error")
-    public String s3() {
-        return "error";
-    }
-    @GetMapping("ceshi")
-    public String s5(){
-        User user = helloService.list().get(0);
-        String userName = user.getUserName();
-        return userName;
-    }
+//    @GetMapping("hello")
+//    public String s2() {
+//        return "hello";
+//    }
+//
+//    @RequiresPermissions("per")
+//    @GetMapping("hello2")
+//    public String s4() {
+//        return "hello2";
+//    }
+//
+//    @GetMapping("error")
+//    public String s3() {
+//        return "error";
+//    }
+//    @GetMapping("ceshi")
+//    public String s5(){
+//        User user = helloService.list().get(0);
+//        String userName = user.getUserName();
+//        return userName;
+//    }
 
 }

@@ -1,8 +1,6 @@
 package com.hniu.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.Announcement;
 import com.hniu.service.AnnouncementService;
 import com.hniu.util.Page;

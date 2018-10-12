@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
 import com.hniu.entity.User;
 import com.hniu.entity.UserExample;
@@ -18,6 +18,9 @@ import com.hniu.mapper.UserMapper;
 import com.hniu.service.UserService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
+
+import javax.annotation.Resource;
+
 /*
  * 用户管理Service
  * 邓志勇
@@ -25,7 +28,7 @@ import com.hniu.util.State;
 @Service
 public class UserServieImpl implements UserService{
 
-	@Autowired
+	@Resource
 	private UserMapper userMapper;
 	
 	public Base base=new Base();
@@ -55,7 +58,7 @@ public class UserServieImpl implements UserService{
 
 	@Override
 	public State<Object> updateUser(User user) {
-		int i = userMapper.updateByPrimaryKey(user);
+		int i = userMapper.updateByPrimaryKeySelective(user);
 		if (i == 1) {
 			return base.packaging(StateCode.SUCCESS, ChangliangUtil.UPDATESUCCESS,i);
 		}else {

@@ -13,6 +13,8 @@ public class System {
 
     private String appid;
 
+    private Byte pageLine;
+
     public Integer getSustemId() {
         return sustemId;
     }
@@ -59,5 +61,27 @@ public class System {
 
     public void setAppid(String appid) {
         this.appid = appid == null ? null : appid.trim();
+    }
+
+    public Byte getPageLine() {
+        return pageLine;
+    }
+
+    public void setPageLine(Byte pageLine) {
+        this.pageLine = pageLine;
+    }
+
+    public System(Integer sustemId, String systemName, String systemLogo, String cover, String appsecret, String appid, Byte pageLine) {
+        this.sustemId = sustemId;
+        this.systemName = systemName;
+        this.systemLogo = systemLogo;
+        this.cover = cover;
+        this.appsecret = appsecret;
+        this.appid = appid;
+        this.pageLine = pageLine;
+    }
+
+    public System(){
+
     }
 }

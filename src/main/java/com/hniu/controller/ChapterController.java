@@ -1,6 +1,6 @@
 package com.hniu.controller;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.entity.Chapter;
 import com.hniu.service.ChapterService;
 import com.hniu.util.Page;

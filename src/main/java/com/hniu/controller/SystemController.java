@@ -1,5 +1,5 @@
 package com.hniu.controller;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.service.SystemService;
 import com.hniu.entity.System;
 import com.hniu.util.State;

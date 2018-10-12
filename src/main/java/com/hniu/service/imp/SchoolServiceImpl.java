@@ -1,6 +1,5 @@
 package com.hniu.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
-import com.hniu.entity.CourseType;
 import com.hniu.entity.University;
 import com.hniu.entity.UniversityExample;
-import com.hniu.entity.User;
-import com.hniu.mapper.CourseTypeMapper;
 import com.hniu.mapper.UniversityMapper;
 import com.hniu.service.SchoolService;
 import com.hniu.util.ChangliangUtil;

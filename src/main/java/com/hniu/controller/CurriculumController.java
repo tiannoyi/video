@@ -1,16 +1,14 @@
 package com.hniu.controller;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
+import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 //课程基本设置管理
 @RestController
@@ -146,6 +144,21 @@ public class CurriculumController extends Base{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
         }
     }
+
+    //分页查询开课和课程信息
+    @GetMapping("/curriculumAndTutionPage")
+    public State<Object> curriculumAndTutionPage(Integer currentPage,Integer pageSize){
+        if (currentPage==null||pageSize==null){
+            return packaging(StateCode.FAIL,"请输入页数和总数",null);
+        }
+        Page<CurriculumDto> list = curriculumService.curriculumAndTutionPage(currentPage,pageSize);
+        if(list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
+        }else{
+            return packaging(StateCode.FAIL,"课程信息查询失败",null);
+        }
+    }
+
 
 
 

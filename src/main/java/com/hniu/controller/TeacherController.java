@@ -2,7 +2,7 @@ package com.hniu.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.dto.TeacherDto;
 import com.hniu.entity.Teacher;
 import com.hniu.service.TeacherService;

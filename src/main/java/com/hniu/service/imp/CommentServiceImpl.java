@@ -5,11 +5,10 @@ import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
 import com.hniu.entity.Comment;
 import com.hniu.entity.CommentExample;
-import com.hniu.entity.CommentExample.Criteria;
 import com.hniu.mapper.CommentMapper;
 import com.hniu.service.CommentService;
 import com.hniu.util.ChangliangUtil;

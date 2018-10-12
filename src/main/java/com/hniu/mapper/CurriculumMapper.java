@@ -1,5 +1,6 @@
 package com.hniu.mapper;
 
+import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.*;
 
 import java.util.List;
@@ -53,4 +54,7 @@ public interface CurriculumMapper {
     CouresDetails JoinTheCourseByid(@Param("id") Integer id);
 
     NavigationDetails getNavigationDetails(@Param("id") Integer id);
+
+    //查询课程和开课信息
+    List<CurriculumDto> curriculumAndTution();
 }

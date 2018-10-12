@@ -3,10 +3,11 @@ package com.hniu.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hniu.dto.GiveDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hniu.constant.StateCode;
+import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.entity.Give;
@@ -14,21 +15,22 @@ import com.hniu.entity.Teacher;
 import com.hniu.mapper.CurriculumMapper;
 import com.hniu.mapper.GiveMapper;
 import com.hniu.mapper.TeacherMapper;
-import com.hniu.service.CurriculumService;
 import com.hniu.service.GiveService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
 
+import javax.annotation.Resource;
+
 @Service
 public class GiveServiceImpl extends Base implements GiveService {
 
-	@Autowired
+	@Resource
 	private GiveMapper giveMapper;
 	
-	@Autowired
+	@Resource
     private CurriculumMapper curriculumMapper;
 	
-	@Autowired
+	@Resource
 	private TeacherMapper teacherMapper;
 	
 	@Override
@@ -84,6 +86,11 @@ public class GiveServiceImpl extends Base implements GiveService {
 		}
 		return this.packaging(StateCode.SUCCESS, ChangliangUtil.QUERYFAIL, null);
 	}
-	
+
+	@Override
+	public List<GiveDto> giveAndTeacher(Integer curriculum_id) {
+		return giveMapper.giveAndTeacher(curriculum_id);
+	}
+
 
 }
