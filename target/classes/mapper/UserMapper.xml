@@ -3,6 +3,7 @@
 <mapper namespace="com.hniu.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.hniu.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="user_Name" property="userName" jdbcType="VARCHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, user_Name, wechat, password, phone, email, QQ
+    user_id, role_id, user_Name, wechat, password, phone, email, QQ
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.UserExample" >
     select
@@ -102,18 +103,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hniu.entity.User" >
-    insert into tbl_user (user_id, user_Name, wechat, 
-      password, phone, email, 
-      QQ)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR})
+    insert into tbl_user (user_id, role_id, user_Name, 
+      wechat, password, phone, 
+      email, QQ)
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.User" >
     insert into tbl_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
         user_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
       </if>
       <if test="userName != null" >
         user_Name,
@@ -137,6 +141,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
       </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
@@ -170,6 +177,9 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=INTEGER},
+      </if>
       <if test="record.userName != null" >
         user_Name = #{record.userName,jdbcType=VARCHAR},
       </if>
@@ -196,6 +206,7 @@
   <update id="updateByExample" parameterType="map" >
     update tbl_user
     set user_id = #{record.userId,jdbcType=INTEGER},
+      role_id = #{record.roleId,jdbcType=INTEGER},
       user_Name = #{record.userName,jdbcType=VARCHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -209,6 +220,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hniu.entity.User" >
     update tbl_user
     <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
       <if test="userName != null" >
         user_Name = #{userName,jdbcType=VARCHAR},
       </if>
@@ -232,22 +246,20 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hniu.entity.User" >
     update tbl_user
-    set user_Name = #{userName,jdbcType=VARCHAR},
+    set role_id = #{roleId,jdbcType=INTEGER},
+      user_Name = #{userName,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       QQ = #{qq,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
-
-
   </update>
 
-  <!--模糊查询-->
+
+  <!--模糊查询 -->
   <select id="getFuzzyquery" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT * FROM tbl_user WHERE concat_ws(user_Name,wechat,phone,email,QQ) LIKE '%${name}%'
+    SELECT * FROM tbl_university WHERE (school_name) LIKE '%${name}%'
   </select>
-
-
 
 </mapper>

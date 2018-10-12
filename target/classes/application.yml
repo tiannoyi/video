@@ -36,6 +36,10 @@ server:
     uri-encoding: utf-8
 thymeleaf:
            cache: false
+shiro:
+  loginUrl: /login
+  successUrl: /hello
+  unauthorizedUrl: /error
 
 # mybatis分页插件的使用
 pagehelper:

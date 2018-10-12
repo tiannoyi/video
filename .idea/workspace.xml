@@ -7,22 +7,138 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/SystemController.java" line="20" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java" line="80" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java" line="78" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27f6e1ea-d819-45eb-ac30-ce09cb40c87b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/Tution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/Tution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/TutionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/TutionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TutionServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TutionServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TutionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TutionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Tution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Tution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TutionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/TutionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/TutionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/TutionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/TutionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/Realm/LoginRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/realm/LoginRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/VideoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/VideoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/constant/StateCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/constan/StateCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/AnnouncementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/AnnouncementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/ChapterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/ChapterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumStatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumStatisticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/GiveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/GiveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/KnowledgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/KnowledgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/SchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/SchoolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/SystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/controller/VideoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/System.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/System.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/SystemExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/SystemExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/entity/UserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/entity/UserExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CurriculumMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CurriculumMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/mapper/GiveMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/mapper/GiveMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/GiveService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/GiveService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumStatisticsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumStatisticsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/SchoolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/SchoolServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/UserServieImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/UserServieImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hniu/util/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hniu/util/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CurriculumMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CurriculumMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GiveMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GiveMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SystemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SystemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/Realm/LoginRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/Realm/LoginRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/VideoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/VideoApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/config/ShiroConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/controller/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/controller/HelloController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AddCurriculumExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Announcement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Announcement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/AnnouncementExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Chapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Chapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/ChapterExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CommentExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CourseTypeExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Curriculum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Curriculum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumWithBLOBs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/CurriculumWithBLOBs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/KnowledgeExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Performance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Performance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/PerformanceExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/System.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/System.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/SystemExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/TaskExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/University.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/University.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UniversityExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/UserExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/Video.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/Video.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$Criteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$Criterion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample$GeneratedCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/entity/VideoExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/AddCurriculumMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/AddCurriculumMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/AnnouncementMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/AnnouncementMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/ChapterMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/ChapterMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/CurriculumMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/CurriculumMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/PerformanceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/PerformanceMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/SystemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/SystemMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/TaskMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/TaskMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hniu/mapper/VideoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hniu/mapper/VideoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ChapterMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ChapterMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/CurriculumMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/CurriculumMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SystemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/SystemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,48 +162,11 @@
     <expand />
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="video" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TutionController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1133">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TutionMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TutionMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TutionServiceImp.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TutionServiceImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="66" column="26" lean-forward="true" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Tution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-132">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -112,57 +191,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/KnowledgeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/TaskService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TaskServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/TaskController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/AnnouncementService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/AnnouncementController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/AnnouncementServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CourseTypeMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UniversityMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/CourseTypeMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CurriculumMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/UniversityMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/AddCurriculum.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/SystemServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/VideoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/config/ApplicationConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/Teacher.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/TeacherExample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/TeacherMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/TeacherService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/TeacherController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TeacherServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/UserServieImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumStatisticsService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CommentMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumStatisticsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumStatisticsImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/CurriculumMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/GiveController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/ArticleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/ArticleController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/ArticleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseTypeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/CourseTypeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CourseTypeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/CommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CommentServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/CommentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseManagementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/Tution.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/TutionMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/TutionMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/ChapterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/config/ShiroConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/RoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/vo/Menu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controllerAdvice/ExceptionAdvice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/config/DruidConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/base/Base.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/PermissionsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/util/EncryptUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/PermissionsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/UserServieImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/config/ApplicationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/System.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/HelloController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/entity/vo/TutionVo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/TutionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/dto/CurriculumDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TutionServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/CurriculumMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/CurriculumMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/dto/GivDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/dto/GiveDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/GiveService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/mapper/GiveMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/GiveMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/GiveController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/service/imp/WxLoginServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/realm/WechatRealm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/realm/LoginRealm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hniu/VideoApplication.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -206,10 +285,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-35" />
-    <option name="y" value="140" />
-    <option name="width" value="1945" />
-    <option name="height" value="790" />
+    <option name="x" value="275" />
+    <option name="y" value="28" />
+    <option name="width" value="1454" />
+    <option name="height" value="969" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -220,6 +299,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,7 +350,47 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="constan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="controllerAdvice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="video" type="b2602c69:ProjectViewProjectNode" />
@@ -290,28 +410,28 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
+              <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hniu" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="video" type="b2602c69:ProjectViewProjectNode" />
-              <item name="video" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hniu" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="video" type="b2602c69:ProjectViewProjectNode" />
-              <item name="video" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hniu" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="imp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="video" type="b2602c69:ProjectViewProjectNode" />
@@ -327,12 +447,22 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="video" type="b2602c69:ProjectViewProjectNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -348,7 +478,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../library" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -362,7 +492,14 @@
       <recent name="E:\workpase\video\src\main\java\com\hniu\mapper" />
       <recent name="E:\workpase\video\src\main\java\com\hniu\entity" />
       <recent name="E:\workpase\video\src\main\java\com\hniu\controller" />
-      <recent name="E:\workpase\video\src\main\java\com\hniu\service" />
+      <recent name="E:\workpase\video\src\main\java\com\hniu\entity\vo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hniu.util" />
+      <recent name="com.hniu.controller.base" />
+      <recent name="com.hniu.constan" />
+      <recent name="com.hniu.controllerAdvice" />
+      <recent name="com.hniu.realm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\workpase\video\src\main\resources\resources" />
@@ -503,7 +640,20 @@
       <workItem from="1538308282381" duration="5230000" />
       <workItem from="1538458941795" duration="3112000" />
       <workItem from="1539004041535" duration="2219000" />
-      <workItem from="1539054677831" duration="11026000" />
+      <workItem from="1539054677831" duration="11345000" />
+      <workItem from="1539083045554" duration="530000" />
+      <workItem from="1539088096796" duration="609000" />
+      <workItem from="1539135021199" duration="15000" />
+      <workItem from="1539136386273" duration="15972000" />
+      <workItem from="1539160849543" duration="5274000" />
+      <workItem from="1539170040549" duration="2246000" />
+      <workItem from="1539174310029" duration="2585000" />
+      <workItem from="1539222428000" duration="597000" />
+      <workItem from="1539228883534" duration="12000" />
+      <workItem from="1539233055166" duration="1569000" />
+      <workItem from="1539238053211" duration="15497000" />
+      <workItem from="1539270629739" duration="4532000" />
+      <workItem from="1539301899740" duration="17464000" />
     </task>
     <task id="LOCAL-00001" summary="修改未知bug">
       <created>1537182060621</created>
@@ -666,11 +816,32 @@
       <option name="project" value="LOCAL" />
       <updated>1539059168468</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="修改添加开课信息重复问题">
+      <created>1539072613113</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1539072613113</updated>
+    </task>
+    <task id="LOCAL-00025" summary="修改">
+      <created>1539083467054</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1539083467054</updated>
+    </task>
+    <task id="LOCAL-00026" summary="修改修改开课信息学校不存在问题">
+      <created>1539244501728</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1539244501729</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171110000" />
+    <option name="totallyTimeSpent" value="238331000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -683,38 +854,37 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.3297587" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.30898124" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
       <window_info anchor="bottom" id="Statistic" order="0" weight="0.5967504" />
-      <window_info anchor="right" id="Database" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3297587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.25997046" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.3293944" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.3308715" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="9" visible="true" weight="0.12703101" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3293944" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.12555392" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.17725259" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.3618907" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.3308715" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22252011" />
-      <window_info anchor="right" id="Bean Validation" order="3" weight="0.32956687" />
-      <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8172589" visible="true" weight="0.21983914" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32956687" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="5" sideWeight="0.18274112" side_tool="true" visible="true" weight="0.21983914" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.11225997" />
@@ -722,36 +892,37 @@
     <layout-to-restore>
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34121123" />
-      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Spring" order="12" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.6386431" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.3618907" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info id="Capture Tool" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.16986705" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" order="0" weight="0.5967504" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3293944" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.17872968" />
-      <window_info anchor="right" id="Maven Projects" order="6" weight="0.3297587" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23726542" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.17725259" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3297587" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26340482" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3308715" />
       <window_info anchor="right" id="Database" order="5" weight="0.3297587" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.25997046" />
-      <window_info anchor="right" id="Bean Validation" order="9" weight="0.32956687" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.11225997" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32956687" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.33677992" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,8 +968,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="第一次提交" />
-    <MESSAGE value="提交封装数据类" />
     <MESSAGE value="修改未知bug" />
     <MESSAGE value="提交授课表文件" />
     <MESSAGE value="提交知识目录的增删改查" />
@@ -821,18 +990,22 @@
     <MESSAGE value="修复跨域问题" />
     <MESSAGE value="修改文章接口" />
     <MESSAGE value="添加部分接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加部分接口" />
+    <MESSAGE value="修改添加开课信息重复问题" />
+    <MESSAGE value="修改" />
+    <MESSAGE value="修改修改开课信息学校不存在问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改修改开课信息学校不存在问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hniu/constant/StateCode.java</url>
-          <line>21</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/AdminServiceImpl.java</url>
+          <line>64</line>
           <properties />
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="100" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
@@ -845,372 +1018,384 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/TeacherService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TeacherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/SchoolServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/SchoolService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="3080">
+          <caret line="151" column="32" selection-start-line="151" selection-start-column="32" selection-end-line="151" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/GiveService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        <state relative-caret-position="253">
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/CourseTypeMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/GiveServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="149">
+          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+          <folding>
+            <element signature="e#2724#2725#0" expanded="true" />
+            <element signature="e#2778#2779#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Curriclum_Extends.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/GiveMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/CommentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/UserServieImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumStatisticsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5236">
-          <caret line="238" column="25" selection-start-line="238" selection-start-column="25" selection-end-line="238" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/CurriculumMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/SchoolController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-715">
-          <caret line="25" column="4" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumStatisticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="136" column="9" lean-forward="true" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+        <state relative-caret-position="253">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/GiveController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="53" column="55" selection-start-line="52" selection-start-column="26" selection-end-line="53" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumStatisticsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="184" column="17" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Curriculum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CurriculumMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10384">
-          <caret line="481" column="68" lean-forward="true" selection-start-line="481" selection-start-column="68" selection-end-line="481" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/ArticleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/ArticleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/ArticleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/AnnouncementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1188">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/ArticleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/ChapterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1807">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/CurriculumService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CurriculumServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="35" column="87" lean-forward="true" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/CourseTypeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CommentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/CourseTypeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/CommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CurriculumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="74" column="55" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="35" column="62" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseTypeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/VideoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/VideoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="104" column="15" selection-start-line="104" selection-start-column="15" selection-end-line="104" selection-end-column="15" />
-          <folding>
-            <element signature="e#3600#3601#0" expanded="true" />
-            <element signature="e#3662#3663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/VideoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="48" column="8" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/CourseManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/TutionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Tution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TutionMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/TutionMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="405">
+          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/TutionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1133">
+        <state relative-caret-position="1381">
+          <caret line="89" column="33" selection-start-line="89" selection-start-column="33" selection-end-line="89" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/LoggerContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="208" selection-start-line="208" selection-end-line="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/util/ThreadContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#3831#3832#0" expanded="true" />
+            <element signature="e#3879#3880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/ch/qos/logback/classic/Logger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="480" selection-start-line="480" selection-end-line="480" />
+          <folding>
+            <element signature="e#17720#17721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/subject/Subject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/tk/mybatis/mapper-base/1.0.5/mapper-base-1.0.5.jar!/tk/mybatis/mapper/common/Mapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/tk/mybatis/mapper-base/1.0.5/mapper-base-1.0.5.jar!/tk/mybatis/mapper/common/BaseMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Logs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/LogsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controllerAdvice/ExceptionAdvice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-769">
+          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="495" selection-start-line="495" selection-end-line="495" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/subject/support/DelegatingSubject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="497" selection-start-line="497" selection-end-line="497" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.8.RELEASE/spring-web-5.0.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/AnnouncementServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/TutionServiceImp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/WxLoginService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="66" column="26" lean-forward="true" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+        <state relative-caret-position="110">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/PermissionsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/SchoolService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/RoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/util/EncryptUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/util/ChangliangUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/SecurityUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-97">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/tk/mybatis/mapper-base/1.0.5/mapper-base-1.0.5.jar!/tk/mybatis/mapper/common/example/SelectOneByExampleMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authc/UsernamePasswordToken.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-660">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/config/ShiroConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/config/DruidConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/mapper/AdminMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/realm/AuthorizingRealm.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3410">
+          <caret line="199" column="17" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authc/pam/ModularRealmAuthenticator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/tk/mybatis/mapper-core/1.0.5/mapper-core-1.0.5.jar!/tk/mybatis/mapper/entity/Example.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4480">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="e#1247#1248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="144" column="34" selection-start-line="144" selection-start-column="34" selection-end-line="144" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/VideoApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-440">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/entity/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+            <element signature="e#2063#2064#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/realm/LoginRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/AdminServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-689">
+          <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/PermissionsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-887">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/RoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/service/imp/WxLoginServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/util/RedisUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1051">
+          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hniu/realm/WechatRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
         </state>
       </provider>
     </entry>

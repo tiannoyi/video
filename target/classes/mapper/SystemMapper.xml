@@ -8,6 +8,7 @@
     <result column="cover" property="cover" jdbcType="VARCHAR" />
     <result column="appsecret" property="appsecret" jdbcType="VARCHAR" />
     <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="page_line" property="pageLine" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    sustem_id, system_name, system_logo, cover, appsecret, appid
+    sustem_id, system_name, system_logo, cover, appsecret, appid, page_line
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.SystemExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.hniu.entity.System" >
     insert into tbl_system (sustem_id, system_name, system_logo, 
-      cover, appsecret, appid
-      )
+      cover, appsecret, appid, 
+      page_line)
     values (#{sustemId,jdbcType=INTEGER}, #{systemName,jdbcType=VARCHAR}, #{systemLogo,jdbcType=VARCHAR}, 
-      #{cover,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}
-      )
+      #{cover,jdbcType=VARCHAR}, #{appsecret,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}, 
+      #{pageLine,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.System" >
     insert into tbl_system
@@ -129,6 +130,9 @@
       <if test="appid != null" >
         appid,
       </if>
+      <if test="pageLine != null" >
+        page_line,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="sustemId != null" >
@@ -148,6 +152,9 @@
       </if>
       <if test="appid != null" >
         #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="pageLine != null" >
+        #{pageLine,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.appid != null" >
         appid = #{record.appid,jdbcType=VARCHAR},
       </if>
+      <if test="record.pageLine != null" >
+        page_line = #{record.pageLine,jdbcType=TINYINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       system_logo = #{record.systemLogo,jdbcType=VARCHAR},
       cover = #{record.cover,jdbcType=VARCHAR},
       appsecret = #{record.appsecret,jdbcType=VARCHAR},
-      appid = #{record.appid,jdbcType=VARCHAR}
+      appid = #{record.appid,jdbcType=VARCHAR},
+      page_line = #{record.pageLine,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="appid != null" >
         appid = #{appid,jdbcType=VARCHAR},
       </if>
+      <if test="pageLine != null" >
+        page_line = #{pageLine,jdbcType=TINYINT},
+      </if>
     </set>
     where sustem_id = #{sustemId,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       system_logo = #{systemLogo,jdbcType=VARCHAR},
       cover = #{cover,jdbcType=VARCHAR},
       appsecret = #{appsecret,jdbcType=VARCHAR},
-      appid = #{appid,jdbcType=VARCHAR}
+      appid = #{appid,jdbcType=VARCHAR},
+      page_line = #{pageLine,jdbcType=TINYINT}
     where sustem_id = #{sustemId,jdbcType=INTEGER}
   </update>
 </mapper>
