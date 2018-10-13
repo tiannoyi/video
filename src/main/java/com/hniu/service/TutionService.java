@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Mapper
 public interface TutionService {
     //分页查询开课
     Page<Tution> selectTutionList(Integer currentPage, Integer pageSize);
