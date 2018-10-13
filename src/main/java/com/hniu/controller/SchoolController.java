@@ -1,12 +1,7 @@
 package com.hniu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hniu.constan.StateCode;
 import com.hniu.entity.University;
@@ -38,43 +33,43 @@ public class SchoolController {
 	}
 	
 	@PostMapping("/insertSchool")
-	public  State<Object> insertSchool(@RequestBody University university) {
+	public  State<Object> insertSchool(University university) {
 		 if(university == null) {
 			 return base.packaging(StateCode.FAIL, "参数不能为空",university);
 		 }
 		return schoolService.insertSchool(university);
 	}
 	
-	@GetMapping("/getSchool")
-	public State<Object> getSchool(Integer id) {
-		 if(id == null) {
-			 return base.packaging(StateCode.FAIL, "参数不能为空",id);
+	@GetMapping("/getSchool/{university_id}")
+	public State<Object> getSchool(@PathVariable("university_id") Integer university_id) {
+		 if(university_id == null) {
+			 return base.packaging(StateCode.FAIL, "参数不能为空",university_id);
 		 }
-		return schoolService.getSchool(id);
+		return schoolService.getSchool(university_id);
 	}
 	
 	@PutMapping("/updateSchool")
-	public State<Object> updateSchool(@RequestBody University university) {
+	public State<Object> updateSchool(University university) {
 		 if(university == null) {
 			 return base.packaging(StateCode.FAIL, "参数不能为空",university);
 		 }
 		return schoolService.updateSchool(university);
 	}
 	
-	@DeleteMapping("/deleteSchool")
-	public State<Object> deleteSchool(Integer id) {
-		if(id == null) {
-	    	return  base.packaging(StateCode.FAIL, "参数不能为空",id);
+	@DeleteMapping("/deleteSchool/{university_id}")
+	public State<Object> deleteSchool(@PathVariable("university_id") Integer university_id) {
+		if(university_id == null) {
+	    	return  base.packaging(StateCode.FAIL, "参数不能为空",university_id);
 	    }
-		return schoolService.deleteSchool(id);
+		return schoolService.deleteSchool(university_id);
 	}
 	
 	@GetMapping("/getSchoolAll")
-	public State<Object> getSchoolAll(Integer page,Integer rows){
-		if (page == null || rows == null) {
-			return  base.packaging(StateCode.FAIL, "参数不能为空",page+rows);
+	public State<Object> getSchoolAll(Integer currentPage, Integer pageSize){
+		if (currentPage == null || pageSize == null) {
+			return  base.packaging(StateCode.FAIL, "参数不能为空",null);
 		}
-		return schoolService.getSchoolAll(page,rows);
+		return schoolService.getSchoolAll(currentPage,pageSize);
 	}
 
 }

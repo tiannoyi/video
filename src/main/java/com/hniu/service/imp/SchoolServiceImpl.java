@@ -17,6 +17,8 @@ import com.hniu.util.ChangliangUtil;
 
 import com.hniu.util.State;
 
+import javax.annotation.Resource;
+
 /*
  * 学校管理Service
  * 邓志勇
@@ -26,7 +28,7 @@ import com.hniu.util.State;
 public class SchoolServiceImpl implements SchoolService{
 
 	
-	@Autowired
+	@Resource
 	private UniversityMapper universityMapper;
 	
 	public Base base=new Base();
@@ -36,8 +38,8 @@ public class SchoolServiceImpl implements SchoolService{
 	
 	@Override
 	public State<Object> insertSchool(University university) {
-		int insert = universityMapper.insert(university);
-		if (insert == 1) {
+		int insert = universityMapper.insertSelective(university);
+		if (insert>0) {
 			return base.packaging(StateCode.SUCCESS, ChangliangUtil.INSERTSUCCESS, insert);
 		}else {
 			return base.packaging(StateCode.FAIL, ChangliangUtil.INSERTFAIL, insert);
