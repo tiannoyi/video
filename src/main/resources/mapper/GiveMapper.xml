@@ -180,20 +180,59 @@
   </update>
 
   <resultMap id="giveAndTeacherMap" type="com.hniu.dto.GiveDto" extends="BaseResultMap">
-      <collection property="teacher" ofType="com.hniu.entity.Teacher">
-        <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
-        <result column="account" property="account" jdbcType="VARCHAR" />
-        <result column="password" property="password" jdbcType="VARCHAR" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="title" property="title" jdbcType="VARCHAR" />
-        <result column="intro" property="intro" jdbcType="VARCHAR" />
-        <result column="picture" property="picture" jdbcType="VARCHAR" />
-      </collection>
+  <collection property="teacher" ofType="com.hniu.entity.Teacher">
+    <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+  </collection>
+</resultMap>
+  <resultMap id="giveAndCurriculum" type="com.hniu.dto.GiveDto" extends="BaseResultMap">
+    <collection property="curriculum" ofType="com.hniu.entity.Curriculum">
+      <id column="curriculum_id" property="curriculumId" jdbcType="INTEGER" />
+      <result column="university_id" property="universityId" jdbcType="INTEGER" />
+      <result column="ct_id" property="ctId" jdbcType="INTEGER" />
+      <result column="name" property="name" jdbcType="VARCHAR" />
+      <result column="message" property="message" jdbcType="VARCHAR" />
+      <result column="propaedeutics" property="propaedeutics" jdbcType="VARCHAR" />
+      <result column="meferences" property="meferences" jdbcType="VARCHAR" />
+      <result column="require" property="require" jdbcType="VARCHAR" />
+      <result column="picture" property="picture" jdbcType="VARCHAR" />
+      <result column="time" property="time" jdbcType="INTEGER" />
+      <result column="score" property="score" jdbcType="DOUBLE" />
+      <result column="video" property="video" jdbcType="VARCHAR" />
+      <result column="is_Mainpic" property="isMainpic" jdbcType="BIT" />
+      <result column="main_teacher" property="mainTeacher" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+  <resultMap id="allGiveMap" type="com.hniu.entity.vo.GiveVo" extends="BaseResultMap">
+      <result column="teacher_name" property="teacher_name" jdbcType="VARCHAR" />
+      <result column="curriculum_name" property="curriculum_name" jdbcType="VARCHAR" />
   </resultMap>
   <select id="giveAndTeacher" parameterType="java.lang.Integer" resultMap="giveAndTeacherMap">
         select *
         FROM tbl_give a LEFT JOIN tbl_teacher b
         ON a.teacher_id = b.teacher_id
         WHERE a.curriculum_id = #{curriculum_id,jdbcType=INTEGER}
+  </select>
+  <select id="giveAndCurriculum" parameterType="java.lang.Integer" resultMap="giveAndCurriculum">
+    SELECT *
+    FROM tbl_give a LEFT JOIN tbl_curriculum b
+    ON a.curriculum_id = b.curriculum_id
+    where a.teacher_id = #{teacher_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectGiveAll" resultMap="allGiveMap">
+    SELECT a.`name` as teacher_name,b.*,c.`name` as curriculum_name
+    FROM tbl_teacher a LEFT JOIN tbl_give b
+    ON a.teacher_id = b.teacher_id
+    LEFT JOIN tbl_curriculum c
+    ON b.curriculum_id = c.curriculum_id
+  </select>
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(give_id)
+    FROM tbl_give
   </select>
 </mapper>
