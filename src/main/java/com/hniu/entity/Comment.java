@@ -1,12 +1,14 @@
 package com.hniu.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Comment {
     private Integer commentId;
 
     private String content;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date ctime;
 
     private Integer curriculumId;

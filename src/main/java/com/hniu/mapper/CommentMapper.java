@@ -1,5 +1,6 @@
 package com.hniu.mapper;
 
+import com.hniu.dto.CommentDto;
 import com.hniu.entity.Comment;
 import com.hniu.entity.CommentExample;
 import java.util.List;
@@ -35,5 +36,11 @@ public interface CommentMapper {
     Comment_Extends getCommentInformation(@Param("id") Integer id);
 
     Curriclum_Extends getEvaluateNum(Integer id);
+
+    //查询评论和用户
+    List<CommentDto> commentAndUser(Integer curriculum_id);
+
+    //查询当前课程评论数
+    int commentNum(Integer curriculum_id);
 
 }

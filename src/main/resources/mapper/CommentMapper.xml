@@ -242,4 +242,31 @@
         FROM tbl_curriculum a LEFT JOIN tbl_comment b ON a.curriculum_id = b.curriculum_id WHERE a.curriculum_id=#{id}
   </select>
 
+
+  <resultMap id="commentAndUserMap" type="com.hniu.dto.CommentDto" extends="BaseResultMap">
+    <association property="user" javaType="com.hniu.entity.User">
+      <id column="user_id" property="userId" jdbcType="INTEGER" />
+      <result column="role_id" property="roleId" jdbcType="INTEGER" />
+      <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+      <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+      <result column="password" property="password" jdbcType="VARCHAR" />
+      <result column="phone" property="phone" jdbcType="VARCHAR" />
+      <result column="email" property="email" jdbcType="VARCHAR" />
+      <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+
+  <select id="commentAndUser" parameterType="java.lang.Integer" resultMap="commentAndUserMap">
+     SELECT *
+      FROM tbl_comment a LEFT JOIN tbl_user b
+      on a.user_id = b.user_id
+      WHERE a.curriculum_id = #{curriculum_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="commentNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select COUNT(comment_id)
+    FROM tbl_comment
+    WHERE tbl_comment.curriculum_id = #{curriculum_id,jdbcType=INTEGER}
+  </select>
+
 </mapper>

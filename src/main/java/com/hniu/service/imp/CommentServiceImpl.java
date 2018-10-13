@@ -1,6 +1,7 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.hniu.dto.CommentDto;
 import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import com.hniu.service.CommentService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /*
@@ -24,7 +26,7 @@ import java.util.List;
 @Service
 public class CommentServiceImpl implements CommentService{
 
-	@Autowired
+	@Resource
     private CommentMapper commentmapper;
 	
 	public Base base=new Base();
@@ -61,6 +63,52 @@ public class CommentServiceImpl implements CommentService{
 		Page<Comment> pageData = new Page<>(currentPage,pageSize,countNums);
 		pageData.setList(allComment);
 		return pageData;
+	}
+
+	@Override
+	public List<CommentDto> commentAndUser(Integer curriculum_id) {
+		return commentmapper.commentAndUser(curriculum_id);
+	}
+
+	@Override
+	public int insertComment(Comment comment) {
+		comment.setAsteriskNum(null);
+		int i = commentmapper.insertSelective(comment);
+		if (i>0){
+			return 1;
+		}else{
+			return 0;
+		}
+
+	}
+
+	@Override
+	public int updateComment(Comment comment) {
+		comment.setAsteriskNum(null);
+		int i = commentmapper.updateByPrimaryKeySelective(comment);
+		if(i>0){
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public int updateAsteriskNum(Integer asteriskNum) {
+		Comment comment = new Comment();
+		if (asteriskNum>5||asteriskNum<0){
+			return 0;
+		}
+		comment.setAsteriskNum(asteriskNum);
+		int i = commentmapper.updateByPrimaryKeySelective(comment);
+		if(i>0){
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public Integer selectCommentNum(Integer curriculum_id) {
+		return commentmapper.commentNum(curriculum_id);
 	}
 
 
