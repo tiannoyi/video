@@ -1,14 +1,14 @@
 package com.hniu.controller;
 
 import com.hniu.constan.StateCode;
+import com.hniu.dto.CourseTypeDto;
 import com.hniu.entity.CourseType;
 import com.hniu.service.CourseTypeService;
 import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: 熊俊
@@ -36,5 +36,49 @@ public class CourseTypeController extends Base{
         }
 
     }
+
+
+
+    //添加课程类别
+    @RequestMapping()
+    public State<Object> insertCourseType(CourseTypeDto courseType){
+        if (StringUtils.isEmpty(courseType)){
+            return packaging(StateCode.FAIL,"课程类别添加失败",null);
+        }
+        int i = courseTypeService.insertCourseType(courseType);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"课程类别添加成功",null);
+        }
+        return packaging(StateCode.FAIL,"课程类别添加失败",null);
+    }
+
+
+    //修改课程类别
+    @RequestMapping(value = "/{ct_id}")
+    public State<Object> updateCourseType(@PathVariable("ct_id")Integer ct_id,CourseTypeDto courseTypeDto){
+        if(StringUtils.isEmpty(courseTypeDto)){
+            return packaging(StateCode.FAIL,"课程类别修改失败",null);
+        }
+        courseTypeDto.setCtId(ct_id);
+        int i = courseTypeService.updateCourseType(courseTypeDto);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"课程类别修改成功",null);
+        }
+        return packaging(StateCode.FAIL,"课程类别修改失败",null);
+    }
+
+    //删除课程类别
+    @DeleteMapping("/{ct_id}")
+    public State<Object> deleceCourseType(@PathVariable("ct_id")Integer ct_id){
+        int i = courseTypeService.deleceCourseType(ct_id);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"课程类别删除成功",null);
+        }
+        return packaging(StateCode.FAIL,"课程类别删除失败",null);
+    }
+
+
+
+
 
 }
