@@ -53,6 +53,9 @@ public class TeacherServiceImpl implements TeacherService {
                 return 0;
             }
         }
+        if(teacher.getPicture()==null){
+            return teacherMapper.insertSelective(teacher);
+        }
         else{
             return 0;
         }
@@ -74,8 +77,7 @@ public class TeacherServiceImpl implements TeacherService {
             }
             String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
             File file = new File(adVideoSavePath+s1+endString);
-            boolean b = file.delete();
-            System.out.println(b);
+            file.delete();
         }
         Teacher teacher = new Teacher();
         BeanUtils.copyProperties(teacherDto,teacher);
@@ -95,6 +97,9 @@ public class TeacherServiceImpl implements TeacherService {
                 return 0;
             }
         }
+        if(teacher.getPicture()==null){
+            return teacherMapper.updateByPrimaryKeySelective(teacher);
+        }
         else{
             return 0;
         }
@@ -102,6 +107,21 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public int deleteTeacher(int teacherId) {
+        String endString = null;
+        Teacher t = teacherMapper.selectByPrimaryKey(teacherId);
+        if(!StringUtils.isEmpty(t)) {
+            String s = t.getPicture();
+            if(s.contains(".gif")){
+                endString = ".gif";
+            }else if(s.contains(".png")){
+                endString = ".png";
+            }else if(s.contains(".jpg")){
+                endString = ".jpg";
+            }
+            String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+            File file = new File(adVideoSavePath+s1+endString);
+            file.delete();
+        }
         return teacherMapper.deleteByPrimaryKey(teacherId);
     }
 
