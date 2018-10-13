@@ -22,7 +22,7 @@ public interface CommentService {
 	Page<Comment> commentPage(Integer currentPage, Integer pageSize);
 
 	//查询课程评论
-	List<CommentDto> commentAndUser(Integer curriculum_id);
+	Page<CommentDto> commentAndUser(Integer curriculum_id,Integer currentPage, Integer pageSize);
 
 	//添加课程评论
 	int insertComment(Comment comment);

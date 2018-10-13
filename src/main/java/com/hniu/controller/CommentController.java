@@ -64,9 +64,9 @@ public class CommentController extends Base{
 
 	//查询课程评论
 	@GetMapping("/comment/userComment/{curriculum_id}")
-	public State<Object> selectComment(@PathVariable("curriculum_id")Integer curriculum_id){
-		List<CommentDto> list = commentService.commentAndUser(curriculum_id);
-		if (list.size()>=0){
+	public State<Object> selectComment(@PathVariable("curriculum_id")Integer curriculum_id,Integer currentPage, Integer pageSize){
+		Page<CommentDto> list = commentService.commentAndUser(curriculum_id,currentPage,pageSize);
+		if (list.getList().size()>=0){
 			return packaging(com.hniu.constan.StateCode.SUCCESS,"评论查询成功",list);
 
 		}else{

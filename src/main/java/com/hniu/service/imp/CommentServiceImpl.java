@@ -66,8 +66,13 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public List<CommentDto> commentAndUser(Integer curriculum_id) {
-		return commentmapper.commentAndUser(curriculum_id);
+	public Page<CommentDto> commentAndUser(Integer curriculum_id,Integer currentPage, Integer pageSize) {
+		PageHelper.startPage(currentPage,pageSize);
+		List<CommentDto> list = commentmapper.commentAndUser(curriculum_id);
+		int countNums = commentmapper.commentNum(curriculum_id);
+		Page<CommentDto> pageData = new Page<>(currentPage,pageSize,countNums);
+		pageData.setList(list);
+		return pageData;
 	}
 
 	@Override
