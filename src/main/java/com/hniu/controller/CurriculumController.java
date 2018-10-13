@@ -7,6 +7,7 @@ import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
 import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,6 +38,9 @@ public class CurriculumController extends Base{
     @GetMapping(value = "/{curriculum_id}")
     public State<Object> selectCurriculum(@PathVariable("curriculum_id") int curriculum_id){
         CurriculumWithBLOBs curriculum = curriculumService.selectCurriculum(curriculum_id);
+        if(StringUtils.isEmpty(curriculum)){
+            return packaging(StateCode.FAIL,"课程信息查询失败",null);
+        }
             return packaging(StateCode.SUCCESS,"课程信息查询成功",curriculum);
 
     }
