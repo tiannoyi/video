@@ -193,4 +193,56 @@
       task_id = #{taskId,jdbcType=INTEGER}
     where performance_id = #{performanceId,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="performanceAll" type="com.hniu.entity.vo.PerformanceVo" extends="BaseResultMap">
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stems" property="stems" jdbcType="VARCHAR" />
+    <result column="option_A" property="optionA" jdbcType="VARCHAR" />
+    <result column="option_B" property="optionB" jdbcType="VARCHAR" />
+    <result column="option_C" property="optionC" jdbcType="VARCHAR" />
+    <result column="option_D" property="optionD" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="knowledge_id" property="knowledgeId" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="PerformanceAll" resultMap="performanceAll">
+    select a.*,b.*,c.user_Name,c.wechat
+    FROM tbl_performance a LEFT JOIN tbl_task b
+    ON a.task_id = b.task_id
+    LEFT JOIN tbl_user c
+    ON a.user_id = c.user_id
+  </select>
+  <select id="count" resultType="java.lang.Integer">
+    SELECT count(performance_id)
+    FROM tbl_performance
+  </select>
+  <select id="selectPerformance" parameterType="java.lang.Integer" resultMap="performanceAll">
+    select a.*,b.*,c.user_Name,c.wechat
+    FROM tbl_performance a LEFT JOIN tbl_task b
+    ON a.task_id = b.task_id
+    LEFT JOIN tbl_user c
+    ON a.user_id = c.user_id
+    WHERE a.performance_id = #{performanceId,jdbcType=INTEGER}
+  </select>
+  <select id="userId" parameterType="java.lang.Integer" resultMap="performanceAll">
+    select a.*,b.*,c.user_Name,c.wechat
+    FROM tbl_performance a LEFT JOIN tbl_task b
+    ON a.task_id = b.task_id
+    LEFT JOIN tbl_user c
+    ON a.user_id = c.user_id
+    WHERE a.user_id = #{user_id,jdbcType=INTEGER} GROUP BY a.performance_id desc
+  </select>
+  <select id="userIdAndKnowledgeId"  resultMap="performanceAll">
+    select a.*,b.*,c.user_Name,c.wechat
+    FROM tbl_performance a LEFT JOIN tbl_task b
+    ON a.task_id = b.task_id
+    LEFT JOIN tbl_user c
+    ON a.user_id = c.user_id
+    WHERE a.task_id IN (
+						SELECT task_id
+						FROM tbl_task
+					    WHERE tbl_task.knowledge_id = #{knowledge_id}) AND a.user_id = #{user_id}
+  </select>
 </mapper>
