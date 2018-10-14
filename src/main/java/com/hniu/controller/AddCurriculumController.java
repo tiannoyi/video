@@ -5,6 +5,7 @@ import com.hniu.entity.AddCurriculum;
 import com.hniu.entity.vo.AddCurriculumVo;
 import com.hniu.service.AddCurriculumService;
 import com.hniu.util.Page;
+import com.hniu.util.RedisUtil;
 import com.hniu.util.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -65,6 +66,27 @@ public class AddCurriculumController extends Base{
         if (currentPage==null||pageSize==null){
             return packaging(StateCode.FAIL,"请输入页数和总数",null);
         }
+        Page<AddCurriculumVo> list = addCurriculumService.userId(user_id, currentPage, pageSize);
+        if(list.getList().size()>0){
+            return packaging(StateCode.SUCCESS,"查询成功",list);
+        }
+        return packaging(StateCode.FAIL,"查询失败",null);
+    }
+
+
+    //微信端根据用户id查加入课程信息信息
+    @GetMapping("/wx_userId/{token}")
+    public State<Object> wx_userId(@PathVariable("token")String token,Integer currentPage, Integer pageSize){
+        if (currentPage==null||pageSize==null){
+            return packaging(StateCode.FAIL,"请输入页数和总数",null);
+        }
+        RedisUtil redisUtil = new RedisUtil();
+        String object = (String)  redisUtil.getObject(token);
+        if(object == null){
+            return packaging(StateCode.FAIL,"查询失败",null);
+        }
+        String[] split = object.split(",");
+        Integer user_id = Integer.parseInt(split[2]);
         Page<AddCurriculumVo> list = addCurriculumService.userId(user_id, currentPage, pageSize);
         if(list.getList().size()>0){
             return packaging(StateCode.SUCCESS,"查询成功",list);
