@@ -1,6 +1,14 @@
-package com.hniu.entity;
+package com.hniu.dto;
 
-public class User {
+import org.springframework.web.multipart.MultipartFile;
+
+/**
+ * @Author: 熊俊
+ * @Date: 2018/10/13 23:52
+ * @Description:
+ * @Modified By:
+ */
+public class UserDto {
     private Integer userId;
 
     private Integer roleId;
@@ -17,7 +25,7 @@ public class User {
 
     private String qq;
 
-    private String portrait;
+    private MultipartFile portrait;
 
     public Integer getUserId() {
         return userId;
@@ -83,28 +91,11 @@ public class User {
         this.qq = qq == null ? null : qq.trim();
     }
 
-    public String getPortrait() {
+    public MultipartFile getPortrait() {
         return portrait;
     }
 
-    public void setPortrait(String portrait) {
-        this.portrait = portrait == null ? null : portrait.trim();
+    public void setPortrait(MultipartFile portrait) {
+        this.portrait = portrait;
     }
-
-
-
-    public User(Integer roleId, String userName, String wechat, String password, String phone, String email, String qq) {
-        this.roleId = roleId;
-        this.userName = userName;
-        this.wechat = wechat;
-        this.password = password;
-        this.phone = phone;
-        this.email = email;
-        this.qq = qq;
-    }
-
-    public User(){
-
-    }
-
 }

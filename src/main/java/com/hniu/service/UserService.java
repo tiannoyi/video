@@ -3,6 +3,7 @@ package com.hniu.service;
 
 import java.util.List;
 
+import com.hniu.dto.UserDto;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.druid.support.spring.stat.annotation.Stat;
@@ -17,11 +18,11 @@ public interface UserService {
 
 	State<Object> getUser(Integer id);
 
-	State<Object> insertUser(User user);
+	int insertUser(UserDto userDto);
 
-	State<Object> updateUser(User user);
+	int updateUser(UserDto UserDto);
 
-	State<Object> deleteUser(Integer id);
+	int deleteUser(Integer user_id);
 
 	State<Object> getUserAll(Integer page, Integer rows);
     //模糊查询

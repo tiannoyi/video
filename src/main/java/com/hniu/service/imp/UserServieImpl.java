@@ -1,10 +1,15 @@
 package com.hniu.service.imp;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import com.hniu.dto.UserDto;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -18,6 +23,7 @@ import com.hniu.mapper.UserMapper;
 import com.hniu.service.UserService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -34,6 +40,12 @@ public class UserServieImpl implements UserService{
 	public Base base=new Base();
 	
 	public StateCode StateCode;
+
+	@Value("${web.userPortrait}")
+	private String userPortrait;
+
+	@Value("${web.videoPath}")
+	private String portraitPath;
 	
 	@Override
 	public State<Object> getUser(Integer id) {
@@ -47,33 +59,103 @@ public class UserServieImpl implements UserService{
 	}
 
 	@Override
-	public  State<Object> insertUser(User user) {
-		int i=userMapper.insert(user);
-		if (i == 1) {
-			return base.packaging(StateCode.SUCCESS,ChangliangUtil.INSERTSUCCESS, i);
-		}else {
-			return base.packaging(StateCode.FAIL, ChangliangUtil.INSERTFAIL, i);
+	public  int insertUser(UserDto userDto) {
+		User user = new User();
+		BeanUtils.copyProperties(userDto,user);
+		if(userDto.getPortrait()!=null&&userDto.getPortrait().getSize()>0) {
+			String fileName = System.currentTimeMillis() + "_" + userDto.getPortrait().getOriginalFilename();
+			File file = new File(userPortrait + fileName);
+			File fileFolder = new File(userPortrait);
+			if (!fileFolder.exists()) {
+				fileFolder.mkdirs();
+			}
+			try{
+				userDto.getPortrait().transferTo(file);
+				user.setPortrait(portraitPath+fileName);
+				user.setPassword(null);
+				user.setWechat(null);
+				return userMapper.insertSelective(user);
+			}catch(IOException e){
+				e.printStackTrace();
+				return 0;
+			}
+
 		}
+		if(userDto.getPortrait()==null){
+			user.setWechat(null);
+			user.setPassword(null);
+			return userMapper.insertSelective(user) ;
+		}
+		return 0;
+}
+
+	@Override
+	public int updateUser(UserDto userDto) {
+		String endString = null;
+		User u = userMapper.selectByPrimaryKey(userDto.getUserId());
+		if(!StringUtils.isEmpty(u)) {
+			String s = u.getPortrait();
+			if(s.contains(".gif")){
+				endString = ".gif";
+			}else if(s.contains(".png")){
+				endString = ".png";
+			}else if(s.contains(".jpg")){
+				endString = ".jpg";
+			}
+			String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+			File file = new File(userPortrait+s1+endString);
+			file.delete();
+		}
+		User user = new User();
+		BeanUtils.copyProperties(userDto,user);
+		if(userDto.getPortrait()!=null&&userDto.getPortrait().getSize()>0){
+			String fileName = System.currentTimeMillis()+"_"+userDto.getPortrait().getOriginalFilename();
+			File file = new File(userPortrait+fileName);
+			File fileFolder = new File(userPortrait);
+			if(!fileFolder.exists()){
+				fileFolder.mkdirs();
+			}
+			try {
+				userDto.getPortrait().transferTo(file);
+				user.setPortrait(portraitPath+fileName);
+				user.setWechat(null);
+				user.setPassword(null);
+				return userMapper.updateByPrimaryKeySelective(user);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return 0;
+			}
+		}
+		if(userDto.getPortrait()==null){
+			user.setWechat(null);
+			user.setPassword(null);
+			return userMapper.updateByPrimaryKeySelective(user);
+		}
+		return 0;
 	}
 
 	@Override
-	public State<Object> updateUser(User user) {
-		int i = userMapper.updateByPrimaryKeySelective(user);
-		if (i == 1) {
-			return base.packaging(StateCode.SUCCESS, ChangliangUtil.UPDATESUCCESS,i);
-		}else {
-			return base.packaging(StateCode.FAIL, ChangliangUtil.UPDATEFAIL,i);
+	public int deleteUser(Integer user_id) {
+		String endString = null;
+		User u = userMapper.selectByPrimaryKey(user_id);
+		if(!StringUtils.isEmpty(u)) {
+			String s = u.getPortrait();
+			if(s.contains(".gif")){
+				endString = ".gif";
+			}else if(s.contains(".png")){
+				endString = ".png";
+			}else if(s.contains(".jpg")){
+				endString = ".jpg";
+			}
+			String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
+			File file = new File(userPortrait+s1+endString);
+			file.delete();
 		}
-	}
-
-	@Override
-	public State<Object> deleteUser(Integer id) {
-		int i = userMapper.deleteByPrimaryKey(id);
-		if (i == 1) {
-			return base.packaging(StateCode.SUCCESS, ChangliangUtil.DELETESUCCESS,i);
-		}else {
-			return base.packaging(StateCode.FAIL, ChangliangUtil.DELETEFAIL,i);
+		int i = userMapper.deleteByPrimaryKey(user_id);
+		if(i>0){
+			return 1;
 		}
+		return 0;
 	}
 
 	@Override
