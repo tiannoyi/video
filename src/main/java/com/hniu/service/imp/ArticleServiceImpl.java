@@ -4,12 +4,15 @@ import com.github.pagehelper.PageHelper;
 import com.hniu.dto.ArticleDto;
 import com.hniu.entity.Article;
 import com.hniu.entity.ArticleExample;
+import com.hniu.entity.Knowledge;
 import com.hniu.mapper.ArticleMapper;
+import com.hniu.mapper.KnowledgeMapper;
 import com.hniu.service.ArticleService;
 import com.hniu.util.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -25,6 +28,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Resource
     private ArticleMapper articleMapper;
 
+    @Resource
+    KnowledgeMapper knowledgeMapper;
+
     @Value("${web.upload-path}")
     private String adVideoSavePath;
 
@@ -32,6 +38,10 @@ public class ArticleServiceImpl implements ArticleService {
     private String videoPath;
     @Override
     public int insertArticle(Article article) {
+        Knowledge knowledge = knowledgeMapper.selectByPrimaryKey(article.getKnowledgeId());
+        if(StringUtils.isEmpty(knowledge)){
+            return 0;
+        }
      int i = articleMapper.insert(article);
      if (i != 0){
             return 1;

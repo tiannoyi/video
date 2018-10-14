@@ -3,7 +3,10 @@ package com.hniu.service.imp;
 import com.github.pagehelper.PageHelper;
 import com.hniu.entity.Chapter;
 import com.hniu.entity.ChapterExample;
+import com.hniu.entity.Curriculum;
+import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.mapper.ChapterMapper;
+import com.hniu.mapper.CurriculumMapper;
 import com.hniu.service.ChapterService;
 import com.hniu.util.Page;
 import org.apache.commons.lang3.StringUtils;
@@ -20,8 +23,14 @@ import java.util.List;
 public class ChapterServiceImpl implements ChapterService {
     @Resource
     private ChapterMapper chapterMapper;
+    @Resource
+    CurriculumMapper curriculumMapper;
     @Override
     public int insertChapter(Chapter chapter) {
+        CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(chapter.getCurriculumId());
+        if (org.springframework.util.StringUtils.isEmpty(curriculum)){
+            return 0;
+        }
         return chapterMapper.insert(chapter);
     }
 

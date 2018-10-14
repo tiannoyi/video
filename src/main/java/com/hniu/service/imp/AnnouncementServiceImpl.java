@@ -3,10 +3,13 @@ package com.hniu.service.imp;
 import com.github.pagehelper.PageHelper;
 import com.hniu.entity.Announcement;
 import com.hniu.entity.AnnouncementExample;
+import com.hniu.entity.Tution;
 import com.hniu.mapper.AnnouncementMapper;
+import com.hniu.mapper.TutionMapper;
 import com.hniu.service.AnnouncementService;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,9 +22,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Resource
     private AnnouncementMapper announcementMapper;
+    @Resource
+    TutionMapper tutionMapper;
 
     @Override
     public int insertAnnouncement(Announcement announcement) {
+        Tution tution = tutionMapper.selectByPrimaryKey(announcement.getTutionId());
+        if(StringUtils.isEmpty(tution)){
+            return 0;
+        }
         return announcementMapper.insertSelective(announcement);
     }
 

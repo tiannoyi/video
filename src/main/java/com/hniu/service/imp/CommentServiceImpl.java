@@ -1,19 +1,23 @@
 package com.hniu.service.imp;
 
+import com.alibaba.druid.sql.visitor.functions.If;
 import com.github.pagehelper.PageHelper;
 import com.hniu.dto.CommentDto;
+import com.hniu.entity.*;
+import com.hniu.mapper.CurriculumMapper;
+import com.hniu.mapper.UserMapper;
 import com.hniu.util.Page;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
-import com.hniu.entity.Comment;
-import com.hniu.entity.CommentExample;
 import com.hniu.mapper.CommentMapper;
 import com.hniu.service.CommentService;
 import com.hniu.util.ChangliangUtil;
 import com.hniu.util.State;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,6 +32,10 @@ public class CommentServiceImpl implements CommentService{
 
 	@Resource
     private CommentMapper commentmapper;
+	@Resource
+	CurriculumMapper curriculumMapper;
+	@Resource
+	UserMapper userMapper;
 	
 	public Base base=new Base();
 	
@@ -77,6 +85,11 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public int insertComment(Comment comment) {
+		CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(comment.getCurriculumId());
+		User user = userMapper.selectByPrimaryKey(comment.getUserId());
+		if (StringUtils.isEmpty(curriculum)||StringUtils.isEmpty(user)){
+			return 0;
+		}
 		comment.setAsteriskNum(null);
 		int i = commentmapper.insertSelective(comment);
 		if (i>0){

@@ -1,12 +1,15 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.hniu.entity.Chapter;
 import com.hniu.entity.Knowledge;
 import com.hniu.entity.KnowledgeExample;
+import com.hniu.mapper.ChapterMapper;
 import com.hniu.mapper.KnowledgeMapper;
 import com.hniu.service.KnowledgeService;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +25,8 @@ import java.util.List;
 public class KnowledgeServiceImp implements KnowledgeService {
     @Resource
     KnowledgeMapper knowledgeMapper;
-
+    @Resource
+    ChapterMapper chapterMapper;
 
     @Override
     public Page<Knowledge> selectKnowledgeList(Integer currentPage, Integer pageSize) {
@@ -43,6 +47,10 @@ public class KnowledgeServiceImp implements KnowledgeService {
 
     @Override
     public int insertKnowledge(Knowledge knowledge) {
+        Chapter chapter = chapterMapper.selectByPrimaryKey(knowledge.getChapterId());
+        if (StringUtils.isEmpty(chapter)){
+            return 0;
+        }
         int i = knowledgeMapper.insert(knowledge);
         if(i!=0){
             return 1;

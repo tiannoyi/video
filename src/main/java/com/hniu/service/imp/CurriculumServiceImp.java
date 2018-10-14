@@ -2,10 +2,10 @@ package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
 import com.hniu.dto.CurriculumDto;
-import com.hniu.entity.Curriculum;
-import com.hniu.entity.CurriculumExample;
-import com.hniu.entity.CurriculumWithBLOBs;
+import com.hniu.entity.*;
+import com.hniu.mapper.CourseTypeMapper;
 import com.hniu.mapper.CurriculumMapper;
+import com.hniu.mapper.UniversityMapper;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,12 +16,17 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.lang.System;
 import java.util.List;
 
 @Service
 public class CurriculumServiceImp implements CurriculumService {
     @Resource
     CurriculumMapper curriculumMapper;
+    @Resource
+    UniversityMapper universityMapper;
+    @Resource
+    CourseTypeMapper courseTypeMapper;
 
     @Value("${web.picturePath}")
     private String adCurriculumPicturePath;
@@ -52,6 +57,11 @@ public class CurriculumServiceImp implements CurriculumService {
 
     @Override
     public int inputCurriculum(CurriculumWithBLOBs curriculum) {
+        University university = universityMapper.selectByPrimaryKey(curriculum.getUniversityId());
+        CourseType courseType = courseTypeMapper.selectByPrimaryKey(curriculum.getCtId());
+        if(StringUtils.isEmpty(university)||StringUtils.isEmpty(courseType)){
+            return 0;
+        }
         int i = curriculumMapper.insert(curriculum);
         if(i != 0){
             return 1;

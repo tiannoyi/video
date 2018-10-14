@@ -2,8 +2,10 @@ package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
 import com.hniu.dto.VideoDto;
+import com.hniu.entity.Knowledge;
 import com.hniu.entity.Video;
 import com.hniu.entity.VideoExample;
+import com.hniu.mapper.KnowledgeMapper;
 import com.hniu.mapper.VideoMapper;
 import com.hniu.service.VideoService;
 import com.hniu.util.Page;
@@ -28,6 +30,9 @@ public class VideoServiceImpl implements VideoService {
     @Resource
     private VideoMapper videoMapper;
 
+    @Resource
+    KnowledgeMapper knowledgeMapper;
+
     @Value("${web.upload-path}")
     private String adVideoSavePath;
 
@@ -35,6 +40,10 @@ public class VideoServiceImpl implements VideoService {
     private String videoPath;
     @Override
     public Boolean insertVideo(VideoDto videoDto) {
+        Knowledge knowledge = knowledgeMapper.selectByPrimaryKey(videoDto.getKnowledgeId());
+        if(StringUtils.isEmpty(knowledge)){
+            return false;
+        }
         Video video = new Video();
         BeanUtils.copyProperties(videoDto, video);
         if (videoDto.getFile() != null && videoDto.getFile().getSize() > 0) {

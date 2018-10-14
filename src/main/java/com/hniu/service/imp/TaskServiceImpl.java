@@ -1,12 +1,15 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.hniu.entity.Knowledge;
 import com.hniu.entity.Task;
 import com.hniu.entity.TaskExample;
+import com.hniu.mapper.KnowledgeMapper;
 import com.hniu.mapper.TaskMapper;
 import com.hniu.service.TaskService;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import sun.awt.SunHints;
 
 import javax.annotation.Resource;
@@ -18,11 +21,18 @@ import java.util.List;
 @Service("taskService")
 public class TaskServiceImpl implements TaskService {
 
-    @Resource()
+    @Resource
     private TaskMapper taskMapper;
+
+    @Resource
+    KnowledgeMapper knowledgeMapper;
 
     @Override
     public int insertTask(Task task) {
+        Knowledge knowledge = knowledgeMapper.selectByPrimaryKey(task.getKnowledgeId());
+        if(StringUtils.isEmpty(knowledge)){
+            return 0;
+        }
         return taskMapper.insertSelective(task);
     }
 
