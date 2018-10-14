@@ -104,7 +104,7 @@ public class WxLoginServiceImpl implements WxLoginService {
                     //readers = new Readers(1, 3, "微信用户", EncryptUtil.encryption("123",openid ).get("password"), openid, "","" , "", null,new Byte("0") , new Date(), time,new Byte("0"),new Byte("0"), "" ,"");
                     user = new User(3,"微信用户",openid,EncryptUtil.encryption("123",openid ).get("password"),"","","");
                     //rs.insert(readers);
-                    userMapper.insert(user);
+                    userMapper.insertSelective(user);
                     //将数据保存到redis
                     //redisUtil.setObject(uuid,session_key+","+openid+","+readers.getReaderId(),3*24l);
                     redisUtil.setObject(uuid,session_key+","+openid+","+user.getUserId(),3*24l);
