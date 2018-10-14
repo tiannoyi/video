@@ -37,31 +37,33 @@ import com.hniu.util.ChangliangUtil;
  */
 import com.hniu.util.State;
 
+import javax.annotation.Resource;
+
 /*
  * 邓志勇
  */
 @Service
 public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 
-	@Autowired
+	@Resource
 	private CurriculumMapper curriculumMapper;
 	
-	@Autowired
+	@Resource
 	private TutionMapper tutionMapper;
 	
-	@Autowired
+	@Resource
 	private CourseTypeMapper courseTypeMapper;
 	
-	@Autowired
+	@Resource
 	private CommentMapper CommentMapper;
 	
-	@Autowired
+	@Resource
 	private VideoMapper videoMapper;
 	
-	@Autowired
+	@Resource
 	private CommentMapper commentMapper;
 	
-	@Autowired
+	@Resource
 	private AddCurriculumMapper addCurriculumMapper;
 	
 	public Base base=new Base();
@@ -220,7 +222,7 @@ public  class CurriculumStatisticsImpl implements CurriculumStatisticsService {
 		addCurriculum.setTutionId(couresDetails.getTution_id());
 		addCurriculum.setUserId(couresDetails.getUser_id());
 		addCurriculum.setCourseGrade(couresDetails.getScore());
-		addCurriculum.setIsQualified(couresDetails.getRequire());
+		//addCurriculum.setIsQualified(couresDetails.getRequire());
 		int i=addCurriculumMapper.insert(addCurriculum);
 		if (i == 1) {
 			return base.packaging(StateCode.SUCCESS,"加入课程成功", i);

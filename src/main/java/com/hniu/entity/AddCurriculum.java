@@ -9,7 +9,9 @@ public class AddCurriculum {
 
     private Double courseGrade;
 
-    private String isQualified;
+    private Boolean isQualified;
+
+    private Double star;
 
     public Integer getAddId() {
         return addId;
@@ -43,11 +45,19 @@ public class AddCurriculum {
         this.courseGrade = courseGrade;
     }
 
-    public String getIsQualified() {
+    public Boolean getIsQualified() {
         return isQualified;
     }
 
-    public void setIsQualified(String isQualified) {
+    public void setIsQualified(Boolean isQualified) {
         this.isQualified = isQualified;
+    }
+
+    public Double getStar() {
+        return star;
+    }
+
+    public void setStar(Double star) {
+        this.star = star;
     }
 }

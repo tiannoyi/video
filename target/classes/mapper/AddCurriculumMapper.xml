@@ -7,6 +7,7 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="course_grade" property="courseGrade" jdbcType="DOUBLE" />
     <result column="is_qualified" property="isQualified" jdbcType="BIT" />
+    <result column="star" property="star" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    add_id, tution_id, user_id, course_grade, is_qualified
+    add_id, tution_id, user_id, course_grade, is_qualified, star
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.AddCurriculumExample" >
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.hniu.entity.AddCurriculum" >
     insert into tbl_add_curriculum (add_id, tution_id, user_id, 
-      course_grade, is_qualified)
+      course_grade, is_qualified, star
+      )
     values (#{addId,jdbcType=INTEGER}, #{tutionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{courseGrade,jdbcType=DOUBLE}, #{isQualified,jdbcType=BIT})
+      #{courseGrade,jdbcType=DOUBLE}, #{isQualified,jdbcType=BIT}, #{star,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.AddCurriculum" >
     insert into tbl_add_curriculum
@@ -123,6 +126,9 @@
       <if test="isQualified != null" >
         is_qualified,
       </if>
+      <if test="star != null" >
+        star,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="addId != null" >
@@ -139,6 +145,9 @@
       </if>
       <if test="isQualified != null" >
         #{isQualified,jdbcType=BIT},
+      </if>
+      <if test="star != null" >
+        #{star,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -166,6 +175,9 @@
       <if test="record.isQualified != null" >
         is_qualified = #{record.isQualified,jdbcType=BIT},
       </if>
+      <if test="record.star != null" >
+        star = #{record.star,jdbcType=DOUBLE},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +189,8 @@
       tution_id = #{record.tutionId,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       course_grade = #{record.courseGrade,jdbcType=DOUBLE},
-      is_qualified = #{record.isQualified,jdbcType=BIT}
+      is_qualified = #{record.isQualified,jdbcType=BIT},
+      star = #{record.star,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +210,9 @@
       <if test="isQualified != null" >
         is_qualified = #{isQualified,jdbcType=BIT},
       </if>
+      <if test="star != null" >
+        star = #{star,jdbcType=DOUBLE},
+      </if>
     </set>
     where add_id = #{addId,jdbcType=INTEGER}
   </update>
@@ -205,7 +221,67 @@
     set tution_id = #{tutionId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       course_grade = #{courseGrade,jdbcType=DOUBLE},
-      is_qualified = #{isQualified,jdbcType=BIT}
+      is_qualified = #{isQualified,jdbcType=BIT},
+      star = #{star,jdbcType=DOUBLE}
     where add_id = #{addId,jdbcType=INTEGER}
   </update>
+  <resultMap id="AddCurriculumAll" type="com.hniu.entity.vo.AddCurriculumVo" extends="BaseResultMap">
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="tution_id" property="tutionId" jdbcType="INTEGER" />
+    <result column="curriculum_id" property="curriculumId" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="schedules" property="schedules" jdbcType="VARCHAR" />
+    <result column="population" property="population" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="AddCurriculumAll" resultMap="AddCurriculumAll">
+      SELECT a.*,b.*,c.`name`,c.picture,d.user_id,d.user_Name,d.wechat
+      FROM tbl_add_curriculum a LEFT JOIN tbl_tution b
+      ON a.tution_id = b.tution_id
+      LEFT JOIN tbl_curriculum c
+      ON b.curriculum_id = c.curriculum_id
+      LEFT JOIN tbl_user d
+      ON a.user_id = d.user_id
+  </select>
+  <select id="count" resultType="java.lang.Integer">
+    select COUNT(tbl_add_curriculum.add_id)
+    FROM tbl_add_curriculum
+  </select>
+  <select id="selectAddCurriculum" resultMap="AddCurriculumAll">
+    SELECT a.*,b.*,c.`name`,c.picture,d.user_id,d.user_Name,d.wechat
+    FROM tbl_add_curriculum a LEFT JOIN tbl_tution b
+    ON a.tution_id = b.tution_id
+    LEFT JOIN tbl_curriculum c
+    ON b.curriculum_id = c.curriculum_id
+    LEFT JOIN tbl_user d
+    ON a.user_id = d.user_id
+    WHERE a.add_id = #{addId,jdbcType=INTEGER}
+  </select>
+
+  <select id="tutionId" resultType="java.lang.Integer" resultMap="AddCurriculumAll">
+        SELECT a.*,b.*,c.`name`,c.picture,d.user_id,d.user_Name,d.wechat
+        FROM tbl_add_curriculum a LEFT JOIN tbl_tution b
+        ON a.tution_id = b.tution_id
+        LEFT JOIN tbl_curriculum c
+        ON b.curriculum_id = c.curriculum_id
+        LEFT JOIN tbl_user d
+        ON a.user_id = d.user_id
+        WHERE a.tution_id = #{tution_id,jdbcType=INTEGER}
+  </select>
+  <select id="userId" parameterType="java.lang.Integer"  resultMap="AddCurriculumAll">
+       SELECT a.*,b.*,c.`name`,c.picture,d.user_id,d.user_Name,d.wechat
+        FROM tbl_add_curriculum a LEFT JOIN tbl_tution b
+        ON a.tution_id = b.tution_id
+        LEFT JOIN tbl_curriculum c
+        ON b.curriculum_id = c.curriculum_id
+        LEFT JOIN tbl_user d
+        ON a.user_id = d.user_id
+        WHERE a.user_id = #{user_id,jdbcType=INTEGER}
+  </select>
 </mapper>

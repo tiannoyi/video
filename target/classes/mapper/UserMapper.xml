@@ -10,6 +10,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="portrait" property="portrait" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, role_id, user_Name, wechat, password, phone, email, QQ
+    user_id, role_id, user_Name, wechat, password, phone, email, QQ, portrait
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hniu.entity.UserExample" >
     select
@@ -105,10 +106,12 @@
   <insert id="insert" parameterType="com.hniu.entity.User" >
     insert into tbl_user (user_id, role_id, user_Name, 
       wechat, password, phone, 
-      email, QQ)
+      email, QQ, portrait
+      )
     values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
       #{wechat,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{portrait,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.entity.User" >
     insert into tbl_user
@@ -137,6 +140,9 @@
       <if test="qq != null" >
         QQ,
       </if>
+      <if test="portrait != null" >
+        portrait,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -162,6 +168,9 @@
       </if>
       <if test="qq != null" >
         #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="portrait != null" >
+        #{portrait,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +207,9 @@
       <if test="record.qq != null" >
         QQ = #{record.qq,jdbcType=VARCHAR},
       </if>
+      <if test="record.portrait != null" >
+        portrait = #{record.portrait,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +224,8 @@
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      QQ = #{record.qq,jdbcType=VARCHAR}
+      QQ = #{record.qq,jdbcType=VARCHAR},
+      portrait = #{record.portrait,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +254,9 @@
       <if test="qq != null" >
         QQ = #{qq,jdbcType=VARCHAR},
       </if>
+      <if test="portrait != null" >
+        portrait = #{portrait,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
@@ -252,14 +268,17 @@
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      QQ = #{qq,jdbcType=VARCHAR}
+      QQ = #{qq,jdbcType=VARCHAR},
+      portrait = #{portrait,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 
 
   <!--模糊查询 -->
   <select id="getFuzzyquery" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT * FROM tbl_university WHERE (school_name) LIKE '%${name}%'
+    SELECT * FROM tbl_user WHERE (user_name) LIKE '%${name}%'
   </select>
+
+
 
 </mapper>
