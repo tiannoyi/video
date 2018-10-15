@@ -1,7 +1,9 @@
 package com.hniu.controller;
 
+import com.hniu.constan.StateCode;
 import com.hniu.entity.User;
 import com.hniu.service.HelloService;
+import com.hniu.util.State;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class HelloController {
+public class HelloController extends Base{
 
     @Autowired
     HelloService helloService;
@@ -26,10 +28,10 @@ public class HelloController {
     }
 */
 
-//    @GetMapping("hello")
-//    public String s2() {
-//        return "hello";
-//    }
+   @GetMapping("null")
+    public State<Object> s2() {
+       return packaging(StateCode.SUCCESS,"成功",null);
+  }
 //
 //    @RequiresPermissions("per")
 //    @GetMapping("hello2")
