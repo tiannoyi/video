@@ -24,4 +24,7 @@ public interface TeacherService {
     //根据教师姓名进行模糊查询
     Page<Teacher> byName(String name, Integer currentPage, Integer pageSize);
 
+    //根据admin_id查询教师信息
+    Teacher adminId(Integer admin_id);
+
 }

@@ -116,4 +116,14 @@ public class TeacherController extends Base {
         }
     }
 
+    //根据admin_id查询教师信息
+    @GetMapping("/adminId/{admin_id}")
+    public State<Object> adminId(@PathVariable("admin_id") Integer admin_id){
+        Teacher teacher = teacherService.adminId(admin_id);
+        if(!StringUtils.isEmpty(teacher)){
+            return packaging(StateCode.SUCCESS,"教师查询成功",teacher);
+        }
+        return  packaging(StateCode.FAIL,"教师查询失败",null);
+    }
+
 }

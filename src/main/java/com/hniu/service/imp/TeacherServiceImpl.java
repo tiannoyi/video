@@ -81,6 +81,8 @@ public class TeacherServiceImpl implements TeacherService {
         }
         Teacher teacher = new Teacher();
         BeanUtils.copyProperties(teacherDto,teacher);
+        teacher.setAccount(null);
+        teacher.setPassword(null);
         if(teacherDto.getFile()!=null&&teacherDto.getFile().getSize()>0){
             String fileName = System.currentTimeMillis()+"_"+teacherDto.getFile().getOriginalFilename();
             File file = new File(adVideoSavePath+fileName);
@@ -148,5 +150,17 @@ public class TeacherServiceImpl implements TeacherService {
         com.hniu.util.Page<Teacher> pageData = new com.hniu.util.Page<>(currentPage,pageSize,countNums);
         pageData.setList(allTeacher);
         return pageData;
+    }
+
+    @Override
+    public Teacher adminId(Integer admin_id) {
+        TeacherExample example = new TeacherExample();
+        String adminId = admin_id.toString();
+        example.createCriteria().andAccountEqualTo(adminId);
+        List<Teacher> list = teacherMapper.selectByExample(example);
+        if (list.size()>0){
+            return list.get(0);
+        }
+        return new Teacher();
     }
 }
