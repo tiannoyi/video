@@ -214,7 +214,7 @@ public class CurriculumServiceImp implements CurriculumService {
     public Page<CurriculumDto> curriculumAndTutionPage(Integer currentPage, Integer pageSize) {
         PageHelper.startPage(currentPage,pageSize);
         List<CurriculumDto> allCurriculumDto = curriculumMapper.curriculumAndTution();
-        int countNums = curriculumMapper.count();
+        int countNums = allCurriculumDto.size();
         Page<CurriculumDto> pageData = new Page<>(currentPage,pageSize,countNums);
         pageData.setList(allCurriculumDto);
         return pageData;
