@@ -238,6 +238,7 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="main_teacher" property="mainTeacher" jdbcType="VARCHAR" />
   </resultMap>
 
   <select id="AddCurriculumAll" resultMap="AddCurriculumAll">
@@ -275,7 +276,7 @@
         WHERE a.tution_id = #{tution_id,jdbcType=INTEGER}
   </select>
   <select id="userId" parameterType="java.lang.Integer"  resultMap="AddCurriculumAll">
-       SELECT a.*,b.*,c.`name`,c.picture,d.user_id,d.user_Name,d.wechat
+       SELECT a.*,b.*,c.`name`,c.`main_teacher`,c.picture,d.user_id,d.user_Name,d.wechat
         FROM tbl_add_curriculum a LEFT JOIN tbl_tution b
         ON a.tution_id = b.tution_id
         LEFT JOIN tbl_curriculum c

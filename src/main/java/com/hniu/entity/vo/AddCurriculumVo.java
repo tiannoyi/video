@@ -39,6 +39,8 @@ public class AddCurriculumVo extends AddCurriculum {
 
     private String picture;
 
+    private String mainTeacher;
+
     @Override
     public Integer getUserId() {
         return userId;
@@ -137,5 +139,13 @@ public class AddCurriculumVo extends AddCurriculum {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getMainTeacher() {
+        return mainTeacher;
+    }
+
+    public void setMainTeacher(String mainTeacher) {
+        this.mainTeacher = mainTeacher;
     }
 }

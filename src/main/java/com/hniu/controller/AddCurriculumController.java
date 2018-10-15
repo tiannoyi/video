@@ -122,7 +122,7 @@ public class AddCurriculumController extends Base{
             return packaging(com.hniu.constan.StateCode.FAIL,"此用户不存在",null);
         }
         String[] split = object.split(",");
-        addCurriculum.setTutionId(Integer.parseInt(split[2]));
+        addCurriculum.setUserId(Integer.parseInt(split[2]));
         int i = addCurriculumService.insertAddCurriculum(addCurriculum);
         if(i>0){
             return packaging(StateCode.SUCCESS,"添加成功",null);

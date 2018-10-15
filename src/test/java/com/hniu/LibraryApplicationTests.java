@@ -1,5 +1,6 @@
 package com.hniu;
 
+import com.hniu.util.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,12 @@ import java.sql.SQLException;
 @SpringBootTest
 public class LibraryApplicationTests {
     @Autowired
-    DataSource dataSource;
+    RedisUtil re;
+
+    @Test
+    public void hello(){
+        re.setObject("h2","v2");
+        System.out.println(re.getObject("h2"));
+    }
 
 }
