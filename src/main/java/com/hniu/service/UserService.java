@@ -28,6 +28,7 @@ public interface UserService {
     //模糊查询
 	State<Object> getFuzzyquery(String name);
 
-	
+	//插入用户
+	User insertUser(User user);
 	
 }

@@ -181,6 +181,12 @@ public class UserServieImpl implements UserService{
 		}
 		return base.packaging(StateCode.FAIL, ChangliangUtil.QUERYFAIL,listUser);
 	}
-	
+
+	@Override
+	public User insertUser(User user) {
+		userMapper.insertUser(user);
+		return user;
+	}
+
 
 }

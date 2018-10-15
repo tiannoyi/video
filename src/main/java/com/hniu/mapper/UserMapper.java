@@ -29,4 +29,10 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     List<User> getFuzzyquery(@Param("name") String name);
+
+    //微信号查询用户信息
+    User selectBywechat(String wechat);
+
+    //插入用户并返回插入对象
+    int insertUser(User user);
 }

@@ -24,6 +24,9 @@ public class AddCurriculumController extends Base{
     @Autowired
     AddCurriculumService addCurriculumService;
 
+    @Autowired
+    RedisUtil redisUtil;
+
     //分页查询加入课程信息
     @GetMapping("/addCurriculumPage")
     public State<Object> addCurriculumPage(Integer currentPage, Integer pageSize){
@@ -80,8 +83,7 @@ public class AddCurriculumController extends Base{
         if (currentPage==null||pageSize==null){
             return packaging(StateCode.FAIL,"请输入页数和总数",null);
         }
-        RedisUtil redisUtil = new RedisUtil();
-        String object = (String)  redisUtil.getObject(token);
+        String object = (String) redisUtil.getObject(token);
         if(object == null){
             return packaging(StateCode.FAIL,"查询失败",null);
         }
@@ -101,6 +103,26 @@ public class AddCurriculumController extends Base{
         if(StringUtils.isEmpty(addCurriculum)){
             return packaging(StateCode.FAIL,"添加失败",null);
         }
+        int i = addCurriculumService.insertAddCurriculum(addCurriculum);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"添加成功",null);
+        }
+        return packaging(StateCode.FAIL,"添加失败",null);
+    }
+
+
+    //微信加入课程
+    @PostMapping("/wx_insertaddCurriculum/{token}")
+    public State<Object> wx_insertAddCurriculum(@PathVariable("token")String token, AddCurriculum addCurriculum){
+        if(StringUtils.isEmpty(addCurriculum)){
+            return packaging(StateCode.FAIL,"添加失败",null);
+        }
+        String object = (String)redisUtil.getObject(token);
+        if(object==null){
+            return packaging(com.hniu.constan.StateCode.FAIL,"此用户不存在",null);
+        }
+        String[] split = object.split(",");
+        addCurriculum.setTutionId(Integer.parseInt(split[2]));
         int i = addCurriculumService.insertAddCurriculum(addCurriculum);
         if(i>0){
             return packaging(StateCode.SUCCESS,"添加成功",null);

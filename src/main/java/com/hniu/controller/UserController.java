@@ -20,6 +20,9 @@ public class UserController extends Base{
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	RedisUtil redisUtil;
 	
 	public StateCode StateCode;
 	
@@ -53,7 +56,6 @@ public class UserController extends Base{
     //微信查询用户信息
 	@GetMapping("/user/wx_selectUser/{token}")
 	public State<Object> wx_getUser(@PathVariable("token")String token){
-		RedisUtil redisUtil = new RedisUtil();
 		String object = (String) redisUtil.getObject(token);
 		if(object==null){
 			return packaging(com.hniu.constan.StateCode.FAIL,"查询失败",null);
@@ -85,7 +87,6 @@ public class UserController extends Base{
 		if(StringUtils.isEmpty(userDto)){
 			return packaging(StateCode.FAIL,"修改失败",null);
 		}
-		RedisUtil redisUtil = new RedisUtil();
 		String object = (String) redisUtil.getObject(token);
 		if(object==null){
 			return packaging(com.hniu.constan.StateCode.FAIL,"查询失败",null);

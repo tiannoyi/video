@@ -7,12 +7,14 @@ import com.hniu.entity.User;
 import com.hniu.entity.UserExample;
 import com.hniu.exception.SystemErrorException;
 import com.hniu.mapper.UserMapper;
+import com.hniu.service.UserService;
 import com.hniu.service.WxLoginService;
 import com.hniu.util.EncryptUtil;
 import com.hniu.util.RedisUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,9 @@ public class WxLoginServiceImpl implements WxLoginService {
 
     @Autowired
     ObjectMapper objectMapper;
+
+    @Autowired
+    UserService userService;
 
 
     @Resource
@@ -80,10 +85,7 @@ public class WxLoginServiceImpl implements WxLoginService {
                 uuid = UUID.randomUUID().toString().replace("-", "");
                 Subject subject = SecurityUtils.getSubject();
                 //查询数据库是否有这个微信号登录过 --------------
-                UserExample example = new UserExample();
-                example.createCriteria().andWechatEqualTo(openid);
-                List<User> listUser = userMapper.selectByExample(example);
-                User user = null;
+               User user = userMapper.selectBywechat(openid);
                 //Readers readers = rs.selectByWechat(openid);
                 //没有就生成一个
                 /*if(readers == null){
@@ -96,19 +98,16 @@ public class WxLoginServiceImpl implements WxLoginService {
                     //将数据保存到redis
                     redisUtil.setObject(uuid,session_key+","+openid+","+readers.getReaderId(),3*24l);
                 }*/
-                if(listUser.size() <= 0){
-                    Calendar rightNow = Calendar.getInstance();
-                    rightNow.setTime(new Date());
-                    rightNow.add(Calendar.YEAR, 3);
-                    Date time = rightNow.getTime();
+                if(user == null) {
                     //readers = new Readers(1, 3, "微信用户", EncryptUtil.encryption("123",openid ).get("password"), openid, "","" , "", null,new Byte("0") , new Date(), time,new Byte("0"),new Byte("0"), "" ,"");
-                    user = new User(3,"微信用户",openid,EncryptUtil.encryption("123",openid ).get("password"),"","","");
+                   user = new User(3, "微信用户", openid, EncryptUtil.encryption("123", openid).get("password"), "", "", "");
                     //rs.insert(readers);
-                    userMapper.insertSelective(user);
+                    user = userService.insertUser(user);
+                }
                     //将数据保存到redis
                     //redisUtil.setObject(uuid,session_key+","+openid+","+readers.getReaderId(),3*24l);
                     redisUtil.setObject(uuid,session_key+","+openid+","+user.getUserId(),3*24l);
-                }
+
                 //登录
                 //subject.login(new UsernamePasswordToken(readers.getWechat(),readers.getPassword()));
                 //subject.login(new UsernamePasswordToken(user.getWechat(),user.getPassword()));

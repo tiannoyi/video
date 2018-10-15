@@ -25,6 +25,8 @@ import java.util.List;
 public class PerformanceController extends Base{
     @Autowired
     PerformanceService performanceService;
+    @Autowired
+    RedisUtil redisUtil;
 
     //分页查询所有题目成绩
     @GetMapping("/performancePage")
@@ -68,8 +70,7 @@ public class PerformanceController extends Base{
         if (currentPage==null||pageSize==null){
             return packaging(StateCode.FAIL,"请输入页数和总数",null);
         }
-        RedisUtil redisUtil = new RedisUtil();
-        String object = (String)  redisUtil.getObject(token);
+        String object = (String)redisUtil.getObject(token);
         if(object == null){
             return packaging(StateCode.FAIL,"查询失败",null);
         }
@@ -96,7 +97,6 @@ public class PerformanceController extends Base{
     //微信端根据知识目录（小结id）和用户id查询成绩信息
     @GetMapping("/wx_userIdAndKnowledgeId/{token}")
     public State<Object> wx_userIdAndKnowledgeId(@PathVariable("token")String token,Integer knowledge_id){
-        RedisUtil redisUtil = new RedisUtil();
         String object = (String)  redisUtil.getObject(token);
         if(object == null){
             return packaging(StateCode.FAIL,"查询失败",null);
@@ -125,6 +125,27 @@ public class PerformanceController extends Base{
         }
         return packaging(StateCode.FAIL,"添加失败",null);
     }
+
+    //微信添加成绩
+    @PostMapping("/wx_insertPerformance/{token}")
+    public State<Object>wx_insertPerformance(@PathVariable("token")String token, Performance performance){
+        if(StringUtils.isEmpty(performance)){
+            return packaging(StateCode.FAIL,"添加失败",null);
+        }
+        String object = (String)redisUtil.getObject(token);
+        if(object == null){
+            return packaging(StateCode.FAIL,"查询失败",null);
+        }
+        String[] split = object.split(",");
+        Integer user_id = Integer.parseInt(split[2]);
+        performance.setUserId(user_id);
+        int i = performanceService.insertPerformance(performance);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"添加成功",null);
+        }
+        return packaging(StateCode.FAIL,"添加失败",null);
+    }
+
 
     //修改成绩
     @PutMapping()

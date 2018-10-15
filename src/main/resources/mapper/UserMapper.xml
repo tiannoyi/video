@@ -280,5 +280,75 @@
   </select>
 
 
+  <select id="selectBywechat" parameterType="java.lang.String" resultMap="BaseResultMap">
+      SELECT user_id, role_id, user_Name, wechat, password, phone, email, QQ, portrait
+      FROM tbl_user
+      WHERE wechat = #{wechat,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="insertUser" parameterType="com.hniu.entity.User" keyProperty="userId" useGeneratedKeys="true">
+    insert into tbl_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="userName != null" >
+        user_Name,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="portrait != null" >
+        portrait,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="portrait != null" >
+        #{portrait,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
 
 </mapper>

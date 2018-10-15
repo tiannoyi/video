@@ -23,6 +23,9 @@ public class CommentController extends Base{
 
 	@Autowired
 	private CommentService commentService;
+
+	@Autowired
+	RedisUtil redisUtil;
 	
 	public Base base=new Base();
 	
@@ -80,13 +83,13 @@ public class CommentController extends Base{
 		if (StringUtils.isEmpty(comment)){
 			return packaging(com.hniu.constan.StateCode.FAIL,"评论添加失败",null);
 		}
-		RedisUtil ru = new RedisUtil();
-		String object = (String)ru.getObject(token);
+		String object = (String)redisUtil.getObject(token);
 		if(object==null){
 			return packaging(com.hniu.constan.StateCode.FAIL,"此用户不存在",null);
 		}
 		String[] split = object.split(",");
-		comment.setUserId(Integer.parseInt(split[2]));
+		Integer id = Integer.parseInt(split[2]);
+		comment.setUserId(id);
 		int i = commentService.insertComment(comment);
 		if(i>0){
 			return packaging(com.hniu.constan.StateCode.SUCCESS,"评论添加成功",null);
