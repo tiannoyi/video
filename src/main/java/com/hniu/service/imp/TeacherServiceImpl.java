@@ -3,14 +3,18 @@ package com.hniu.service.imp;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hniu.dto.TeacherDto;
+import com.hniu.entity.Give;
+import com.hniu.entity.GiveExample;
 import com.hniu.entity.Teacher;
 import com.hniu.entity.TeacherExample;
+import com.hniu.mapper.GiveMapper;
 import com.hniu.mapper.TeacherMapper;
 import com.hniu.service.TeacherService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -26,6 +30,8 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Resource
     private TeacherMapper teacherMapper;
+    @Resource
+    GiveMapper giveMapper;
 
     @Value("${web.upload-path}")
     private String adVideoSavePath;
@@ -109,6 +115,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public int deleteTeacher(int teacherId) {
+        GiveExample example = new GiveExample();
+        example.createCriteria().andCurriculumIdEqualTo(teacherId);
+        List<Give> list = giveMapper.selectByExample(example);
+
+        if (list.size()>0){
+            return 0;
+        }
         String endString = null;
         Teacher t = teacherMapper.selectByPrimaryKey(teacherId);
         if(!StringUtils.isEmpty(t)) {

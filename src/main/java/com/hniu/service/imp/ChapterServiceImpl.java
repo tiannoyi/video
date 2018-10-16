@@ -1,12 +1,10 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
-import com.hniu.entity.Chapter;
-import com.hniu.entity.ChapterExample;
-import com.hniu.entity.Curriculum;
-import com.hniu.entity.CurriculumWithBLOBs;
+import com.hniu.entity.*;
 import com.hniu.mapper.ChapterMapper;
 import com.hniu.mapper.CurriculumMapper;
+import com.hniu.mapper.KnowledgeMapper;
 import com.hniu.service.ChapterService;
 import com.hniu.util.Page;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +23,8 @@ public class ChapterServiceImpl implements ChapterService {
     private ChapterMapper chapterMapper;
     @Resource
     CurriculumMapper curriculumMapper;
+    @Resource
+    KnowledgeMapper knowledgeMapper;
     @Override
     public int insertChapter(Chapter chapter) {
         CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(chapter.getCurriculumId());
@@ -41,6 +41,12 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public int deleteChapter(Integer chapterId) {
+        KnowledgeExample example = new KnowledgeExample();
+        example.createCriteria().andChapterIdEqualTo(chapterId);
+        List<Knowledge> list = knowledgeMapper.selectByExample(example);
+        if(list.size()>0){
+            return 0;
+        }
         return chapterMapper.deleteByPrimaryKey(chapterId);
     }
 

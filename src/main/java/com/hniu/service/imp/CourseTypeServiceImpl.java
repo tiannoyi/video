@@ -4,9 +4,13 @@ import com.github.pagehelper.PageHelper;
 import com.hniu.dto.CourseTypeDto;
 import com.hniu.entity.CourseType;
 import com.hniu.entity.CourseTypeExample;
+import com.hniu.entity.Curriculum;
+import com.hniu.entity.CurriculumExample;
 import com.hniu.mapper.CourseTypeMapper;
+import com.hniu.mapper.CurriculumMapper;
 import com.hniu.service.CourseTypeService;
 import com.hniu.util.Page;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,6 +31,8 @@ import java.util.List;
 public class CourseTypeServiceImpl implements CourseTypeService {
     @Resource
     CourseTypeMapper courseTypeMapper;
+    @Resource
+    CurriculumMapper curriculumMapper;
 
     @Value("${web.courseTypePath}")
     private String courseTypePicture;
@@ -116,6 +122,12 @@ public class CourseTypeServiceImpl implements CourseTypeService {
 
     @Override
     public int deleceCourseType(Integer ct_id) {
+        CurriculumExample example = new CurriculumExample();
+        example.createCriteria().andCtIdEqualTo(ct_id);
+        List<Curriculum> list = curriculumMapper.selectByExample(example);
+        if (list.size()>0){
+            return 0;
+        }
         String endString = null;
         CourseType c = courseTypeMapper.selectByPrimaryKey(ct_id);
         if(!StringUtils.isEmpty(c)) {

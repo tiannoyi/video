@@ -1,14 +1,14 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
-import com.hniu.entity.CurriculumExample;
-import com.hniu.entity.CurriculumWithBLOBs;
-import com.hniu.entity.Tution;
-import com.hniu.entity.TutionExample;
+import com.hniu.entity.*;
+import com.hniu.mapper.AddCurriculumMapper;
+import com.hniu.mapper.AnnouncementMapper;
 import com.hniu.mapper.CurriculumMapper;
 import com.hniu.mapper.TutionMapper;
 import com.hniu.service.TutionService;
 import com.hniu.util.Page;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +23,10 @@ public class TutionServiceImp implements TutionService {
     TutionMapper tutionMapper;
     @Resource
     CurriculumMapper curriculumMapper;
+    @Resource
+    AnnouncementMapper announcementMapper;
+    @Resource
+    AddCurriculumMapper addCurriculumMapper;
 
 
     @Override
@@ -94,6 +98,18 @@ public class TutionServiceImp implements TutionService {
 
     @Override
     public int deleteTution(Integer tution_id) {
+        AnnouncementExample announcementExample = new AnnouncementExample();
+        announcementExample.createCriteria().andTutionIdEqualTo(tution_id);
+        List<Announcement> list = announcementMapper.selectByExample(announcementExample);
+
+        AddCurriculumExample addCurriculumExample = new AddCurriculumExample();
+        addCurriculumExample.createCriteria().andTutionIdEqualTo(tution_id);
+        List<AddCurriculum> list1 = addCurriculumMapper.selectByExample(addCurriculumExample);
+
+        if(list.size()>0||list1.size()>0){
+            return  0;
+        }
+
         int i = tutionMapper.deleteByPrimaryKey(tution_id);
         if(i != 0){
             return 1;

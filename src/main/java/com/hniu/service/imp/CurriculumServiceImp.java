@@ -3,11 +3,10 @@ package com.hniu.service.imp;
 import com.github.pagehelper.PageHelper;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.*;
-import com.hniu.mapper.CourseTypeMapper;
-import com.hniu.mapper.CurriculumMapper;
-import com.hniu.mapper.UniversityMapper;
+import com.hniu.mapper.*;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -27,6 +26,14 @@ public class CurriculumServiceImp implements CurriculumService {
     UniversityMapper universityMapper;
     @Resource
     CourseTypeMapper courseTypeMapper;
+    @Resource
+    ChapterMapper chapterMapper;
+    @Resource
+    GiveMapper giveMapper;
+    @Resource
+    TutionMapper tutionMapper;
+    @Resource
+    CommentMapper commentMapper;
 
     @Value("${web.picturePath}")
     private String adCurriculumPicturePath;
@@ -84,6 +91,27 @@ public class CurriculumServiceImp implements CurriculumService {
 
     @Override
     public int deleteCurriculum(int curriculum_id) {
+        ChapterExample chapterExample = new ChapterExample();
+        chapterExample.createCriteria().andCurriculumIdEqualTo(curriculum_id);
+        List<Chapter> list = chapterMapper.selectByExample(chapterExample);
+
+        GiveExample giveExample = new GiveExample();
+        giveExample.createCriteria().andCurriculumIdEqualTo(curriculum_id);
+        List<Give> list1 = giveMapper.selectByExample(giveExample);
+
+
+        TutionExample tutionExample = new TutionExample();
+        tutionExample.createCriteria().andCurriculumIdEqualTo(curriculum_id);
+        List<Tution> list2 = tutionMapper.selectByExample(tutionExample);
+
+        CommentExample commentExample = new CommentExample();
+        commentExample.createCriteria().andCurriculumIdEqualTo(curriculum_id);
+        List<Comment> list3 = commentMapper.selectByExample(commentExample);
+
+        if (list.size()>0||list1.size()>0||list2.size()>0||list3.size()>0){
+            return  0;
+        }
+
         int i = curriculumMapper.deleteByPrimaryKey(curriculum_id);
         if(i != 0){
             return 1;

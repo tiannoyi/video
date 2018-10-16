@@ -2,6 +2,9 @@ package com.hniu.service.imp;
 
 import java.util.List;
 
+import com.hniu.entity.Curriculum;
+import com.hniu.entity.CurriculumExample;
+import com.hniu.mapper.CurriculumMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,7 @@ import com.hniu.service.SchoolService;
 import com.hniu.util.ChangliangUtil;
 
 import com.hniu.util.State;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -30,6 +34,9 @@ public class SchoolServiceImpl implements SchoolService{
 	
 	@Resource
 	private UniversityMapper universityMapper;
+
+	@Resource
+	CurriculumMapper curriculumMapper;
 	
 	public Base base=new Base();
 	
@@ -69,6 +76,12 @@ public class SchoolServiceImpl implements SchoolService{
 
 	@Override 
 	public  State<Object> deleteSchool(Integer id) {
+		CurriculumExample example = new CurriculumExample();
+		example.createCriteria().andUniversityIdEqualTo(id);
+		List<Curriculum> list = curriculumMapper.selectByExample(example);
+		if(list.size()>0){
+			return  base.packaging(com.hniu.constan.StateCode.FAIL,"删除失败",null);
+		}
 		int deleteByPrimaryKey = universityMapper.deleteByPrimaryKey(id);
 		if (deleteByPrimaryKey == 1) {
 			return base.packaging(StateCode.SUCCESS, ChangliangUtil.DELETESUCCESS, deleteByPrimaryKey);

@@ -3,9 +3,15 @@ package com.hniu.service.imp;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.System;
 import java.util.List;
 
 import com.hniu.dto.UserDto;
+import com.hniu.entity.*;
+import com.hniu.mapper.AddCurriculumMapper;
+import com.hniu.mapper.CommentMapper;
+import com.hniu.mapper.PerformanceMapper;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,8 +22,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hniu.constan.StateCode;
 import com.hniu.controller.Base;
-import com.hniu.entity.User;
-import com.hniu.entity.UserExample;
 import com.hniu.entity.UserExample.Criteria;
 import com.hniu.mapper.UserMapper;
 import com.hniu.service.UserService;
@@ -36,6 +40,13 @@ public class UserServieImpl implements UserService{
 
 	@Resource
 	private UserMapper userMapper;
+
+	@Resource
+	AddCurriculumMapper addCurriculumMapper;
+	@Resource
+	CommentMapper commentMapper;
+	@Resource
+	PerformanceMapper performanceMapper;
 	
 	public Base base=new Base();
 	
@@ -136,6 +147,23 @@ public class UserServieImpl implements UserService{
 
 	@Override
 	public int deleteUser(Integer user_id) {
+		PerformanceExample performanceExample = new PerformanceExample();
+		performanceExample.createCriteria().andUserIdEqualTo(user_id);
+		List<Performance> list = performanceMapper.selectByExample(performanceExample);
+
+
+		CommentExample commentExample = new CommentExample();
+		commentExample.createCriteria().andUserIdEqualTo(user_id);
+		List<Comment> list1 = commentMapper.selectByExample(commentExample);
+
+		AddCurriculumExample addCurriculumExample = new AddCurriculumExample();
+		addCurriculumExample.createCriteria().andUserIdEqualTo(user_id);
+		List<AddCurriculum> list2 = addCurriculumMapper.selectByExample(addCurriculumExample);
+
+		if(list.size()>0||list1.size()>0||list2.size()>0){
+			return 0;
+		}
+
 		String endString = null;
 		User u = userMapper.selectByPrimaryKey(user_id);
 		if(!StringUtils.isEmpty(u)) {

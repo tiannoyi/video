@@ -1,13 +1,13 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
-import com.hniu.entity.Knowledge;
-import com.hniu.entity.Task;
-import com.hniu.entity.TaskExample;
+import com.hniu.entity.*;
 import com.hniu.mapper.KnowledgeMapper;
+import com.hniu.mapper.PerformanceMapper;
 import com.hniu.mapper.TaskMapper;
 import com.hniu.service.TaskService;
 import com.hniu.util.Page;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import sun.awt.SunHints;
@@ -23,6 +23,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Resource
     private TaskMapper taskMapper;
+    @Resource
+    PerformanceMapper performanceMapper;
 
     @Resource
     KnowledgeMapper knowledgeMapper;
@@ -43,6 +45,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public int deleteTask(int taskId) {
+        PerformanceExample example = new PerformanceExample();
+        example.createCriteria().andTaskIdEqualTo(taskId);
+        List<Performance> list = performanceMapper.selectByExample(example);
+        if (list.size()>0){
+            return 0;
+        }
         return taskMapper.deleteByPrimaryKey(taskId);
     }
 

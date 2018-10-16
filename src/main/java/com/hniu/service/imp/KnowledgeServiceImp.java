@@ -1,11 +1,8 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
-import com.hniu.entity.Chapter;
-import com.hniu.entity.Knowledge;
-import com.hniu.entity.KnowledgeExample;
-import com.hniu.mapper.ChapterMapper;
-import com.hniu.mapper.KnowledgeMapper;
+import com.hniu.entity.*;
+import com.hniu.mapper.*;
 import com.hniu.service.KnowledgeService;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Service;
@@ -27,6 +24,12 @@ public class KnowledgeServiceImp implements KnowledgeService {
     KnowledgeMapper knowledgeMapper;
     @Resource
     ChapterMapper chapterMapper;
+    @Resource
+    TaskMapper taskMapper;
+    @Resource
+    ArticleMapper articleMapper;
+    @Resource
+    VideoMapper videoMapper;
 
     @Override
     public Page<Knowledge> selectKnowledgeList(Integer currentPage, Integer pageSize) {
@@ -73,6 +76,22 @@ public class KnowledgeServiceImp implements KnowledgeService {
 
     @Override
     public int deleteKnowledge(Integer knowledge_Id) {
+        VideoExample videoexample = new VideoExample();
+        videoexample.createCriteria().andKnowledgeIdEqualTo(knowledge_Id);
+        List<Video> list = videoMapper.selectByExample(videoexample);
+
+        ArticleExample articleExample = new ArticleExample();
+        articleExample.createCriteria().andKnowledgeIdEqualTo(knowledge_Id);
+        List<Article> list1 = articleMapper.selectByExample(articleExample);
+
+        TaskExample taskExample = new TaskExample();
+        taskExample.createCriteria().andKnowledgeIdEqualTo(knowledge_Id);
+        List<Task> list2 =taskMapper.selectByExample(taskExample);
+
+        if (list.size()>0||list1.size()>0||list2.size()>0){
+            return 0;
+        }
+
         int i = knowledgeMapper.deleteByPrimaryKey(knowledge_Id);
         if(i != 0){
             return  1;
