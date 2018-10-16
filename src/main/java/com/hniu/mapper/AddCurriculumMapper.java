@@ -45,4 +45,7 @@ public interface AddCurriculumMapper {
     //根据用户id查询开课信息
     List<AddCurriculumVo> userId(Integer user_id);
 
+    //插入加入课程
+    int insertAddCurriculum(AddCurriculum addCurriculum);
+
 }

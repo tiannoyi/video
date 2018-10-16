@@ -74,18 +74,24 @@ public class AddCurriculumServiceImpl implements AddCurriculumService {
     }
 
     @Override
-    public int insertAddCurriculum(AddCurriculum addCurriculum) {
+    public AddCurriculum insertAddCurriculum(AddCurriculum addCurriculum) {
         User user = userMapper.selectByPrimaryKey(addCurriculum.getUserId());
         Tution tution = tutionMapper.selectByPrimaryKey(addCurriculum.getTutionId());
         if(StringUtils.isEmpty(user)||StringUtils.isEmpty(tution)){
-            return 0;
+            return null;
+        }
+        AddCurriculumExample example = new AddCurriculumExample();
+        example.createCriteria().andUserIdEqualTo(addCurriculum.getUserId()).andTutionIdEqualTo(addCurriculum.getTutionId());
+        List<AddCurriculum> lists = addCurriculumMapper.selectByExample(example);
+        if(lists.size()>0) {
+            return null;
         }
         addCurriculum.setStar(null);
-        int i = addCurriculumMapper.insertSelective(addCurriculum);
+       int i = addCurriculumMapper.insertAddCurriculum(addCurriculum);
         if(i>0){
-            return 1;
+            return addCurriculum;
         }
-        return 0;
+        return null;
     }
 
     @Override
@@ -106,5 +112,34 @@ public class AddCurriculumServiceImpl implements AddCurriculumService {
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public int wx_deleteAddCurriculum(Integer user_id, Integer tution_id) {
+        if(user_id == null || tution_id == null){
+            return 0;
+        }
+        AddCurriculumExample example = new AddCurriculumExample();
+        example.createCriteria().andUserIdEqualTo(user_id).andTutionIdEqualTo(tution_id);
+        int i = addCurriculumMapper.deleteByExample(example);
+        if (i>0){
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public AddCurriculum wx_selectAddId(Integer user_id, Integer tution_id) {
+        if(user_id == null || tution_id == null){
+            return null;
+        }
+        AddCurriculumExample example = new AddCurriculumExample();
+        example.createCriteria().andUserIdEqualTo(user_id).andTutionIdEqualTo(tution_id);
+        List<AddCurriculum> list = addCurriculumMapper.selectByExample(example);
+        if(list.size()>0){
+            AddCurriculum addCurriculum = list.get(0);
+            return addCurriculum;
+        }
+        return null;
     }
 }

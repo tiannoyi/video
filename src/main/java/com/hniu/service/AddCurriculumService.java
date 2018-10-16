@@ -29,7 +29,7 @@ public interface AddCurriculumService {
     Page<AddCurriculumVo> userId(Integer user_id,Integer currentPage, Integer pageSize);
 
     //加入课程
-    int insertAddCurriculum(AddCurriculum addCurriculum);
+    AddCurriculum insertAddCurriculum(AddCurriculum addCurriculum);
 
 
     //修改加入课程
@@ -38,4 +38,9 @@ public interface AddCurriculumService {
     //删除加入课程
     int deleteAddCurriculum(Integer add_id);
 
+    //微信取消收藏
+    int wx_deleteAddCurriculum(Integer user_id,Integer tution_id);
+
+    //通过token和开课id查询加入课程id
+    AddCurriculum wx_selectAddId(Integer user_id,Integer tution_id);
 }

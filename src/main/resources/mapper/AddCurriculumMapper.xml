@@ -285,4 +285,47 @@
         ON a.user_id = d.user_id
         WHERE a.user_id = #{user_id,jdbcType=INTEGER}
   </select>
+  <insert id="insertAddCurriculum" parameterType="com.hniu.entity.AddCurriculum" keyProperty="addId" useGeneratedKeys="true">
+    insert into tbl_add_curriculum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        add_id,
+      </if>
+      <if test="tutionId != null" >
+        tution_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="courseGrade != null" >
+        course_grade,
+      </if>
+      <if test="isQualified != null" >
+        is_qualified,
+      </if>
+      <if test="star != null" >
+        star,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        #{addId,jdbcType=INTEGER},
+      </if>
+      <if test="tutionId != null" >
+        #{tutionId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="courseGrade != null" >
+        #{courseGrade,jdbcType=DOUBLE},
+      </if>
+      <if test="isQualified != null" >
+        #{isQualified,jdbcType=BIT},
+      </if>
+      <if test="star != null" >
+        #{star,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
 </mapper>

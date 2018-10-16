@@ -7,6 +7,7 @@ import com.hniu.service.AddCurriculumService;
 import com.hniu.util.Page;
 import com.hniu.util.RedisUtil;
 import com.hniu.util.State;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -103,9 +104,9 @@ public class AddCurriculumController extends Base{
         if(StringUtils.isEmpty(addCurriculum)){
             return packaging(StateCode.FAIL,"添加失败",null);
         }
-        int i = addCurriculumService.insertAddCurriculum(addCurriculum);
-        if(i>0){
-            return packaging(StateCode.SUCCESS,"添加成功",null);
+       AddCurriculum addCurriculum1 = addCurriculumService.insertAddCurriculum(addCurriculum);
+        if(!StringUtils.isEmpty(addCurriculum1)){
+            return packaging(StateCode.SUCCESS,"添加成功",addCurriculum1);
         }
         return packaging(StateCode.FAIL,"添加失败",null);
     }
@@ -123,9 +124,9 @@ public class AddCurriculumController extends Base{
         }
         String[] split = object.split(",");
         addCurriculum.setUserId(Integer.parseInt(split[2]));
-        int i = addCurriculumService.insertAddCurriculum(addCurriculum);
-        if(i>0){
-            return packaging(StateCode.SUCCESS,"添加成功",null);
+        AddCurriculum addCurriculum1 = addCurriculumService.insertAddCurriculum(addCurriculum);
+        if(!StringUtils.isEmpty(addCurriculum1)){
+            return packaging(StateCode.SUCCESS,"添加成功",addCurriculum1);
         }
         return packaging(StateCode.FAIL,"添加失败",null);
     }
@@ -156,6 +157,39 @@ public class AddCurriculumController extends Base{
             return packaging(StateCode.SUCCESS,"删除成功",null);
         }
         return packaging(StateCode.FAIL,"删除失败",null);
+    }
+
+
+    //微信取消收藏
+    @DeleteMapping("/wx_deleteAddCurriculum/{token}")
+    public State<Object> wx_deleteAddCurriculum(@PathVariable("token")String token,Integer tutionId){
+        String object = (String)redisUtil.getObject(token);
+        if(object==null){
+            return packaging(com.hniu.constan.StateCode.FAIL,"此用户不存在",null);
+        }
+        String[] split = object.split(",");
+        Integer userid = Integer.parseInt(split[2]);
+        int i = addCurriculumService.wx_deleteAddCurriculum(userid,tutionId);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"取消收藏成功",null);
+        }
+        return packaging(StateCode.FAIL,"取消收藏失败",null);
+    }
+
+    //通过token和开课id查询加入课程id
+    @GetMapping("/wx_getAddId/{token}")
+    public State<Object> wx_selectAddId(@PathVariable("token")String token,Integer tutionId){
+        String object = (String)redisUtil.getObject(token);
+        if(object==null){
+            return packaging(com.hniu.constan.StateCode.FAIL,"此用户不存在",null);
+        }
+        String[] split = object.split(",");
+        Integer userid = Integer.parseInt(split[2]);
+        AddCurriculum addCurriculum = addCurriculumService.wx_selectAddId(userid,tutionId);
+        if(!StringUtils.isEmpty(addCurriculum)){
+            return packaging(StateCode.SUCCESS,"查询成功",addCurriculum);
+        }
+        return packaging(StateCode.FAIL,"查询失败",null);
     }
 
 
