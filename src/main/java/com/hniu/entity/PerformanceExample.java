@@ -343,6 +343,66 @@ public class PerformanceExample {
             addCriterion("task_id not between", value1, value2, "taskId");
             return (Criteria) this;
         }
+
+        public Criteria andUserAnswerIsNull() {
+            addCriterion("user_answer is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerIsNotNull() {
+            addCriterion("user_answer is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerEqualTo(Integer value) {
+            addCriterion("user_answer =", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerNotEqualTo(Integer value) {
+            addCriterion("user_answer <>", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerGreaterThan(Integer value) {
+            addCriterion("user_answer >", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_answer >=", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerLessThan(Integer value) {
+            addCriterion("user_answer <", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerLessThanOrEqualTo(Integer value) {
+            addCriterion("user_answer <=", value, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerIn(List<Integer> values) {
+            addCriterion("user_answer in", values, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerNotIn(List<Integer> values) {
+            addCriterion("user_answer not in", values, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerBetween(Integer value1, Integer value2) {
+            addCriterion("user_answer between", value1, value2, "userAnswer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserAnswerNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_answer not between", value1, value2, "userAnswer");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

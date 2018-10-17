@@ -9,6 +9,8 @@ public class Performance {
 
     private Integer taskId;
 
+    private Integer userAnswer;
+
     public Integer getPerformanceId() {
         return performanceId;
     }
@@ -39,5 +41,13 @@ public class Performance {
 
     public void setTaskId(Integer taskId) {
         this.taskId = taskId;
+    }
+
+    public Integer getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(Integer userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }
