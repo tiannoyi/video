@@ -51,6 +51,7 @@ public class TutionServiceImp implements TutionService {
     @Override
     @Transactional
     public int insertTution(Tution tution) throws RuntimeException{
+        tution.setPopulation(null);
         CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(tution.getCurriculumId());
         if(StringUtils.isEmpty(curriculum)){
             return 0;
@@ -80,6 +81,7 @@ public class TutionServiceImp implements TutionService {
 
     @Override
     public int updateTution(Integer tution_id, Tution tution) {
+        tution.setPopulation(null);
         if(tution.getCurriculumId()!=null){
             CurriculumWithBLOBs curriculum = curriculumMapper.selectByPrimaryKey(tution.getCurriculumId());
             if(StringUtils.isEmpty(curriculum)){
