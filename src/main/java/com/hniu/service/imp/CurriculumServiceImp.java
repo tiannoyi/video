@@ -1,12 +1,13 @@
 package com.hniu.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.*;
 import com.hniu.mapper.*;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
-import org.hibernate.validator.constraints.pl.REGON;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -63,17 +64,57 @@ public class CurriculumServiceImp implements CurriculumService {
     }
 
     @Override
-    public int inputCurriculum(CurriculumWithBLOBs curriculum) {
-        University university = universityMapper.selectByPrimaryKey(curriculum.getUniversityId());
-        CourseType courseType = courseTypeMapper.selectByPrimaryKey(curriculum.getCtId());
+    public CurriculumWithBLOBs inputCurriculum(CurriculumCurriculumWithBlobsDto curriculumDto) {
+        University university = universityMapper.selectByPrimaryKey(curriculumDto.getUniversityId());
+        CourseType courseType = courseTypeMapper.selectByPrimaryKey(curriculumDto.getCtId());
         if(StringUtils.isEmpty(university)||StringUtils.isEmpty(courseType)){
-            return 0;
+            return null;
         }
-        int i = curriculumMapper.insert(curriculum);
+        CurriculumWithBLOBs curriculum = new CurriculumWithBLOBs();
+        BeanUtils.copyProperties(curriculumDto,curriculum);
+        File file1 = null;
+        File file2 = null;
+        String fileName1 = null;
+        String fileName2 = null;
+        if (curriculumDto.getPicture()!=null&&curriculumDto.getPicture().getSize()>0){
+            fileName1 = System.currentTimeMillis()+"_"+curriculumDto.getPicture().getOriginalFilename();
+            file1 = new File(adCurriculumPicturePath+fileName1);
+            File fileFoleder = new File(adCurriculumPicturePath);
+            if(!fileFoleder.exists()){
+                fileFoleder.mkdirs();
+            }
+        }
+        if (curriculumDto.getVideo()!=null&&curriculumDto.getVideo().getSize()>0){
+            fileName2 = System.currentTimeMillis()+"_"+curriculumDto.getVideo().getOriginalFilename();
+            file2 = new File(adCurriculumVideoPicturePath+fileName2);
+            File fileFoleder = new File(adCurriculumVideoPicturePath);
+            if ((!fileFoleder.exists())){
+                fileFoleder.mkdirs();
+            }
+        }
+        if (file1!=null&&fileName1!=null) {
+            try {
+                curriculumDto.getPicture().transferTo(file1);
+                curriculum.setPicture(picturePath+fileName1);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        if(file2!=null&&fileName2!=null){
+            try {
+                curriculumDto.getVideo().transferTo(file2);
+                curriculum.setVideo(picturePath+fileName2);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        int i = curriculumMapper.insertSelective(curriculum);
         if(i != 0){
-            return 1;
+            return curriculum;
         }else{
-            return 0;
+            return null;
         }
 
     }

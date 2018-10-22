@@ -19,4 +19,6 @@ public interface AdminMapper extends Mapper<Admin> {
      * 关联角色查询单个
      */
     public AdminVo selectByPrimaryKeyVo(Integer adminId);
+
+    AdminVo selectAdminId(String adminName);
 }

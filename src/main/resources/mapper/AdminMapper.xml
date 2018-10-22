@@ -37,4 +37,11 @@
     <select id="selectByPrimaryKeyVo" resultMap="AdminVo" parameterType="java.lang.Integer">
         select admin_id,admin_name,phone,r.role_id,r.role_name,r.state from tbl_admins a inner join tbl_roles r ON a.role_id =  r.role_id where a.admin_id=#{adminId}
     </select>
+
+    <select id="selectAdminId" parameterType="java.lang.String" resultMap="AdminVo">
+        select admin_id,admin_name,phone,r.role_id,r.role_name,r.state
+        from tbl_admins a inner join tbl_roles r
+        ON a.role_id =  r.role_id
+        WHERE a.admin_name = #{adminName}
+    </select>
 </mapper>

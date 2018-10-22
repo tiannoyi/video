@@ -1,5 +1,6 @@
 package com.hniu.service;
 
+import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.util.Page;
@@ -16,7 +17,7 @@ public interface CurriculumService {
     CurriculumWithBLOBs selectCurriculum(int curriculum_id);
 
     //添加课程信息
-    int inputCurriculum(CurriculumWithBLOBs curriculum);
+    CurriculumWithBLOBs inputCurriculum(CurriculumCurriculumWithBlobsDto curriculum);
 
     //修改课程信息
     int updateCurriculum(int curriculum_id,CurriculumWithBLOBs curriculum);

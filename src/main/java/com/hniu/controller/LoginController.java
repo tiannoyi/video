@@ -3,12 +3,20 @@ package com.hniu.controller;
 import com.hniu.constan.StateCode;
 import com.hniu.controller.base.Base;
 import com.hniu.entity.Admin;
+import com.hniu.entity.Teacher;
+import com.hniu.entity.TeacherExample;
+import com.hniu.entity.vo.AdminVo;
+import com.hniu.entity.vo.TeacherIdAndRoleName;
 import com.hniu.exception.NotLoginException;
 import com.hniu.exception.PassWordIsNullException;
 import com.hniu.exception.SystemErrorException;
 import com.hniu.exception.UserNameIsNullException;
+import com.hniu.mapper.AdminMapper;
+import com.hniu.mapper.RolesMapper;
+import com.hniu.mapper.TeacherMapper;
 import com.hniu.service.PermissionsService;
 import com.hniu.service.WxLoginService;
+import org.apache.catalina.mbeans.RoleMBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -18,6 +26,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 
 @RestController
 public class LoginController extends Base {
@@ -26,6 +37,15 @@ public class LoginController extends Base {
 
     @Autowired
     WxLoginService ws;
+
+    @Resource
+    AdminMapper adminMapper;
+
+    @Resource
+    TeacherMapper teacherMapper;
+
+    @Resource
+    RolesMapper rolesMapper;
 
     //微信登录
     @PostMapping("/wx_login")
@@ -72,7 +92,21 @@ public class LoginController extends Base {
         } catch (AuthenticationException ae) {
             return packaging(StateCode.FAIL, token.getUsername());
         }
-        return packaging(StateCode.SUCCESS, token.getUsername());
+        AdminVo a = adminMapper.selectAdminId(token.getUsername());
+        String account = a.getAdminId().toString();
+        String roleName = a.getRole().getRoleName();
+        TeacherExample example = new TeacherExample();
+        example.createCriteria().andAccountEqualTo(account);
+        List<Teacher> list = teacherMapper.selectByExample(example);
+        TeacherIdAndRoleName teacherIdAndRoleName = new TeacherIdAndRoleName();
+        if(list.size()>0){
+            teacherIdAndRoleName.setTeacherId(list.get(0).getTeacherId());
+            teacherIdAndRoleName.setRoleName(roleName);
+          return  packaging(StateCode.SUCCESS, teacherIdAndRoleName);
+        }if(list.size()<=0) {
+            teacherIdAndRoleName.setRoleName(roleName);
+        }
+        return packaging(StateCode.SUCCESS,teacherIdAndRoleName);
     }
 
     @GetMapping("/menu")

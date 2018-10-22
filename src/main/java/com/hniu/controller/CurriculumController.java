@@ -1,6 +1,7 @@
 package com.hniu.controller;
 
 import com.hniu.constan.StateCode;
+import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
 import com.hniu.service.CurriculumService;
@@ -47,12 +48,10 @@ public class CurriculumController extends Base{
 
     //添加课程信息
     @PostMapping()
-    public State<Object> inputCurriculum(CurriculumWithBLOBs curriculum){
-        curriculum.setPicture(null);
-        curriculum.setVideo(null);
-        int i = curriculumService.inputCurriculum(curriculum);
-        if(i != 0){
-            return packaging(StateCode.SUCCESS,"课程添加成功",null);
+    public State<Object> inputCurriculum(CurriculumCurriculumWithBlobsDto curriculum){
+        CurriculumWithBLOBs curriculum1 = curriculumService.inputCurriculum(curriculum);
+        if(!StringUtils.isEmpty(curriculum1)){
+            return packaging(StateCode.SUCCESS,"课程添加成功",curriculum1);
         }else{
             return packaging(StateCode.FAIL,"课程添加失败",null);
         }
@@ -138,8 +137,11 @@ public class CurriculumController extends Base{
     //根据课程名模糊查询课程信息
     @GetMapping("/name")
     public State<Object> byName(String name,Integer currentPage,Integer pageSize){
-        if (currentPage==null||pageSize==null||name==null){
-            return packaging(StateCode.FAIL,"请输入页数、总数、课程名",null);
+        if (currentPage==null||pageSize==null){
+            return packaging(StateCode.FAIL,"请输入页数、总数",null);
+        }
+        if(name==null||name==""){
+            return packaging(StateCode.FAIL,"请输入课程名",null);
         }
         Page<CurriculumWithBLOBs> list =curriculumService.byName(name, currentPage, pageSize);
         if(list.getList().size()>=0){

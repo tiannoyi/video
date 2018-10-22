@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 @RestController
-public class AdminController extends Base {
+public class AdminController extends com.hniu.controller.Base {
 
     @Autowired
     AdminService as;
@@ -26,39 +26,39 @@ public class AdminController extends Base {
     public Object selectAll(Integer pageNum,  Integer pageSize) {
         System.out.println(SecurityUtils.getSubject().getSession().getId());
         PageWrap data = as.selectAllVo(pageNum, pageSize);
-        return packaging(StateCode.SUCCESS, data);
+        return packaging(StateCode.SUCCESS,"成功", data);
     }
 
     @GetMapping("/admins/{id}")
     public Object selectByPrimaryKey(@PathVariable("id") Integer id) {
-        return packaging(StateCode.SUCCESS, as.selectByPrimaryKeyVo(id));
+        return packaging(StateCode.SUCCESS,"成功", as.selectByPrimaryKeyVo(id));
     }
 
     @PostMapping("/admins")
     public Object insert(@RequestBody Admin admin) {
         try {
-            return packaging(StateCode.SUCCESS, as.insert(admin));
+            return packaging(StateCode.SUCCESS, "成功",as.insert(admin));
         } catch (UserNameExistException e) {
-            return packaging(StateCode.USERNAMEEXIST, admin);
+            return packaging(StateCode.USERNAMEEXIST,"用户名已经存在", admin);
         } catch (SystemErrorException e) {
-            return packaging(StateCode.FAIL, admin);
+            return packaging(StateCode.FAIL, "成功",admin);
         }
     }
 
     @PutMapping("admins/{id}")
     public Object update(@PathVariable("id") Integer id, @RequestBody Admin admin) {
         admin.setAdminId(id);
-        return packaging(StateCode.SUCCESS, as.update(admin));
+        return packaging(StateCode.SUCCESS, "成功",as.update(admin));
     }
 
     @PutMapping("/admins/update_password")
     public Object updatePassword(@RequestBody Map<String,String> map) {
         try {
-            return packaging(StateCode.SUCCESS, as.changePassword(map));
+            return packaging(StateCode.SUCCESS, "成功",as.changePassword(map));
         } catch (NotLoginException e) {
-            return packaging(StateCode.LOGINAGAIN, null);
+            return packaging(StateCode.LOGINAGAIN, "请重新登陆",null);
         } catch (PassWordErrorException e) {
-            return packaging(StateCode.PASSWORDMISTAKE, map.get("oldoldPassword"));
+            return packaging(StateCode.PASSWORDMISTAKE, "密码错误",map.get("oldoldPassword"));
         }
 
     }
@@ -67,9 +67,9 @@ public class AdminController extends Base {
     public Object delete(@PathVariable("id") Integer id) {
         int i = as.delete(id);
         if (i > 0)
-            return packaging(StateCode.SUCCESS, null);
+            return packaging(StateCode.SUCCESS, "成功",null);
         else
-            return packaging(StateCode.FAIL, null);
+            return packaging(StateCode.FAIL,"失败", null);
 
     }
 

@@ -148,7 +148,7 @@
       #{isMainpic,jdbcType=BIT}, #{mainTeacher,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR}, 
       #{scoring,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hniu.entity.CurriculumWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.hniu.entity.CurriculumWithBLOBs" keyProperty="curriculumId" useGeneratedKeys="true">
     insert into tbl_curriculum
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="curriculumId != null" >
