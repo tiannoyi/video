@@ -148,6 +148,26 @@ public class AddCurriculumController extends Base{
         return packaging(StateCode.FAIL,"操作失败失败",null);
     }
 
+    //修改加入课程
+    @PutMapping("/updateAddCurriculum")
+    public State<Object> updateAddCurriculumCourseGrade(AddCurriculum addCurriculum){
+        if(StringUtils.isEmpty(addCurriculum)){
+            return packaging(StateCode.FAIL,"操作失败失败",null);
+        }
+        if (addCurriculum.getCourseGrade()!=null&&addCurriculum.getCourseGrade()>=0&&addCurriculum.getCourseGrade()<=100){
+            int i = addCurriculumService.updateAddCurriculum(addCurriculum);
+            if (i>0){
+                return packaging(StateCode.SUCCESS,"操作成功",null);
+            }else {
+                return packaging(StateCode.FAIL,"操作失败失败",null);
+            }
+        }
+        int i = addCurriculumService.updateAddCurriculum(addCurriculum);
+        if(i>0){
+            return packaging(StateCode.SUCCESS,"操作成功",null);
+        }
+        return packaging(StateCode.FAIL,"操作失败失败",null);
+    }
 
     //删除加入课程
     @DeleteMapping("/{add_id}")

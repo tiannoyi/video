@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.*;
+import com.hniu.entity.vo.UserAndAddCurriculum;
 import com.hniu.mapper.*;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
@@ -286,6 +287,16 @@ public class CurriculumServiceImp implements CurriculumService {
         int countNums = allCurriculumDto.size();
         Page<CurriculumDto> pageData = new Page<>(currentPage,pageSize,countNums);
         pageData.setList(allCurriculumDto);
+        return pageData;
+    }
+
+    @Override
+    public Page<UserAndAddCurriculum> userAndAddCurriculum(Integer curriculum_id,Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        List<UserAndAddCurriculum> list = curriculumMapper.userAndAddCurriculum(curriculum_id);
+        int countNums = list.size();
+        Page<UserAndAddCurriculum> pageData =  new Page<>(currentPage,pageSize,countNums);
+        pageData.setList(list);
         return pageData;
     }
 

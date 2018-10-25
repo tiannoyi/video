@@ -85,8 +85,7 @@ public class VideoServiceImpl implements VideoService {
             }
             String s1 = s.substring(s.indexOf("video/") + 6, s.indexOf(endString));
             File file = new File(adVideoSavePath+s1+endString);
-            boolean b = file.delete();
-            System.out.println(b);
+            file.delete();
         }
         Video video = new Video();
         BeanUtils.copyProperties(videoDto, video);
@@ -105,9 +104,15 @@ public class VideoServiceImpl implements VideoService {
             } catch (IllegalStateException | IOException e) {
                 return false;
             }
-        } else {
-            return false;
         }
+        if (videoDto.getFile()==null||videoDto.getFile().getSize()==0){
+             int i =  videoMapper.updateByPrimaryKeySelective(video);
+             if (i>0){
+                 return true;
+             }
+        }
+            return false;
+
     }
 
     @Override

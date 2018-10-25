@@ -3,6 +3,7 @@ package com.hniu.service;
 import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
+import com.hniu.entity.vo.UserAndAddCurriculum;
 import com.hniu.util.Page;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,5 +43,8 @@ public interface CurriculumService {
 
     //分页查询课程和开课信息
     Page<CurriculumDto> curriculumAndTutionPage(Integer currentPage, Integer pageSize);
+
+    //查询当前课程下单用户和成绩
+    Page<UserAndAddCurriculum> userAndAddCurriculum(Integer curriculum_id,Integer currentPage, Integer pageSize);
 
 }

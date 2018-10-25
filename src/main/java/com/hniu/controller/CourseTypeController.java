@@ -54,7 +54,7 @@ public class CourseTypeController extends Base{
 
 
     //修改课程类别
-    @RequestMapping(value = "/{ct_id}")
+    @RequestMapping(value = "/update/{ct_id}")
     public State<Object> updateCourseType(@PathVariable("ct_id")Integer ct_id,CourseTypeDto courseTypeDto){
         if(StringUtils.isEmpty(courseTypeDto)){
             return packaging(StateCode.FAIL,"课程类别修改失败",null);

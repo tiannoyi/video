@@ -4,6 +4,8 @@ import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.*;
 
 import java.util.List;
+
+import com.hniu.entity.vo.UserAndAddCurriculum;
 import org.apache.ibatis.annotations.Param;
 
 public interface CurriculumMapper {
@@ -57,4 +59,7 @@ public interface CurriculumMapper {
 
     //查询课程和开课信息
     List<CurriculumDto> curriculumAndTution();
+
+    //查询当前课程下的用户和成绩
+    List<UserAndAddCurriculum> userAndAddCurriculum(Integer curriculum_id);
 }

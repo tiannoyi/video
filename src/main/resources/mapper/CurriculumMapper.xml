@@ -511,4 +511,26 @@
     ON a.curriculum_id = b.curriculum_id
     ORDER BY a.tution_id DESC) c GROUP BY curriculum_id
   </select>
+
+  <resultMap id="userAndAddCurriculumMap" type="com.hniu.entity.vo.UserAndAddCurriculum">
+    <id column="add_id" property="addId" jdbcType="INTEGER" />
+    <result column="tution_id" property="tutionId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="course_grade" property="courseGrade" jdbcType="DOUBLE" />
+    <result column="is_qualified" property="isQualified" jdbcType="BIT" />
+    <result column="star" property="star" jdbcType="DOUBLE" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="portrait" property="portrait" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="userAndAddCurriculum" parameterType="java.lang.Integer" resultMap="userAndAddCurriculumMap">
+    SELECT a.*,b.user_id,b.user_Name,b.portrait
+    FROM tbl_add_curriculum a LEFT JOIN tbl_user b
+    ON a.user_id = b.user_id
+    WHERE a.tution_id = (
+                          SELECT tution_id
+						  FROM tbl_tution
+						  WHERE `status` = 2 AND curriculum_id = #{curriculum_id}
+							)
+  </select>
 </mapper>

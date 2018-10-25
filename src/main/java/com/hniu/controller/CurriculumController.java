@@ -4,6 +4,7 @@ import com.hniu.constan.StateCode;
 import com.hniu.dto.CurriculumCurriculumWithBlobsDto;
 import com.hniu.dto.CurriculumDto;
 import com.hniu.entity.CurriculumWithBLOBs;
+import com.hniu.entity.vo.UserAndAddCurriculum;
 import com.hniu.service.CurriculumService;
 import com.hniu.util.Page;
 import com.hniu.util.State;
@@ -163,6 +164,24 @@ public class CurriculumController extends Base{
         }else{
             return packaging(StateCode.FAIL,"课程信息查询失败",null);
         }
+    }
+
+
+
+    //查询当前课程下的用户和成绩
+    @GetMapping("/userAndAddCurriculum")
+    public State<Object> userAndAddCurriculum(Integer curriculum_id,Integer currentPage, Integer pageSize){
+        if (currentPage==null|| pageSize == null){
+            return packaging(StateCode.FAIL,"请输入页数和总数",null);
+        }
+        if (curriculum_id == null){
+            return packaging(StateCode.FAIL,"请输入课程id",null);
+        }
+        Page<UserAndAddCurriculum> list = curriculumService.userAndAddCurriculum(curriculum_id, currentPage, pageSize);
+        if (list.getList().size()!=0){
+            return packaging(StateCode.SUCCESS,"课程信息查询成功",list);
+        }
+        return  packaging(StateCode.FAIL,"查询失败",null);
     }
 
 
