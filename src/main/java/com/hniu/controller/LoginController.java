@@ -27,6 +27,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -73,9 +76,9 @@ public class LoginController extends Base {
 
     //管理员登录
     @PostMapping("/login")
-    public Object login(@RequestBody Admin admin) throws UserNameIsNullException, PassWordIsNullException {
+    public Object login(@RequestBody Admin admin,HttpSession session) throws UserNameIsNullException, PassWordIsNullException {
         Subject subject = SecurityUtils.getSubject();
-        System.out.println(SecurityUtils.getSubject().getSession().getId());
+        //System.out.println(SecurityUtils.getSubject().getSession().getId());
         UsernamePasswordToken token = new UsernamePasswordToken(admin.getAdminName(), admin.getPassword());
         try {
             subject.login(token);
@@ -102,10 +105,12 @@ public class LoginController extends Base {
         if(list.size()>0){
             teacherIdAndRoleName.setTeacherId(list.get(0).getTeacherId());
             teacherIdAndRoleName.setRoleName(roleName);
+            session.setAttribute("admin","true");
           return  packaging(StateCode.SUCCESS, teacherIdAndRoleName);
         }if(list.size()<=0) {
             teacherIdAndRoleName.setRoleName(roleName);
         }
+        session.setAttribute("admin","true");
         return packaging(StateCode.SUCCESS,teacherIdAndRoleName);
     }
 
